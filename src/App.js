@@ -41,9 +41,11 @@ class App extends Component {
             <area alt="grid" ref="correct" className="correct" shape="poly" coords="1734,542,1741,748,1919,759,1914,535" onClick={event => this.handleClick(event.target.className)} />
           </map>
         </p>
-        <p className="App-script">
-        Pick what candy to buy to try to get the 'Golden Ticket'  
-        Message: {this.state.message}
+        <p className="App-script"> 
+        Pick what candy to buy! Try to get the 'Golden Ticket'. 
+        </p>
+        <p> 
+          Message: {this.state.message} 
         </p>
       </div>
     );
