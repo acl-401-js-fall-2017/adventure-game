@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import floors from './Floors';
 
 class App extends Component {
 
@@ -9,16 +10,22 @@ class App extends Component {
       itemInHand: null,
       timer: 0,
       floors,
-      floor: floors[4],
+      floor: floors[1],
+      // pickUpValue: floor.items[0],
       pizzaItems: null
-    }
+    };
   }
+
+  // handlePickUp = item => {
+  //   onClick = 
+  // };
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Pizza</h1>
-          <p>This is your home floor.</p>
+          <p>{ this.state.floor.message }</p>
         </header>
         <div>
           <select name="elevator">
@@ -33,7 +40,11 @@ class App extends Component {
           <button name="pick-up">Pick Up</button>
           <button name="drop">Drop</button>
           <button name="pizza-add">Add to Pizza</button>
-          <select name="items-in-room">Options per room</select>
+          <label>Items in the Room</label>
+          <select name="items-in-room" onChange={({ target }) => {console.log ('select value', target.value);}}>{ this.state.floor.items.map((item) => {
+            return <option value={item}>{item}</option>;
+          }) }</select>
+          
 
 
         </div>
