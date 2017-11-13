@@ -4,7 +4,14 @@ const wiFreezer = {
   description: '',
   items: [],
   door: 'acCafe',
-  encounter: {}
+  encounter: {
+    name: 'Jenkins',
+    dialogue: [
+      'Welcome to the Walk-in Freezer. My name is Jenkins, and I’m the caretaker here. Who are you?',
+      'We are in a freezer, but I suppose its a good thing you have your parka, for now…',
+      'To escape this nightmare you must descend through all four stages of heat, solving a puzzle on each floor, until you reach hell and defeat the devil.  It can get rather hot down there, and some have died. I would wish you luck, but as you said, ‘man’s not hot’.',
+    ]
+  }
 };
 
 const acCafe = {
