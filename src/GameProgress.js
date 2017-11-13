@@ -3,7 +3,6 @@ import styled from 'styled-components';
  
 export default class GameProgress extends Component{
 state ={
-  outcome:'',
   outcomeArray: []
 }
   
@@ -11,6 +10,7 @@ state ={
     const updatedArray = this.state.outcomeArray;
     const { setNextRound, bobAction, jeffAction, updateHealth } = this.props;
     if (!playersReady) return;
+
     //Player One: Quick
     if (bobAction === 'quick'){
       if(jeffAction === 'quick') {
