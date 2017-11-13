@@ -4,17 +4,23 @@ import styled from 'styled-components';
 export default class Player extends Component{
 
   render(){
+    const { player, instruction } = this.props;
     return(
-      <InfoDiv>
-        <span>{this.props.name}</span>
-        <span>Current Health:{this.props.player.hp}</span>
-        <span>{this.props.instruction}</span>
-      </InfoDiv>
+      <div style ={{ display: 'flex', justifyContent:'center', width:'50%' }}>
+        <InfoDiv>
+          <span>{player.name}</span>
+          <span>Current Health:{player.hp}</span>
+          <span> Actions: </span>
+          { instruction.map((v, i) =><span key={i}>{v}</span>)}
+          <span>{(player.action)? `${player.name} is ready`: `${player.name} is making a choice...`}</span>
+        </InfoDiv>
+      </div>
     );
   }
 }
 
 const InfoDiv = styled.div`
+width: 50%;
 display: flex;
 flex-direction: column;
 `;

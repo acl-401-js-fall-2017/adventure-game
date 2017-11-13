@@ -8,24 +8,22 @@ import GameProgress from './GameProgress';
 
 class App extends Component {
   state = {
-    bob: { hp: 5, action: '' },
-    jeff: { hp: 5, action: '' },
-    playersReady: false
+    playerOne: { hp: 5, action: '', name: 'Bob' },
+    playerTwo: { hp: 5, action: '', name: 'Jeff' },
   }
 
   setNextRound = () => {
-    this.changePlayerAction('bob', '');
-    this.changePlayerAction('jeff', '');
-    this.setState({ playersReady: false });
+    this.changePlayerAction('playerOne', '');
+    this.changePlayerAction('playerTwo', '');
   }
 
   updateHealth = (hp, player) => {
-    const { bob, jeff } = this.state;
-    const one = bob;
-    const two = jeff;
+    const { playerOne, playerTwo } = this.state;
+    const one = playerOne;
+    const two = playerTwo;
     if (player === 'One') one.hp += hp;
     else two.hp += hp;
-    this.setState({ bob: one, jeff: two });
+    this.setState({ playerOne: one, playerTwo: two });
   }
 
   changePlayerAction(player, action) {
@@ -37,33 +35,30 @@ class App extends Component {
   handleAction = ({ key }) => {
     switch(key){
     case 'q': 
-      this.changePlayerAction('bob', 'quick');
+      this.changePlayerAction('playerOne', 'quick');
       break;
     case 'w': 
-      this.changePlayerAction('bob', 'heavy');
+      this.changePlayerAction('playerOne', 'heavy');
       break;
     case 'e': 
-      this.changePlayerAction('bob', 'riposte');
+      this.changePlayerAction('playerOne', 'riposte');
       break;
     case 'p': 
-      this.changePlayerAction('jeff', 'quick');
+      this.changePlayerAction('playerTwo', 'quick');
       break;
     case 'o': 
-      this.changePlayerAction('jeff', 'heavy');  
+      this.changePlayerAction('playerTwo', 'heavy');  
       break;
     case 'i': 
-      this.changePlayerAction('jeff', 'riposte');
-      break;
-    case ' ':
-      this.setState({ playersReady: true });
+      this.changePlayerAction('playerTwo', 'riposte');
       break;
     default : break;
     }
   }
 
   bothAlive =() =>{
-    const { bob, jeff } = this.state;
-    return(bob.hp > 0 && jeff.hp > 0);
+    const { playerOne, playerTwo } = this.state;
+    return(playerOne.hp > 0 && playerTwo.hp > 0);
   }
 
   componentDidMount(){
@@ -71,20 +66,20 @@ class App extends Component {
   }
 
   render() {
-    const { bob , jeff, playersReady } = this.state;
+    const { playerOne , playerTwo } = this.state;
     return (
       <div className="App" >
         <header className="App-header">
           <h1 className="App-title">Parking Massacre</h1>
         </header>
-        <Death shouldDisplay = {!this.bothAlive()} hp={[bob.hp, jeff.hp]}/>
+        <Death shouldDisplay = {!this.bothAlive()} hp={[playerOne.hp, playerTwo.hp]}/>
 
         <GameDiv shouldDisplay ={this.bothAlive()}>
-          <Player player={bob} name='Bob' instruction={'Q: quick attack  W: heavy attack  E: riposte'}/>
+          <Player player={playerOne} name='playerOne' instruction={['Q: quick attack',  'W: heavy attack',  'E: riposte']}/>
 
-          <GameProgress setNextRound = {this.setNextRound} playersReady = {playersReady} updateHealth ={this.updateHealth} bobAction = {bob.action} jeffAction = {jeff.action}/>
+          <GameProgress setNextRound = {this.setNextRound} playersReady = {(playerOne.action !== '' && playerTwo.action !== '')} updateHealth ={this.updateHealth} playerOne = {playerOne} playerTwo = {playerTwo}/>
 
-          <Player player={jeff} name='Jeff' instruction={'P: quick attack  O: heavy attack  I: riposte'}/>
+          <Player player={playerTwo} name='playerTwo' instruction={['P: quick attack',  'O: heavy attack',  'I: riposte']}/>
 
         </GameDiv>
       </div>
@@ -95,8 +90,7 @@ class App extends Component {
 export default App;
 
 const GameDiv = styled.div`
-  justify-content:space-between;
-  margin: 0 10%;
-  width: 80%;
+  justify-content:center;
+  width: 100%;
   display:${props => props.shouldDisplay ? 'flex' : 'none'};
 `;
