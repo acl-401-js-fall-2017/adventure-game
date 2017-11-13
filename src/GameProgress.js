@@ -3,6 +3,7 @@ import styled from 'styled-components';
  
 export default class GameProgress extends Component{
 state ={
+  isProcessing: false,
   outcomeArray: []
 }
 
@@ -15,6 +16,7 @@ scrollToBottom = () => {
 
   
   resolveAction= (playersReady) =>{
+    if (this.state.isProcessing) return;
     const updatedArray = this.state.outcomeArray;
     const { setNextRound, playerOne, playerTwo, updateHealth } = this.props;
     if (!playersReady) return;
@@ -74,14 +76,17 @@ scrollToBottom = () => {
   };
 
   componentWillReceiveProps(nextProps){
+    if(!nextProps.playersReady) return;
+    // console.log('nextProps are', this.nextProps.play)
     if(nextProps.playersReady === this.props.playersReady) return;
     setTimeout(() => {
       this.resolveAction(nextProps.playersReady);
+      this.setState({ isProcessing: true });
     }, 500);
+    this.setState({ isProcessing: false });
   }
 
   render() {
-    const { playerOne, playerTwo } = this.props;
     return(
       // everytime InfoDiv rerenders inner ref does the function;
       <InfoDiv innerRef={node => { node && (node.scrollTop = node.scrollHeight);}}>

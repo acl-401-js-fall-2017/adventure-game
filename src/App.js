@@ -65,6 +65,13 @@ class App extends Component {
     document.addEventListener('keydown', this.handleAction); 
   }
 
+  reset(){
+    return this.setState({
+      playerOne: { hp: 5, action: '', name: 'Bob' },
+      playerTwo: { hp: 5, action: '', name: 'Jeff' },
+    });
+  }
+
   render() {
     const { playerOne , playerTwo } = this.state;
     return (
@@ -72,12 +79,14 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Parking Massacre</h1>
         </header>
-        <Death shouldDisplay = {!this.bothAlive()} hp={[playerOne.hp, playerTwo.hp]}/>
+        <Death shouldDisplay = {!this.bothAlive()} hp={[playerOne.hp, playerTwo.hp]}
+          handleReset = {() => this.reset()} />
 
         <GameDiv shouldDisplay ={this.bothAlive()}>
           <Player player={playerOne} name='playerOne' instruction={['Q: quick attack',  'W: heavy attack',  'E: riposte']}/>
 
-          <GameProgress setNextRound = {this.setNextRound} playersReady = {(playerOne.action !== '' && playerTwo.action !== '')} updateHealth ={this.updateHealth} playerOne = {playerOne} playerTwo = {playerTwo}/>
+          <GameProgress 
+            setNextRound = {this.setNextRound} playersReady = {(playerOne.action !== '' && playerTwo.action !== '')} updateHealth ={this.updateHealth} playerOne = {playerOne} playerTwo = {playerTwo}/>
 
           <Player player={playerTwo} name='playerTwo' instruction={['P: quick attack',  'O: heavy attack',  'I: riposte']}/>
 

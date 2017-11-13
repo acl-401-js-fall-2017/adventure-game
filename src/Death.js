@@ -22,7 +22,7 @@ export default class Death extends Component{
       <WinScreen shouldDisplay ={this.props.shouldDisplay}>
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           <span>{this.determineOutcome(this.props.hp[0], this.props.hp[1])}</span>
-          <StyledP onClick={this.props.reset}> Play Again?</StyledP>
+          <StyledP onClick={() => this.props.handleReset()}> Play Again?</StyledP>
         </div>
       </WinScreen>
     );
