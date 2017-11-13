@@ -2,10 +2,25 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
  
 export default class Death extends Component{
+
+  determineOutcome(bobHp, jeffHp){
+    if (bobHp < 1 && jeffHp < 1) {
+      return 'they both died';
+    }
+
+    else if (bobHp < 1) {
+      return 'Jeff won';
+    }
+
+    else if (jeffHp < 1) {
+      return 'Bob won';
+    }
+  }
+
   render(){
     return( 
       <WinScreen shouldDisplay ={this.props.shouldDisplay}>
-        {`Player ${this.props.hp[0] < 1 ? 'Two' : 'One'} has Won the game`}
+        {this.determineOutcome(this.props.hp[0], this.props.hp[1])}
       </WinScreen>
     );
   }
