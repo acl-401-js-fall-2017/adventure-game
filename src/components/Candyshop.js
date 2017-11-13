@@ -3,7 +3,7 @@ import shopPic from '../wonkaStore.jpg';
 
 
 
-export default class Room extends Component {
+export default class Candyshop extends Component {
   constructor() {
     super();
     this.state = {

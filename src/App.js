@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import logo from './goldenTx.jpg';
 import Candyshop from './components/Candyshop';
-import Rooms from './Rooms';
-import gatePic from './wonkaGate.jpg';
+import Gate from './components/Gate';
+import Rooms from './rooms';
 
 import './App.css';
 
@@ -25,8 +25,15 @@ class App extends Component {
     });
   }
   
-  render() {
+  removeInventory = () => {
+    const inventory = [...this.state.inventory];
+    inventory.splice(-1);
+    this.setState({
+      inventory
+    });
+  }
 
+  render() {
     return (
       <div className="App">
         <header className="App-header">
@@ -35,16 +42,10 @@ class App extends Component {
           <h2> Your Inventory: {this.state.inventory} </h2>
         </header>
         <Candyshop handleInventory = {this.handleInventory} inventory = {this.state.inventory} />
-        <section>
-          <img src={gatePic} alt="" useMap="#Map" />
-          <map name="Map" id="Map">
-            <area alt="" title="" href="#" shape="poly" coords="479,147,477,566,636,567,622,156"/>
-          </map>
-        </section>
+        <Gate removeInventory={this.removeInventory} inventory={this.state.inventory}/>
       </div>
     );
   }
 }
-
 
 export default App;
