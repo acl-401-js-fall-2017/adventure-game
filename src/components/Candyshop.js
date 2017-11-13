@@ -30,7 +30,7 @@ export default class Room extends Component {
         <p className="App-pic">
           <img src={shopPic} useMap="#shopMap" alt="Candy shop"/>
           <map name="shopMap" id="shopMap">
-            <area alt="grid"  data-value="wrong" shape="poly" coords="53,194,52,320,220,324,220,208" onClick={({ target }) => this.handleClick(target.dataset.className)}/>
+            <area alt="grid"  data-value="wrong" shape="poly" coords="53,194,52,320,220,324,220,208" onClick={({ target }) => this.handleClick(target.dataset.value)}/>
             <area alt="grid"  data-value="wrong" shape="poly" coords="61,342,57,415,216,416,221,345" onClick={({ target }) => this.handleClick(target.dataset.value)}/>
             <area alt="grid"  data-value="wrong" shape="poly" coords="56,444,52,518,205,516,220,443" onClick={({ target }) => this.handleClick(target.dataset.value)}/>
             <area alt="grid"  data-value="wrong" shape="poly" coords="262,208,261,326,531,327,524,208" onClick={({ target }) => this.handleClick(target.dataset.value)}/>
