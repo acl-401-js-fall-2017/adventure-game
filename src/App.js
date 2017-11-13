@@ -57,7 +57,6 @@ class App extends Component {
     }
 
     this.setGnomeOnGrid(gridSetUp);
-    console.log(gridSetUp);
     this.setState({ gridArray: gridSetUp });
   }
 
