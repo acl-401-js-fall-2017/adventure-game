@@ -6,7 +6,7 @@ export default class Player extends Component{
   render(){
     return(
       <InfoDiv>
-        <span>Bob</span>
+        <span>{this.props.name}</span>
         <span>Current Health:{this.props.player.hp}</span>
         <span>{this.props.instruction}</span>
       </InfoDiv>

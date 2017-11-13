@@ -9,23 +9,23 @@ import GameProgress from './GameProgress';
 class App extends Component {
   state = {
     bob: { hp: 5, action: '' },
-    playerTwo: { hp: 5, action: '' },
+    jeff: { hp: 5, action: '' },
     playersReady: false
   }
 
   setNextRound = () => {
     this.changePlayerAction('bob', '');
-    this.changePlayerAction('playerTwo', '');
+    this.changePlayerAction('jeff', '');
     this.setState({ playersReady: false });
   }
 
   updateHealth = (hp, player) => {
-    const { bob, playerTwo } = this.state;
+    const { bob, jeff } = this.state;
     const one = bob;
-    const two = playerTwo;
+    const two = jeff;
     if (player === 'One') one.hp += hp;
     else two.hp += hp;
-    this.setState({ bob: one, playerTwo: two });
+    this.setState({ bob: one, jeff: two });
   }
 
   changePlayerAction(player, action) {
@@ -46,13 +46,13 @@ class App extends Component {
       this.changePlayerAction('bob', 'riposte');
       break;
     case 'p': 
-      this.changePlayerAction('playerTwo', 'quick');
+      this.changePlayerAction('jeff', 'quick');
       break;
     case 'o': 
-      this.changePlayerAction('playerTwo', 'heavy');  
+      this.changePlayerAction('jeff', 'heavy');  
       break;
     case 'i': 
-      this.changePlayerAction('playerTwo', 'riposte');
+      this.changePlayerAction('jeff', 'riposte');
       break;
     case ' ':
       this.setState({ playersReady: true });
@@ -62,8 +62,8 @@ class App extends Component {
   }
 
   bothAlive =() =>{
-    const { bob, playerTwo } = this.state;
-    return(bob.hp > 0 && playerTwo.hp > 0);
+    const { bob, jeff } = this.state;
+    return(bob.hp > 0 && jeff.hp > 0);
   }
 
   componentDidMount(){
@@ -71,20 +71,20 @@ class App extends Component {
   }
 
   render() {
-    const { bob , playerTwo, playersReady } = this.state;
+    const { bob , jeff, playersReady } = this.state;
     return (
       <div className="App" >
         <header className="App-header">
           <h1 className="App-title">Parking Massacre</h1>
         </header>
-        <Death shouldDisplay = {!this.bothAlive()} hp={[bob.hp, playerTwo.hp]}/>
+        <Death shouldDisplay = {!this.bothAlive()} hp={[bob.hp, jeff.hp]}/>
 
         <GameDiv shouldDisplay ={this.bothAlive()}>
-          <Player player={bob} instruction={'Q: quick attack  W: heavy attack  E: riposte'}/>
+          <Player player={bob} name='Bob' instruction={'Q: quick attack  W: heavy attack  E: riposte'}/>
 
-          <GameProgress setNextRound = {this.setNextRound} playersReady = {playersReady} updateHealth ={this.updateHealth} bobAction = {bob.action} playerTwoAction = {playerTwo.action}/>
+          <GameProgress setNextRound = {this.setNextRound} playersReady = {playersReady} updateHealth ={this.updateHealth} bobAction = {bob.action} jeffAction = {jeff.action}/>
 
-          <Player player ={playerTwo} instruction={'P: quick attack  O: heavy attack  I: riposte'}/>
+          <Player player={jeff} name='Jeff' instruction={'P: quick attack  O: heavy attack  I: riposte'}/>
 
         </GameDiv>
       </div>
