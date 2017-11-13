@@ -8,8 +8,8 @@ import GameProgress from './GameProgress';
 
 class App extends Component {
   state = {
-    playerOne: { name: 'guest', hp: 10, action: '' },
-    playerTwo: { name: 'guest2', hp: 10, action: '' },
+    playerOne: { hp: 10, action: '' },
+    playerTwo: { hp: 10, action: '' },
     playersReady: false
   }
 
