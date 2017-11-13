@@ -8,24 +8,24 @@ import GameProgress from './GameProgress';
 
 class App extends Component {
   state = {
-    playerOne: { hp: 5, action: '' },
+    bob: { hp: 5, action: '' },
     playerTwo: { hp: 5, action: '' },
     playersReady: false
   }
 
   setNextRound = () => {
-    this.changePlayerAction('playerOne', '');
+    this.changePlayerAction('bob', '');
     this.changePlayerAction('playerTwo', '');
     this.setState({ playersReady: false });
   }
 
   updateHealth = (hp, player) => {
-    const { playerOne, playerTwo } = this.state;
-    const one = playerOne;
+    const { bob, playerTwo } = this.state;
+    const one = bob;
     const two = playerTwo;
     if (player === 'One') one.hp += hp;
     else two.hp += hp;
-    this.setState({ playerOne: one, playerTwo: two });
+    this.setState({ bob: one, playerTwo: two });
   }
 
   changePlayerAction(player, action) {
@@ -37,13 +37,13 @@ class App extends Component {
   handleAction = ({ key }) => {
     switch(key){
     case 'q': 
-      this.changePlayerAction('playerOne', 'quick');
+      this.changePlayerAction('bob', 'quick');
       break;
     case 'w': 
-      this.changePlayerAction('playerOne', 'heavy');
+      this.changePlayerAction('bob', 'heavy');
       break;
     case 'e': 
-      this.changePlayerAction('playerOne', 'riposte');
+      this.changePlayerAction('bob', 'riposte');
       break;
     case 'p': 
       this.changePlayerAction('playerTwo', 'quick');
@@ -62,8 +62,8 @@ class App extends Component {
   }
 
   bothAlive =() =>{
-    const { playerOne, playerTwo } = this.state;
-    return(playerOne.hp > 0 && playerTwo.hp > 0);
+    const { bob, playerTwo } = this.state;
+    return(bob.hp > 0 && playerTwo.hp > 0);
   }
 
   componentDidMount(){
@@ -71,18 +71,18 @@ class App extends Component {
   }
 
   render() {
-    const { playerOne , playerTwo, playersReady } = this.state;
+    const { bob , playerTwo, playersReady } = this.state;
     return (
       <div className="App" >
         <header className="App-header">
           <h1 className="App-title">Parking Massacre</h1>
         </header>
-        <Death shouldDisplay = {!this.bothAlive()} hp={[playerOne.hp, playerTwo.hp]}/>
+        <Death shouldDisplay = {!this.bothAlive()} hp={[bob.hp, playerTwo.hp]}/>
 
         <GameDiv shouldDisplay ={this.bothAlive()}>
-          <Player player={playerOne} instruction={'Q: quick attack  W: heavy attack  E: riposte'}/>
+          <Player player={bob} instruction={'Q: quick attack  W: heavy attack  E: riposte'}/>
 
-          <GameProgress setNextRound = {this.setNextRound} playersReady = {playersReady} updateHealth ={this.updateHealth} playerOneAction = {playerOne.action} playerTwoAction = {playerTwo.action}/>
+          <GameProgress setNextRound = {this.setNextRound} playersReady = {playersReady} updateHealth ={this.updateHealth} bobAction = {bob.action} playerTwoAction = {playerTwo.action}/>
 
           <Player player ={playerTwo} instruction={'P: quick attack  O: heavy attack  I: riposte'}/>
 
