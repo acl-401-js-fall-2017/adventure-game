@@ -6,9 +6,11 @@ state ={
   outcome:''
 }
   
-  resolveAction= (spaceDetected) =>{
+  resolveAction= (playersReady) =>{
+    console.log('we got to resolvoe action');
     const { setNextRound, playerOneAction, playerTwoAction, updateHealth } = this.props;
-    if (!spaceDetected) return;
+    if (!playersReady) return;
+    console.log('we got past not player ready');
     //Player One: Quick
     if (playerOneAction === 'quick'){
       if(playerTwoAction === 'quick') {
@@ -54,17 +56,17 @@ state ={
         this.setState({ outcome: 'Hoping to outsmart Jeff, Bob prepares a counter-attack, only to be overpowered by Jeff\'s mighty tire iron swing. Bob suffers 2 dmg.' });
       } 
       if(playerTwoAction === 'riposte') {
+        updateHealth(1, 'One');
+        updateHealth(1, 'Two'); 
         this.setState({ outcome: 'Both Bob and Jeff attempt to counter attack each other\'s attacks. For a moment, they meet each other\'s gaze and contemplate what they\'re doing with their lives. Rejuvinated by their introspection, both men gain +1 health' });
       } 
     }
-
-
     setNextRound();
   };
 
   componentWillReceiveProps(nextProps){
-    if(nextProps.spaceDetected === this.props.spaceDetected) return;
-    this.resolveAction(nextProps.spaceDetected);
+    if(nextProps.playersReady === this.props.playersReady) return;
+    this.resolveAction(nextProps.playersReady);
   }
 
   render() {

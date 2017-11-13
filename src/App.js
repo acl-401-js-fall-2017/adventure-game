@@ -8,12 +8,14 @@ import GameProgress from './GameProgress';
 
 class App extends Component {
   state = {
-    playerOne: { hp: 10, action: '' },
-    playerTwo: { hp: 10, action: '' },
+    playerOne: { hp: 5, action: '' },
+    playerTwo: { hp: 5, action: '' },
     playersReady: false
   }
 
   setNextRound = () => {
+    this.changePlayerAction('playerOne', '');
+    this.changePlayerAction('playerTwo', '');
     this.setState({ playersReady: false });
   }
   updateHealth = (hp, player) => {
@@ -35,47 +37,32 @@ class App extends Component {
 
   handleAction = ({ key }) => {
     switch(key){
-    case 'w': 
+    case 'q': 
       this.changePlayerAction('playerOne', 'quick');
       break;
-    case 'e': 
+    case 'w': 
       this.changePlayerAction('playerOne', 'heavy');
       break;
-    case 'a': 
-      this.changePlayerAction('playerOne', 'kick');
-      break;
-    case 's': 
-      this.changePlayerAction('playerOne', 'reposte');
-      break;
-    case 'd': 
-      this.changePlayerAction('playerOne', 'block');
+    case 'e': 
+      this.changePlayerAction('playerOne', 'riposte');
       break;
 
-    case 'i': 
+    case 'p': 
       this.changePlayerAction('playerTwo', 'quick');
       break;
     case 'o': 
       this.changePlayerAction('playerTwo', 'heavy');  
       break;
-    case 'j': 
-      this.changePlayerAction('playerTwo', 'kick');
-      break;
-    case 'k': 
-      this.changePlayerAction('playerTwo', 'reposte');
-      break;
-    case 'l': 
-      this.changePlayerAction('playerTwo', 'block');
+    case 'i': 
+      this.changePlayerAction('playerTwo', 'riposte');
       break;
     case ' ':
-      this.setState({ spaceDetected: true });
+      this.setState({ playersReady: true });
       break;
     default : break;
     }
   }
 
-  turnDone =() =>{
-    this.setState({ isDone: false });
-  }
 
   bothAlive =() =>{
     const { playerOne, playerTwo } = this.state;
@@ -86,7 +73,7 @@ class App extends Component {
   }
 
   render() {
-    const { playerOne , playerTwo, spaceDetected } = this.state;
+    const { playerOne , playerTwo, playersReady } = this.state;
     return (
       <div className="App" >
         <header className="App-header">
@@ -97,7 +84,7 @@ class App extends Component {
         <GameDiv shouldDisplay ={this.bothAlive}>
           <Player player ={playerOne}/>
 
-          <GameProgress setNextRound = {this.setNextRound} spaceDetected = {spaceDetected} updateHealth ={this.updateHealth} playerOneAction = {playerOne.action} playerTwoAction = {playerTwo.action}/>
+          <GameProgress setNextRound = {this.setNextRound} playersReady = {playersReady} updateHealth ={this.updateHealth} playerOneAction = {playerOne.action} playerTwoAction = {playerTwo.action}/>
 
           <Player player ={playerTwo}/>
         </GameDiv>
