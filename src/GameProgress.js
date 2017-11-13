@@ -86,7 +86,7 @@ state ={
 
 const InfoDiv = styled.div`
 overflow: scroll;
-height: 100px;
+height: 300px;
 display: flex;
 flex-direction: column;
 width: 100%;
