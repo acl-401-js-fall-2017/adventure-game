@@ -11,9 +11,11 @@ class App extends Component {
     this.state = {
       shopMessage: 'You have got the golden ticket',
       message: '',
-      inventory: ''
+      inventory: '',
+      rooms: []
     };
   }
+
   
   handleClick(className, id){
     this.setState({  
@@ -63,4 +65,3 @@ class App extends Component {
 
 
 export default App;
-// "https://imgur.com/a/in2di"
