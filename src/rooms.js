@@ -1,6 +1,6 @@
 
 const shop = {
-  room: 'Shop',
+  room: 'shop',
   description: 'Wonka Candy Shop',
   items: 'golden-ticket',
   nextRoom: 'gate'
@@ -31,10 +31,16 @@ const staff = {
   room: 'staff',
   description: 'Wonka Office',
   items: 'keys to Wonka factory',
-  nextRoom: 'Shop'
+  nextRoom: 'shop'
 };
 
-const rooms = [shop, gate, chocolate, testing, staff];
+const deathLetter = {
+  room: 'death',
+  description: 'You have died',
+  nextRoom: 'shop'
+};
+
+const rooms = [shop, gate, chocolate, testing, staff, deathLetter];
 
 
 
