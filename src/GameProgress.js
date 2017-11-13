@@ -71,8 +71,8 @@ state ={
     const { playerOneAction, playerTwoAction } = this.props;
     return(
       <InfoDiv>
-        <span>player one chose to {playerOneAction}</span>
-        <span>player Two chose to {playerTwoAction}</span>
+        {/* <span>player one chose to {playerOneAction}</span>
+        <span>player Two chose to {playerTwoAction}</span> */}
         <span> Outcome: {this.state.outcome}</span>
       </InfoDiv>
     );
@@ -82,4 +82,5 @@ state ={
 const InfoDiv = styled.div`
 display: flex;
 flex-direction: column;
+width: 40%;
 `;
