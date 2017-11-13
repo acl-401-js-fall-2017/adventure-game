@@ -12,9 +12,6 @@ scrollToBottom = () => {
   node.scrollIntoView({ behavior: 'smooth' });
 }
 
-
-
-  
   resolveAction= (playersReady) =>{
     if (this.state.isProcessing) return;
     const updatedArray = this.state.outcomeArray;

@@ -83,6 +83,7 @@ class App extends Component {
           handleReset = {() => this.reset()} />
 
         <GameDiv shouldDisplay ={this.bothAlive()}>
+        
           <Player player={playerOne} name='playerOne' instruction={['Q: quick attack',  'W: heavy attack',  'E: riposte']}/>
 
           <GameProgress 
