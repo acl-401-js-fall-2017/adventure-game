@@ -12,7 +12,13 @@ class App extends Component {
       stage: stages[0],
       player: {
         name: 'Big Shaq',
-        pockets: []
+        pockets: [],
+        health: 25,
+        dialog: [
+          'Skrrat, skidi-kat-kat. The name’s Big Shaq and man’s not hot.',
+          'Hold up let me light this tree right quick. puff puff puff. How do I get out of here anyway?',
+          'Whatever donut, your nose  long like a garden hose anyway.'
+        ]
       },
 
     };
