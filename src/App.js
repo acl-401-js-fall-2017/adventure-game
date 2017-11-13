@@ -47,4 +47,11 @@ class App extends Component {
   }
 }
 
+class Message extends Component {
+  constructor() {
+    super();
+    this.state = 
+  }
+}
+
 export default App;
