@@ -5,6 +5,14 @@ export default class GameProgress extends Component{
 state ={
   outcomeArray: []
 }
+
+scrollToBottom = () => {
+  const node = document.findDOMNode(this.messagesEnd);
+  node.scrollIntoView({ behavior: 'smooth' });
+}
+
+
+
   
   resolveAction= (playersReady) =>{
     const updatedArray = this.state.outcomeArray;
@@ -69,16 +77,19 @@ state ={
     if(nextProps.playersReady === this.props.playersReady) return;
     setTimeout(() => {
       this.resolveAction(nextProps.playersReady);
-    }, 2000);
+    }, 500);
   }
 
   render() {
     const { playerOne, playerTwo } = this.props;
     return(
-      <InfoDiv>
+      // everytime InfoDiv rerenders inner ref does the function;
+      <InfoDiv innerRef={node => { node && (node.scrollTop = node.scrollHeight);}}>
         {/* <span>player one chose to {playerOne.action}</span>
         <span>player Two chose to {playerTwo.action}</span> */}
-        {this.state.outcomeArray.map((outcome, i) => <li key={i}>{outcome}</li>)}
+        {this.state.outcomeArray.map((outcome, i) =>{
+          return <li id={i} key={i}>{outcome}</li>;
+        })}
       </InfoDiv>
     );
   }
@@ -86,7 +97,7 @@ state ={
 
 const InfoDiv = styled.div`
 overflow: scroll;
-height: 300px;
+height: 80px;
 display: flex;
 flex-direction: column;
 width: 100%;
