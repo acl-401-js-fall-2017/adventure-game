@@ -7,62 +7,75 @@ import styled from 'styled-components';
 import GameProgress from './GameProgress';
 
 class App extends Component {
-  state ={
-    playerOne:{ name: 'guest', hp:10, action:'' },
-    playerTwo:{ name: 'guest2', hp:10, action:'' },
+  state = {
+    playerOne: { name: 'guest', hp: 10, action: '' },
+    playerTwo: { name: 'guest2', hp: 10, action: '' },
+    playersReady: false
+  }
+
+  setNextRound = () => {
+    this.setState({ playersReady: false });
+  }
+  updateHealth = (hp, player) => {
+    const { playerOne, playerTwo } = this.state;
+    const one = playerOne;
+    const two = playerTwo;
+    if (player === 'One') one.hp += hp;
+    else two.hp += hp;
+    this.setState({ playerOne: one, playerTwo: two });
+  }
+
+
+
+  changePlayerAction(player, action) {
+    const playerState = this.state[player];
+    playerState.action = action;
+    return this.setState({ [player] : playerState });
   }
 
   handleAction = ({ key }) => {
-    const{ playerOne, playerTwo } = this.state;
-    const one = playerOne;
-    const two = playerTwo;
     switch(key){
     case 'w': 
-      one.action='quick';
-      this.setState({ playerOne: one });
+      this.changePlayerAction('playerOne', 'quick');
       break;
     case 'e': 
-      one.action='heavy';
-      this.setState({ playerOne: one });
+      this.changePlayerAction('playerOne', 'heavy');
       break;
     case 'a': 
-      one.action='kick';
-      this.setState({ playerOne: one });
+      this.changePlayerAction('playerOne', 'kick');
       break;
     case 's': 
-      one.action='riposte';
-      this.setState({ playerOne: one });
+      this.changePlayerAction('playerOne', 'reposte');
       break;
     case 'd': 
-      one.action='block';
-      this.setState({ playerOne: one });
+      this.changePlayerAction('playerOne', 'block');
       break;
 
     case 'i': 
-      two.action='quick';
-      this.setState({ playerTwo: two });
+      this.changePlayerAction('playerTwo', 'quick');
       break;
     case 'o': 
-      two.action='heavy';
-      this.setState({ playerTwo: two });
+      this.changePlayerAction('playerTwo', 'heavy');  
       break;
     case 'j': 
-      two.action='kick';
-      this.setState({ playerTwo: two });
+      this.changePlayerAction('playerTwo', 'kick');
       break;
     case 'k': 
-      two.action='riposte';
-      this.setState({ playerTwo: two });
+      this.changePlayerAction('playerTwo', 'reposte');
       break;
     case 'l': 
-      two.action='block';
-      this.setState({ playerTwo: two });
+      this.changePlayerAction('playerTwo', 'block');
+      break;
+    case ' ':
+      this.setState({ spaceDetected: true });
       break;
     default : break;
     }
   }
 
-  turnDone
+  turnDone =() =>{
+    this.setState({ isDone: false });
+  }
 
   bothAlive =() =>{
     const { playerOne, playerTwo } = this.state;
@@ -73,7 +86,7 @@ class App extends Component {
   }
 
   render() {
-    const { playerOne , playerTwo } = this.state;
+    const { playerOne , playerTwo, spaceDetected } = this.state;
     return (
       <div className="App" >
         <header className="App-header">
@@ -84,7 +97,7 @@ class App extends Component {
         <GameDiv shouldDisplay ={this.bothAlive}>
           <Player player ={playerOne}/>
 
-          <GameProgress PlayerOneAction = {playerOne.action} PlayerTwoAction = {playerTwo.action}/>
+          <GameProgress setNextRound = {this.setNextRound} spaceDetected = {spaceDetected} updateHealth ={this.updateHealth} playerOneAction = {playerOne.action} playerTwoAction = {playerTwo.action}/>
 
           <Player player ={playerTwo}/>
         </GameDiv>

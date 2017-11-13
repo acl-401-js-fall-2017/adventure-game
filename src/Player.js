@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export default class Player extends Component{
 
-
+  
   render(){
     return(
       <InfoDiv>
