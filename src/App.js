@@ -1,20 +1,13 @@
 import React, { Component } from 'react';
-import './App.css';
 import Grid from './Components/Grid';
+import './App.css';
 
-const terrain = {
-  forest: {
-    type: 'forest',
-    color: 'green',
-    fightProbability: 0.2
-  },
-  field: {
-    type: 'field',
-    color: 'lightgreen',
-    fightProbability: 0.02
-    
-  }
-};
+
+import cartes from './utils/maps';
+const { terrain } = cartes;
+const carte = cartes.test;
+
+
   
 class App extends Component {
   constructor() {
@@ -45,16 +38,25 @@ class App extends Component {
   }
 
   componentWillMount() {
-    const gridSetUp = [];
-    for(let i = 0; i < 10; i++) {
-      gridSetUp[i] = [];
-      for(let k = 0; k < 10; k++) {
-        gridSetUp[i][k] = {
-          terrain: i < 3 ? terrain.forest : terrain.field,
+    let gridSetUp = [];
+    // for(let i = 0; i < 10; i++) {
+    //   gridSetUp[i] = [];
+    //   for(let k = 0; k < 10; k++) {
+    //     gridSetUp[i][k] = {
+    //       terrain: i < 3 ? terrain.forest : terrain.field,
+    //       hasGnome: false
+    //     };
+    //   }
+    // }
+
+    gridSetUp = carte.map(row => {
+      return row.map(elem => {
+        return {
+          terrain: elem, 
           hasGnome: false
         };
-      }
-    }
+      });
+    });
 
     this.setGnomeOnGrid(gridSetUp);
     this.setState({ gridArray: gridSetUp });

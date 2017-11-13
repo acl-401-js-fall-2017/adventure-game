@@ -3,14 +3,24 @@ import './styles/Gnome.css';
 
 class Gnome extends Component {
   render() {
+    const { terrainColor } = this.props;
     const gnomeColor = 'red';
+    console.log(terrainColor);
     return (
       <div
-        className="Gnome"
+        className="GnomeFloor"
         style={{
-          backgroundColor: gnomeColor     
+          backgroundColor: terrainColor   
         }}
-      ></div>
+      >
+        <div
+          className="Gnome"
+          style={{
+            height: '100%',
+            backgroundColor: gnomeColor     
+          }}
+        ></div>
+      </div>
     );
   }
 }

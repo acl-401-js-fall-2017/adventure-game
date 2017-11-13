@@ -20,6 +20,8 @@ class Grid extends Component {
         );
         const gnome = (
           <Gnome
+            key={i}
+            terrainColor={gridElem.terrain.color}
           ></Gnome>
         );
         return gridElem.hasGnome ? gnome : land;
