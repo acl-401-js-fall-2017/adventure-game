@@ -25,7 +25,7 @@ class App extends Component {
           <h1 className="App-title">The Wonka Tour</h1>
         </header>
         <p className="App-pic">
-          < img src="https://i.ytimg.com/vi/sizCBeS03YU/maxresdefault.jpg" useMap="#shopMap" alt="Candy shop"/>
+          <img src="https://i.ytimg.com/vi/sizCBeS03YU/maxresdefault.jpg" useMap="#shopMap" alt="Candy shop"/>
           <map name="shopMap" id="shopMap">
             <area alt="grid" ref="wrong" className="wrong" shape="poly" coords="91,270,95,543,394,546,381,305" onClick={event => this.handleClick(event.target.className)}/>
             <area alt="grid" ref="wrong" className="wrong" shape="poly" coords="440,293,434,548,892,546,881,302" onClick={event => this.handleClick(event.target.className)}/>
