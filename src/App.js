@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import Grid from './Components/Grid';
 import './App.css';
 
-
 import cartes from './utils/maps';
-const { terrain } = cartes;
 const carte = cartes.test;
 
 
@@ -39,16 +37,6 @@ class App extends Component {
 
   componentWillMount() {
     let gridSetUp = [];
-    // for(let i = 0; i < 10; i++) {
-    //   gridSetUp[i] = [];
-    //   for(let k = 0; k < 10; k++) {
-    //     gridSetUp[i][k] = {
-    //       terrain: i < 3 ? terrain.forest : terrain.field,
-    //       hasGnome: false
-    //     };
-    //   }
-    // }
-
     gridSetUp = carte.map(row => {
       return row.map(elem => {
         return {

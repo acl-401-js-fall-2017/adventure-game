@@ -5,7 +5,6 @@ class Gnome extends Component {
   render() {
     const { terrainColor } = this.props;
     const gnomeColor = 'red';
-    console.log(terrainColor);
     return (
       <div
         className="GnomeFloor"

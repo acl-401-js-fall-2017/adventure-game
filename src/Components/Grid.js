@@ -6,7 +6,10 @@ import './styles/Grid.css';
 class Grid extends Component {
 
   render() {
-    const { gridArray, gnomeStats } = this.props;
+    const { 
+      gridArray, 
+      // gnomeStats 
+    } = this.props;
     
     const flattenedGrid = gridArray
       .reduce((outputArr, row) => outputArr.concat(row))
