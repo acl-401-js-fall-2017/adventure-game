@@ -18,6 +18,7 @@ class App extends Component {
     this.changePlayerAction('playerTwo', '');
     this.setState({ playersReady: false });
   }
+
   updateHealth = (hp, player) => {
     const { playerOne, playerTwo } = this.state;
     const one = playerOne;
@@ -26,8 +27,6 @@ class App extends Component {
     else two.hp += hp;
     this.setState({ playerOne: one, playerTwo: two });
   }
-
-
 
   changePlayerAction(player, action) {
     const playerState = this.state[player];
@@ -46,7 +45,6 @@ class App extends Component {
     case 'e': 
       this.changePlayerAction('playerOne', 'riposte');
       break;
-
     case 'p': 
       this.changePlayerAction('playerTwo', 'quick');
       break;
@@ -63,11 +61,11 @@ class App extends Component {
     }
   }
 
-
   bothAlive =() =>{
     const { playerOne, playerTwo } = this.state;
     return(playerOne.hp > 0 && playerTwo.hp > 0);
   }
+
   componentDidMount(){
     document.addEventListener('keydown', this.handleAction); 
   }
@@ -79,9 +77,9 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Parking Massacre</h1>
         </header>
-        <Death shouldDisplay = {!this.bothAlive} hp={[playerOne.hp, playerTwo.hp]}/>
+        <Death shouldDisplay = {!this.bothAlive()} hp={[playerOne.hp, playerTwo.hp]}/>
 
-        <GameDiv shouldDisplay ={this.bothAlive}>
+        <GameDiv shouldDisplay ={this.bothAlive()}>
           <Player player={playerOne} instruction={'Q: quick attack  W: heavy attack  E: riposte'}/>
 
           <GameProgress setNextRound = {this.setNextRound} playersReady = {playersReady} updateHealth ={this.updateHealth} playerOneAction = {playerOne.action} playerTwoAction = {playerTwo.action}/>

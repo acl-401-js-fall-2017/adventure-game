@@ -5,7 +5,7 @@ export default class Death extends Component{
   render(){
     return( 
       <WinScreen shouldDisplay ={this.props.shouldDisplay}>
-        {`Player ${this.props.hp[0] <1 ? 'Two' : 'One'} has Won the game`}
+        {`Player ${this.props.hp[0] < 1 ? 'Two' : 'One'} has Won the game`}
       </WinScreen>
     );
   }
