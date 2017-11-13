@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Grid from './Components/Grid';
 
 const terrain = {
   forest: {
@@ -61,9 +62,14 @@ class App extends Component {
   }
 
   render() {
+    const { gridArray, gnomeStats } = this.state;
+
     return (
       <div className="App">
-
+        <Grid
+          gridArray={gridArray}
+          gnomeStats={gnomeStats}
+        ></Grid>
       </div>
     );
   }
