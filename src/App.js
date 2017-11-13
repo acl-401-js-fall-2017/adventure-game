@@ -10,6 +10,7 @@ class App extends Component {
   state = {
     playerOne: { hp: 5, action: '', name: 'Bob' },
     playerTwo: { hp: 5, action: '', name: 'Jeff' },
+    log: []
   }
 
   setNextRound = () => {
@@ -69,11 +70,12 @@ class App extends Component {
     return this.setState({
       playerOne: { hp: 5, action: '', name: 'Bob' },
       playerTwo: { hp: 5, action: '', name: 'Jeff' },
+      log: []
     });
   }
 
   render() {
-    const { playerOne , playerTwo } = this.state;
+    const { playerOne , playerTwo, log } = this.state;
     return (
       <div className="App" >
         <header className="App-header">
@@ -87,7 +89,13 @@ class App extends Component {
           <Player player={playerOne} name='playerOne' instruction={['Q: quick attack',  'W: heavy attack',  'E: riposte']}/>
 
           <GameProgress 
-            setNextRound = {this.setNextRound} playersReady = {(playerOne.action !== '' && playerTwo.action !== '')} updateHealth ={this.updateHealth} playerOne = {playerOne} playerTwo = {playerTwo}/>
+            setNextRound = {this.setNextRound} 
+            playersReady = {(playerOne.action !== '' && playerTwo.action !== '')} 
+            updateHealth ={this.updateHealth} 
+            playerOne = {playerOne} 
+            playerTwo = {playerTwo}
+            log = {log}
+            updateLog = {(updated) => this.setState({ log: updated })} />
 
           <Player player={playerTwo} name='playerTwo' instruction={['P: quick attack',  'O: heavy attack',  'I: riposte']}/>
 

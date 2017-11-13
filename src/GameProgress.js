@@ -4,7 +4,6 @@ import styled from 'styled-components';
 export default class GameProgress extends Component{
 state ={
   isProcessing: false,
-  outcomeArray: []
 }
 
 scrollToBottom = () => {
@@ -14,7 +13,7 @@ scrollToBottom = () => {
 
   resolveAction= (playersReady) =>{
     if (this.state.isProcessing) return;
-    const updatedArray = this.state.outcomeArray;
+    const updatedArray = this.props.log;
     const { setNextRound, playerOne, playerTwo, updateHealth } = this.props;
     if (!playersReady) return;
 
@@ -68,7 +67,7 @@ scrollToBottom = () => {
         updatedArray.push('Both Bob and Jeff attempt to counter attack each other\'s attacks. For a moment, they meet each other\'s gaze and contemplate what they\'re doing with their lives. Rejuvinated by their introspection, both men gain +1 health');
       } 
     }
-    this.setState({ outcomeArray : updatedArray });
+    this.props.updateLog(updatedArray);
     setNextRound();
   };
 
@@ -89,7 +88,7 @@ scrollToBottom = () => {
       <InfoDiv innerRef={node => { node && (node.scrollTop = node.scrollHeight);}}>
         {/* <span>player one chose to {playerOne.action}</span>
         <span>player Two chose to {playerTwo.action}</span> */}
-        {this.state.outcomeArray.map((outcome, i) =>{
+        {this.props.log.map((outcome, i) =>{
           return <li id={i} key={i}>{outcome}</li>;
         })}
       </InfoDiv>
