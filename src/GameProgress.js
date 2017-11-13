@@ -7,10 +7,8 @@ state ={
 }
   
   resolveAction= (playersReady) =>{
-    console.log('we got to resolvoe action');
     const { setNextRound, playerOneAction, playerTwoAction, updateHealth } = this.props;
     if (!playersReady) return;
-    console.log('we got past not player ready');
     //Player One: Quick
     if (playerOneAction === 'quick'){
       if(playerTwoAction === 'quick') {

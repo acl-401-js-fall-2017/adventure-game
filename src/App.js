@@ -82,11 +82,12 @@ class App extends Component {
         <Death shouldDisplay = {!this.bothAlive} hp={[playerOne.hp, playerTwo.hp]}/>
 
         <GameDiv shouldDisplay ={this.bothAlive}>
-          <Player player ={playerOne}/>
+          <Player player={playerOne} instruction={'Q: quick attack  W: heavy attack  E: riposte'}/>
 
           <GameProgress setNextRound = {this.setNextRound} playersReady = {playersReady} updateHealth ={this.updateHealth} playerOneAction = {playerOne.action} playerTwoAction = {playerTwo.action}/>
 
-          <Player player ={playerTwo}/>
+          <Player player ={playerTwo} instruction={'P: quick attack  O: heavy attack  I: riposte'}/>
+
         </GameDiv>
       </div>
     );
