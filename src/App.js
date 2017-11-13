@@ -19,7 +19,7 @@ class App extends Component {
   
   handleClick(className, id){
     this.setState({  
-      inventory: id === 'golden-ticket' ? this.state.inventory + 'golden-ticket' : null,
+      inventory: id === 'golden-ticket' ? this.state.inventory + 'golden-ticket' : '',
       message: className !== 'correct' ? 'Pick again' : this.state.shopMessage
     });
     
@@ -27,7 +27,7 @@ class App extends Component {
   
   render() {
     const { inventory } = this.state;
-    const ticket = <area alt="grid"  id="golden-ticket" className="correct" shape="poly" coords="1049,337,1049,447,1150,452,1146,335" onClick={event => this.handleClick(event.target.className)}/>;
+    const ticket = <area alt="grid"  id="golden-ticket" className="correct" shape="poly" coords="1049,337,1049,447,1150,452,1146,335" onClick={({ target }) => this.handleClick(target.className, target.id)}/>;
     return (
       <div className="App">
         <header className="App-header">
