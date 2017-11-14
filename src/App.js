@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import floors from './Floors';
 import moment from 'moment';
+import PropTypes from 'prop-types';
 // import images from './images/oldLady.jpg';
 
 class App extends Component {
@@ -97,6 +98,9 @@ class Floor extends Component {
     );
   }
 }
+Floor.propTypes = {
+  floorScript: PropTypes.string
+};
 
 class Select extends Component {
   render(){
@@ -114,6 +118,12 @@ class Select extends Component {
     );
   }
 }
+Select.PropTypes = {
+  selectChange: PropTypes.func,
+  options: PropTypes.array,
+  className: PropTypes.string,
+  string: PropTypes.string
+};
 
 
 class Controller extends Component {
@@ -128,4 +138,11 @@ class Controller extends Component {
     );
   }
 }
+Controller.propTypes = {
+  addToPizza: PropTypes.func,
+  pickUp: PropTypes.func,
+  pickUpVal: PropTypes.string,
+  drop: PropTypes.func,
+  holding: PropTypes.string
+};
 export default App;
