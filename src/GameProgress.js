@@ -24,6 +24,21 @@ scrollToBottom = () => {
     //   updateHealth(result.damageTwo, 'two');
     //   updatedArray.push(result.text);
 
+    if (playerOne.action === 'dog'){
+      if(playerTwo.action === 'quick') {
+        updateHealth(-1, 'One');
+        updateHealth(-3, 'Two');
+        updatedArray.push(`${playerTwo.name} tried to stab ${playerOne.name} with a pointy end of his tire iron, only to be blindsided by ${playerOne.dog}\'s ferocious bite to his ankle. ${playerTwo.name} manages to swap the dog away causing 1 emotional dmg to ${playerOne.name}. ${playerTwo.name} ankle suffers 2 dmg.`);
+      }
+      if(playerTwo.action === 'heavy') {
+        updateHealth(-3, 'Two');
+        updatedArray.push(`relying on his might ${playerTwo.name} swung at ${playerOne.name} with a rolled up forbes newspaper. Sensing the opening, ${playerOne.dog} bit ${playerTwo.name}\'s butt. struggling to get ${playerOne.dog} off his back, ${playerTwo.name} suffers devastating 3 dmg.`);
+      } 
+      if(playerTwo.action === 'riposte') {
+        updateHealth(-2, 'One');
+        updatedArray.push(`Unaware of ${playerTwo.name}\'s trap, ${playerOne.name} directed ${playerOne.dog} to attack only to be countered by ${playerTwo.name}\'s riposte. Seeing his pet beaten so brutally causes ${playerOne.name} 3 psychological  damage and thousands in future therapy bills.`);
+      } 
+    }
     if (playerOne.action === 'quick'){
       if(playerTwo.action === 'quick') {
         updateHealth(-1, 'One');
