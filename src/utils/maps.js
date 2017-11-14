@@ -3,38 +3,43 @@ const terrain = {
     type: 'forest',
     color: 'green',
     fightProbability: 0.2,
+    accuracy: 0.7,
     passable: true
   },
   mountain: {
     type: 'mountain',
     color: 'gray',
     fightProbability: 1,
+    accuracy: 0.4,
     passable: false
   },
   field: {
     type: 'field',
     color: 'lightgreen',
     fightProbability: 0.02,
+    accuracy: 0.98,
     passable: true
   },
   river: {
     type: 'river',
     color: 'blue',
     fightProbability: 0,
+    accuracy: 0.02,
     passable: false
   },
   bridge: {
     type: 'bridge',
     color: 'brown',
     fightProbability: 1,
+    accuracy: 0.90,
     passable: true
   },
   chalice: {
     type: 'chalice',
-    color: 'gold',
+    color: 'lightgreen',
     fightProbability: 1,
+    accuracy: 0.60,
     passable: true
-
   }
 };
 

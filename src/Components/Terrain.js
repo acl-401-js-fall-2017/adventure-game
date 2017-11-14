@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
+import chalis from '../images/chalis.svg';
 import './styles/Terrain.css';
 
 class Terrain extends Component {
   render() {
 
-    const { i,  terrain : { color } } = this.props;
+    const { i, terrain : { type, color } } = this.props;
+    
+    let chalice = null;
+    if(type === 'chalice') chalice = (
+      <img src={chalis} alt="" /> 
+    );
 
     return (
       <div
@@ -13,7 +19,9 @@ class Terrain extends Component {
         style={{
           backgroundColor: color,
         }}
-      ></div>
+      >
+        {chalice}
+      </div>
     );
   }
 }
