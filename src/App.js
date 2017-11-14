@@ -28,9 +28,51 @@ class App extends Component {
         width: 10
       }
     };
+    this.move = this.move.bind(this);
   }
 
-  setGnomeOnGrid(gridArray){
+  move({ key }) {
+    if(key === ' ' || key.includes('Arrow')) {
+      const { gnomeStats, gridArray } = this.state;  
+
+      this.removeGnomeFromGrid(gnomeStats, gridArray);
+      this.setGnomePosition(gnomeStats, key);
+      this.setGnomeOnGrid(gridArray);
+      this.setState({ gnomeStats: gnomeStats, gridArray: gridArray });
+    }
+  }
+
+  removeGnomeFromGrid(gnomeStats, gridArray) {
+    gridArray[gnomeStats.pos.Y][gnomeStats.pos.X].hasGnome = false; 
+  }
+
+  setGnomePosition(gnomeStats, key) {
+    const waryYStep = this.watchStep('Y');
+    const waryXStep = this.watchStep('X');
+
+    switch(key) {
+    case 'ArrowUp':
+      waryYStep('decrement', gnomeStats.pos);
+      break;
+    case 'ArrowDown':
+      waryYStep('increment', gnomeStats.pos);
+      break;
+    case 'ArrowLeft':
+      waryXStep('decrement', gnomeStats.pos);
+      break;
+    case 'ArrowRight':
+      waryXStep('increment', gnomeStats.pos);
+      break;
+    default:
+      console.log('Whack!!!');
+    }
+  }
+  
+  watchStep = coord => (direction, position) => {
+    const { gridArray } = this.state;
+  }
+
+  setGnomeOnGrid(gridArray) {
     const { gnomeStats } = this.state;
     gridArray[gnomeStats.pos.Y][gnomeStats.pos.X].hasGnome = true;
   }
@@ -54,7 +96,10 @@ class App extends Component {
     const { gridArray, gnomeStats } = this.state;
 
     return (
-      <div className="App">
+      <div className="App"
+        onKeyDown={this.move}
+        tabIndex="0"
+      >
         <Grid
           gridArray={gridArray}
           gnomeStats={gnomeStats}
