@@ -12,10 +12,21 @@
   height: 300px;
   padding: 20px;
   color: white;
+
 }
 
-.App-title {
-  font-size: 1.5em;
+.flash {
+  animation-name: flash;
+   animation-duration: 0.2s;
+   animation-timing-function: linear;
+   animation-iteration-count: infinite;
+   animation-direction: alternate;
+   animation-play-state: running;
+}
+
+@keyframes flash {
+   from {color: red;}
+   to {color: black;}
 }
 
 .App-intro {
@@ -25,4 +36,132 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+
+
+.msg {
+  font: helvetica;
+  padding: 15px;
+  margin: auto;
+  /* margin-right: auto; */
+  font-size: 18px;
+  width: 60%;
+  text-align: center;
+  letter-spacing: 3px;
+  box-shadow: 3px 3px red, -1em 0 .4em pink;
+}
+
+.dropDown {
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  height: 29px;
+  padding: 5px; 
+  width: 180px;
+  background-color: #3b8ec2; 
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+
+}
+
+button {
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  height: 29px;
+  padding: 5px; 
+  width: 180px;
+  background-color: #3b8ec2; 
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: minmax(200, 300);
+  margin: 50px;
+  padding: 10px;
+}
+
+#pics {
+  max-height: 300px;
+  grid-column: 1;
+  grid-row: 1/3;
+}
+
+.one {
+  margin-top: 30px;
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.label-one {
+  text-align: left;
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.two {
+  margin-top: 30px;
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.label-two {
+  text-align: left;
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.three {
+  margin-top: 30px;
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.label-three {
+  text-align: left;
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.four {
+  margin-top: 30px;
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.label-four {
+  text-align: left;
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.five {
+  margin-top: 30px;
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.label-five {
+  text-align: left;
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.six {
+  grid-column: 3;
+  grid-row: 3;
+}
+
+label {
+  text-align: left;
+  /* margin-bottom: 10px; */
+  grid-column: 2;
+  grid-row: 3;
 }
