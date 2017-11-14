@@ -86,8 +86,9 @@ class Floor extends Component {
     const { floorScript } = this.props;
     return (
       <header className="App-header">
-        <h1 className="flash">Shane is lounging at home</h1>
+        <h1 className="flash">Shane is starving at home</h1>
         <p className="msg">{floorScript}</p>
+        <img className="pizza" alt="pizza" src="./images/pizza2.png"/>
       </header>
     );
   }
