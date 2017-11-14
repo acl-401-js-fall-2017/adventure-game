@@ -32,11 +32,11 @@ scrollToBottom = () => {
       }
       if(playerTwo.action === 'heavy') {
         updateHealth(-2, 'Two');
-        updatedArray.push('An enraged Jeff swung at Bob with a tire iron, only to be countered by a swift poke in the eye by Bob\'s umbrella. Jeff suffers 2 dmg.');
+        updatedArray.push(`An enraged ${playerTwo.name} swung at ${playerOne.name} with a tire iron, only to be countered by a swift poke in the eye by ${playerOne.name}\'s umbrella. ${playerTwo.name} suffers 2 dmg.`);
       } 
       if(playerTwo.action === 'riposte') {
         updateHealth(-2, 'One');
-        updatedArray.push('Bob attempts a quick umbrella stab, only to be interrupted by a swift counter riposte from Jeff\'s tire iron. Bob suffers 2 dmg.');
+        updatedArray.push(`${playerOne.name} attempts a quick umbrella stab, only to be interrupted by a swift counter riposte from ${playerTwo.name}\'s tire iron. ${playerOne.name} suffers 2 dmg.`);
       } 
     }
 
@@ -44,7 +44,7 @@ scrollToBottom = () => {
     if (playerOne.action === 'heavy'){
       if(playerTwo.action === 'quick') {
         updateHealth(-2, 'One');
-        updatedArray.push('Bob attempts a heavy umbrella swing, only to get blindsided by Jeff\'s swift kick to the shin. Bob suffers 2 dmg.');
+        updatedArray.push(`${playerOne.name} attempts a heavy umbrella swing, only to get blindsided by ${playerTwo.name}\'s swift kick to the shin. ${playerOne.name} suffers 2 dmg.`);
       }
       if(playerTwo.action === 'heavy') {
         updateHealth(-2, 'Two');
@@ -53,7 +53,7 @@ scrollToBottom = () => {
       } 
       if(playerTwo.action === 'riposte') {
         updateHealth(-2, 'Two');
-        updatedArray.push('Jeff tries an elaborate counter attack, only to get humiliated by Bob\'s crushing overhead umbrella attack. Jeff suffers 2 dmg.');
+        updatedArray.push(`${playerTwo.name} tries an elaborate counter attack, only to get humiliated by ${playerOne.name}\'s crushing overhead umbrella attack. ${playerTwo.name} suffers 2 dmg.`);
       } 
     }
 
@@ -61,16 +61,16 @@ scrollToBottom = () => {
     if (playerOne.action === 'riposte'){
       if(playerTwo.action === 'quick') {
         updateHealth(-2, 'Two');
-        updatedArray.push('Bob anticipates Jeff\'s tire iron jab, countering it with a flurry of umbrella pokes to the face. Jeff suffers 2 dmg and permanent scars.');
+        updatedArray.push(`${playerOne.name} anticipates ${playerTwo.name}\'s tire iron jab, countering it with a flurry of umbrella pokes to the face. ${playerTwo.name} suffers 2 dmg and permanent scars.`);
       }
       if(playerTwo.action === 'heavy') {
         updateHealth(-2, 'One');
-        updatedArray.push('Hoping to outsmart Jeff, Bob prepares a counter-attack, only to be overpowered by Jeff\'s mighty tire iron swing. Bob suffers 2 dmg.');
+        updatedArray.push(`Hoping to outsmart ${playerTwo.name}, ${playerOne.name} prepares a counter-attack, only to be overpowered by ${playerTwo.name}\'s mighty tire iron swing. ${playerOne.name} suffers 2 dmg.`);
       } 
       if(playerTwo.action === 'riposte') {
         updateHealth(1, 'One');
         updateHealth(1, 'Two'); 
-        updatedArray.push('Both Bob and Jeff attempt to counter attack each other\'s attacks. For a moment, they meet each other\'s gaze and contemplate what they\'re doing with their lives. Rejuvinated by their introspection, both men gain +1 health');
+        updatedArray.push(`Both ${playerOne.name} and ${playerTwo.name} attempt to counter attack each other\'s attacks. For a moment, they meet each other\'s gaze and contemplate what they\'re doing with their lives. Rejuvinated by their introspection, both men gain +1 health`);
       } 
     }
     this.props.updateLog(updatedArray);
