@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import Death from './Death';
 import Player from './Player';
 import styled from 'styled-components';
 import GameProgress from './GameProgress';
+import SignUp from './SignUp';
 
 class App extends Component {
   state = {
     playerOne: { hp: 5, action: '', name: 'Bob' },
     playerTwo: { hp: 5, action: '', name: 'Jeff' },
+  }
+
+  updateNames = (one, two) => {
+    console.log('we are here');
+    let updated = this.state;
+    updated.playerOne.name = one;
+    updated.playerTwo.name = two;
+    this.setState({ updated });
   }
 
   setNextRound = () => {
@@ -72,7 +81,8 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Parking Massacre</h1>
         </header>
-        <Death shouldDisplay = {!this.bothAlive()} hp={[playerOne.hp, playerTwo.hp]}/>
+        <SignUp updateNames = {this.updateNames} />
+        <Death shouldDisplay = {!this.bothAlive() || true} hp={[playerOne.hp, playerTwo.hp]}/>
 
         <GameDiv shouldDisplay ={this.bothAlive()}>
           <Player player={playerOne} name='playerOne' instruction={['Q: quick attack',  'W: heavy attack',  'E: riposte']}/>
