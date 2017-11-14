@@ -10,19 +10,18 @@ import keys from './scripts/handleAction';
 
 class App extends Component {
   state = {
-    playerOne: { hp: 5, action: '', name: 'Bob' },
-    playerTwo: { hp: 5, action: '', name: 'Jeff' },
+    playerOne: { hp: 8, action: '', name: 'Bob', dog:'' },
+    playerTwo: { hp: 8, action: '', name: 'Jeff' },
     signedIn: false,
     log: []
   }
 
-  // handleAction = handleAction.bind(this); 
-
-  updateNames = (one, two) => {
+  updateNames = (one, two, dog) => {
     this.setState({ signedIn: true });
     let updated = this.state;
     updated.playerOne.name = one;
     updated.playerOne.action = '';
+    updated.playerOne.dog = dog;
 
     updated.playerTwo.name = '';
     updated.playerTwo.name = two;
@@ -88,7 +87,7 @@ class App extends Component {
 
         <GameDiv shouldDisplay={this.bothAlive() && signedIn}>
         
-          <Player player={playerOne} instruction={['Q: quick attack',  'W: heavy attack',  'E: riposte']}/>
+          <Player player={playerOne} instruction={['Q: quick attack',  'W: heavy attack',  'E: riposte', 'D: Dog attack']}/>
 
           <GameProgress 
             setNextRound={this.setNextRound} 
@@ -99,7 +98,7 @@ class App extends Component {
             log = {log}
             updateLog = {(updated) => this.setState({ log: updated })} />
 
-          <Player player={playerTwo} instruction={['P: quick attack',  'O: heavy attack',  'I: riposte']}/>
+          <Player player={playerTwo} instruction={['P: quick attack',  'O: heavy attack',  'I: riposte', 'U: Astral Projection']}/>
 
         </GameDiv>
       </div>
