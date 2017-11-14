@@ -52,7 +52,7 @@ class App extends Component {
   handleAddtoPizza = ingredient => {
     if (!this.state.itemInHand) return;
     const pizzaIngredients = this.state.pizzaIngredients;
-    pizzaIngredients.push(ingredient);
+    pizzaIngredients.push(this.state.itemInHand);
     this.setState({ pizzaIngredients, itemInHand: null });
   }
 
@@ -67,12 +67,12 @@ class App extends Component {
 
   render() {
 
-    const { floor, floors, pickUpValue, itemInHand } =this.state;
+    const { floor, floors, pizzaIngredients, pickUpValue, itemInHand } =this.state;
     return (
       <div className="App">
         <Floor floorScript ={floor.message}/>
         <div>
-          <Controller floor={floor} floors={floors} floorChange={floorNumber => this.handleFloorChange(floorNumber)}
+          <Controller floor={floor} floors={floors} floorChange={floorNumber => this.handleFloorChange(floorNumber)} pizzaIngredients={pizzaIngredients}
             pickUpVal={pickUpValue} pickUp={item => this.handlePickUp(item)} addToPizza={item => this.handleAddtoPizza(item)}
             drop={()=> this.handleDrop()} handlePickUpValue={item =>  this.handlePickUpValue(item)} holding={itemInHand}/>
         </div>
@@ -122,7 +122,9 @@ SelectBox.PropTypes = {
 
 class Buttons extends Component {
   render(){
-    const { addToPizza, pickUp, pickUpVal, drop, holding } =this.props;
+    const arrSort = ['cheese', 'crust', 'sauce'];
+    const makePizzaButton = <button className="make-pizza six" onClick={() => this.handleMakePizza()}>make pizza</button>;
+    const { floor, addToPizza, pickUp, pickUpVal, drop, holding, pizzaIngredients } =this.props;
     return [
       <label key="0" className="label-two">Pick up an item to take home</label>,
       <br key="1"/>,
@@ -133,6 +135,10 @@ class Buttons extends Component {
       <label key="5" className="label-four">Add to your pantry</label>,
       <br key="6"/>,
       <button key="7" className="pizza-add four" value={holding} onClick={({ target }) => addToPizza(target.value)}>Add to Pizza</button>,
+      <label key="8" className="label-six">You have enough ingredients</label>,
+      <div>
+        {floor.key === '3rd Floor' && (pizzaIngredients.sort() === arrSort) && makePizzaButton}
+      </div>
     ];
   }
 }
@@ -146,18 +152,17 @@ Buttons.propTypes = {
 
 class Controller extends Component{
   render(){
-    const makePizzaButton = <button name="make-pizza" onClick={() => this.handleMakePizza()}>make pizza</button>;
-    const { floor, floors, floorChange, pickUpVal, pickUp, addToPizza, drop, handlePickUpValue } = this.props;
+    
+    const { floor, floors, pizzaIngredients, floorChange, pickUpVal, pickUp, addToPizza, drop, handlePickUpValue } = this.props;
     return(
       <div className="wrapper">
         <label className="label-one">The Elevator</label>
         <SelectBox options={floors} className="dropDown one" name="elevator"
           selectChange={floorNumber => floorChange(floorNumber)} />
-        {floor.key === '4th Floor' && makePizzaButton}
-        <Buttons pickUpVal={pickUpVal} pickUp={item => pickUp(item)}
-          addToPizza={item => addToPizza(item)} drop={() => drop()} />
-        <img id="pics" alt="Old Lady" src={floor.img} />
-        <label>Items in the Room</label>
+        <Buttons pickUpVal={pickUpVal} pickUp={item => pickUp(item)} pizzaIngredients={pizzaIngredients}
+          addToPizza={item => addToPizza(item)} drop={() => drop()} floor={floor}/>
+        <img id="pics" alt="{floor.alt}" src={floor.img} />
+        <label className="label-five">Items in the Room</label>
         <SelectBox options={floor.items} className="dropDown five" name="items-in-room" 
           selectChange={item => handlePickUpValue(item)}/>
       </div>
