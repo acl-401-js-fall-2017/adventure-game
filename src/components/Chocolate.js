@@ -17,7 +17,7 @@ export default class Chocolate extends Component {
       message: value === 'correct' && inventory.length >= 1 ? this.state.chocMessage : 'The oompa loompa are about to sing about your death' 
     },() =>  {
       if (inv === 'loompa') {
-        handleInventory('loompa');
+        handleInventory('loompa ');
       }
     });
   }

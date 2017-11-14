@@ -23,7 +23,8 @@ class App extends Component {
   }
 
   handleInventory = item => {
-    const inventory = [ ...this.state.inventory ];
+    const inventory = this.state.room ===3 ? [] : [ ...this.state.inventory ];
+    console.log(inventory);
     inventory.push(item);
     this.setState({
       inventory
@@ -60,21 +61,26 @@ class App extends Component {
           <h2> Your Inventory: {this.state.inventory} </h2>
         </header>
         {this.state.room === 0 && (
-          <Candyshop name="shop" handleInventory = {this.handleInventory} inventory = {this.state.inventory} />
+          <Candyshop handleInventory = {this.handleInventory} inventory = {this.state.inventory} />
         )}
         {this.state.room === 1 && (
-          <Gate name="gate" removeInventory={this.removeInventory} inventory={this.state.inventory}/>
+          <Gate removeInventory={this.removeInventory} inventory={this.state.inventory}/>
         )}
         {this.state.room === 2 && (
-          <Chocolate name="chocolate" handleInventory={this.handleInventory} inventory={this.state.inventory} />
+          <Chocolate handleInventory={this.handleInventory} inventory={this.state.inventory} />
         )}
         {this.state.room === 3 && (
-          <Inventing name="testing" handleInventory={this.handleInventory} inventory={this.state.inventory} />
+          <Inventing handleInventory={this.handleInventory} inventory={this.state.inventory} />
         )}
         {this.state.room === 4 && (
-          <Staff name="staff" removeInventory={this.removeInventory} inventory={this.state.inventory} />
+          <Staff  removeInventory={this.removeInventory} inventory={this.state.inventory} />
         )}
-        <button id="prevButton" onClick={this.changeRoom} >Previous room </button><button id="nextButton" onClick={this.changeRoom} >Next room </button>
+        {this.state.room !== 0 && (
+          <button id="prevButton" onClick={this.changeRoom} >Previous room </button>
+        )}
+        {this.state.room !== 4 && (
+          <button id="nextButton" onClick={this.changeRoom} >Next room </button>
+        )}
         {/* <img src={letter} alt="poster"/> */}
       </div>
     );

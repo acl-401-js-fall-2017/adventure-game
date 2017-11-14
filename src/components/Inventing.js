@@ -31,7 +31,7 @@ export default class Inventing extends Component {
 
 
   render() {
-    let message = 'Grab the gobstopper';
+    let message = 'Give Mr Wonka the loompas for the gobstopper';
     if(this.state.length < 4) {
       message = 'There are still children in your way';
     } else if(this.state.gotGob === true) {
