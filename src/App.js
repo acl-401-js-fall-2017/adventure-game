@@ -15,13 +15,15 @@ class App extends Component {
       player: {
         position: 0,
         inventory : [],
-        energy: 10
+        energy: 10,
+        bonus : 0
       },
-      x:0
+      x:0,
+      display: true
       
     };
     this.diceRoll = this.diceRoll.bind(this);
-    // this.takingRisk = this.takingRisk.bind(this);
+    this.takingRisk = this.takingRisk.bind(this);
     this.pickItem = this.pickItem.bind(this);
   }
 
@@ -41,6 +43,7 @@ class App extends Component {
         { 
           index: tiles.length,
           message: 'You Won',
+          display: false
         });
       return;
     }else{
@@ -55,27 +58,31 @@ class App extends Component {
     }
   }
 
-  // takingRisk() {
-  //   const player = { ...this.state.player };
-  //   const index = player.position += tiles[player.position -1].bonus;
-  //   if(!tiles[index-1]) {
-  //     this.setState(
-  //       { 
-  //         index: tiles.length,
-  //         message: 'Game Over' 
-  //       });
-  //     return;
-  //   }else{
-  //     this.setState(
-  //       {
-  //         index,
-  //         message: tiles[index -1].message,
-  //         player,
-  //         x : index
-  //       }
-  //     );
-  //   }
-  // }
+  takingRisk() {
+    const player = { ...this.state.player };
+    const index = player.position += tiles[player.position -1].bonus;
+    if(!tiles[index-1]) {
+      this.setState(
+        { 
+          index: tiles.length,
+          message: 'Game Over',
+          player: {
+            position: tiles.length,
+          },
+          display: false
+        });
+      return;
+    }else{
+      this.setState(
+        {
+          index,
+          message: tiles[index -1].message,
+          player,
+          x : index
+        }
+      );
+    }
+  }
 
   pickItem(event) {
     event.target.disabled = true;
@@ -88,8 +95,8 @@ class App extends Component {
   
   render() {
     
-    const { index, player, message, x } = this.state;
-    let bonusPrompt = (<div>
+    const { index, player, message, x, display } = this.state;
+    let bonusPrompt = (<div style={{ display: this.state.display ? 'block' : 'none' }} >
       <button onClick={this.takingRisk}>Yes</button>
       <button onClick={this.diceRoll}>No</button>
     </div>);
@@ -104,13 +111,13 @@ class App extends Component {
         <div>
           <h3>{message}</h3>
         </div>
-        {/* <div>
-          { !tiles[index-1] || tiles[index-1].bonus === 0 ? 'keep moving' : bonusPrompt }
-        </div> */}
         <div>
-          <button onClick={this.diceRoll}>proceed!</button>
+          { !tiles[index-1] || tiles[index-1].bonus === 0 ? 'keep moving' : bonusPrompt }
         </div>
-        <Player player={player} pickItem={this.pickItem} x={x} index={index}/>
+        <div>
+          <button  style={{ display: display ? 'inline' : 'none' }} onClick={this.diceRoll}>proceed!</button>
+        </div>
+        <Player player={player} pickItem={this.pickItem} x={x} index={index} display={display}/>
       </div>
     );
   }

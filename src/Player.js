@@ -4,14 +4,15 @@ import tiles from'./models/tiles';
 class Player extends Component {
   
   render() {
-    const { player, pickItem, x, index } = this.props;
-    
-    console.log('player', player.position);
+    const { player, pickItem, x, index, display } = this.props;
     return(
       <div>
         <div className="player" style={{ 
+          border: 'solid', 
+          marginTop: '60px',
           left: '10px',
-          fontSize: '32px',
+          fontSize: '22px',
+          padding: '10px',
           position: 'absolute',
           transform: `translateX(${x*20}px) `,
           transition: 'transform 1s',
@@ -29,7 +30,10 @@ class Player extends Component {
           <label>available items:</label>
           {player.position < 1 ? 'There is not any item' :
             tiles[index-1].items.map(i => {
-              return <button onClick={pickItem} key={i} value={i}>{i}</button>;
+              return <button 
+                style={{ display: display ? 'inline' : 'none' }}
+                onClick={pickItem} key={i} value={i}>{i}
+              </button>;
             })
           }
         </div>

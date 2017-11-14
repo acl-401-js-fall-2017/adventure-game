@@ -6,7 +6,7 @@ const tiles = [
     monster: null,
     message: 'You are on tile one. You can pick any items you find. Do not be greedy, can not have more than two items in your bag',
     items: ['screw driver','soda pop'],
-    bonus:1
+    bonus: 0
   },
       
   {
@@ -20,7 +20,7 @@ const tiles = [
       
     energy: 4,
     monster: null,
-    message: 'tile three',
+    message: 'You are on tile three. Are you willing to take Risk?',
     items: ['mirror','lighter'],
     bonus:3
   },
@@ -28,7 +28,7 @@ const tiles = [
   {
     energy: 4,
     monster: null,
-    message: 'tile four',
+    message: 'You are on tile four. Keep moving.',
     items: ['pan','spoon'],
     bonus:0
   },
@@ -36,7 +36,7 @@ const tiles = [
   {
     energy: 4,
     monster: null,
-    message: 'tile five',
+    message: 'You are on tile five. Are you willing to take Risk?',
     items: ['swiss army knife','rake'],
     bonus:2
   },
@@ -44,15 +44,15 @@ const tiles = [
   {
     energy: 4,
     monster: null,
-    message: 'tile six',
+    message: 'Almost there. Keep moving.',
     items: ['beer','baton'],
-    bonus: null
+    bonus: 0
   },
       
   {
     energy: 4,
     monster: null,
-    message: 'tile seven',
+    message: 'You Won',
     items: ['pillow','hat'],
     bonus: -4
   }
