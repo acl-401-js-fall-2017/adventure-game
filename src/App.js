@@ -16,12 +16,15 @@ class App extends Component {
       gnomeStats: {
         health: 100,
         strength: 1,
+        speed: 10,
         pos: {
           X: 9,
           Y: 9
         }
       },
-      inBattle: false
+      inBattle: false,
+      victory: false,
+      defeat: false
     };
 
     this.settings = {
@@ -41,7 +44,6 @@ class App extends Component {
     const { inBattle } = this.state;
     if(!inBattle) {
       this.move(key);
-      if(this.spotEnemy()) this.setState({ inBattle: true });
     }
   }
 
@@ -53,18 +55,27 @@ class App extends Component {
     return enemySpotted;
   }
 
-  exitBattle() {
-    this.setState({ inBattle: false });
+  exitBattle(gnomeStatus, gotChalice) {
+    let defeated = false;
+    if(gnomeStatus.health <= 0) defeated = true;
+    this.setState({
+      inBattle: false,
+      gnomeStats: gnomeStatus,
+      defeat: defeated,
+      victory: gotChalice
+    });
   }
 
   move(key) {
-    if(key === ' ' || key.includes('Arrow')) {
+    if(key.includes('Arrow')) {
       const { gnomeStats, gridArray } = this.state;  
 
       this.removeGnomeFromGrid(gnomeStats, gridArray);
       this.setGnomePosition(gnomeStats, key);
       this.setGnomeOnGrid(gridArray, gnomeStats);
       this.setState({ gnomeStats: gnomeStats, gridArray: gridArray });
+
+      if(this.spotEnemy()) this.setState({ inBattle: true });          
     }
   }
 
@@ -132,7 +143,7 @@ class App extends Component {
   }
 
   render() {
-    const { gridArray, gnomeStats, inBattle } = this.state;
+    const { gridArray, gnomeStats, inBattle, victory, defeat } = this.state;
 
     const mapGrid = (
       <Grid
@@ -147,13 +158,27 @@ class App extends Component {
         exitBattle={this.exitBattle}
       ></Battle>
     );
+    const victoryPage=(
+      <h1>VICTORY</h1>
+    );
+    const defeatPage=(
+      <h1>DEFEAT</h1>
+    );
+
+    const inGame = inBattle ? battle : mapGrid;
+    const postGame = victory ? victoryPage : defeatPage;
 
     return (
       <div className="App"
         onKeyDown={this.playerTurn}
         tabIndex="0"
+        ref={(input) => {
+          if (input != null && !inBattle) {
+            input.focus();
+          }
+        }}
       >
-        {inBattle ? battle : mapGrid}
+        {victory || defeat ? postGame : inGame}
       </div>
     );
   }
