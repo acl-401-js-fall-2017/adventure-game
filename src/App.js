@@ -65,14 +65,14 @@ class App extends Component {
 
 
   render() {
-    const { floor, floors, pickUpValue } =this.state;
+    const { floor, floors, pickUpValue, itemInHand } =this.state;
     return (
       <div className="App">
         <Floor floorScript ={floor.message}/>
         <section className="wrapper">
           <Controller floor={floor} floors={floors} floorChange={floorNumber => this.handleFloorChange(floorNumber)}
             pickUpVal={pickUpValue} pickUp={item => this.handlePickUp(item)} addToPizza={item => this.handleAddtoPizza(item)}
-            drop={()=> this.handleDrop()} handlePickUpValue={item =>  this.handlePickUpValue(item)}/>
+            drop={()=> this.handleDrop()} handlePickUpValue={item =>  this.handlePickUpValue(item)} holding={itemInHand}/>
         </section>
       </div>
     );
@@ -94,7 +94,7 @@ Floor.propTypes = {
   floorScript: PropTypes.string
 };
 
-class Select extends Component {
+class SelectBox extends Component {
   render(){
     const { selectChange, options, className, name } = this.props;
     const Options = options.map((option, index) => {
@@ -110,7 +110,7 @@ class Select extends Component {
     );
   }
 }
-Select.PropTypes = {
+SelectBox.PropTypes = {
   selectChange: PropTypes.func,
   options: PropTypes.array,
   className: PropTypes.string,
@@ -144,18 +144,29 @@ class Controller extends Component{
     const { floor, floors, floorChange, pickUpVal, pickUp, addToPizza, drop, handlePickUpValue } = this.props;
     return(
       <div>
-        <Select options={floors} className="dropDown one" name="elevator"
+        <SelectBox options={floors} className="dropDown one" name="elevator"
           selectChange={floorNumber => floorChange(floorNumber)} />
         {floor.key === '4th Floor' && makePizzaButton}
         <Buttons pickUpVal={pickUpVal} pickUp={item => pickUp(item)}
           addToPizza={item => addToPizza(item)} drop={() => drop()} />
         <img id="pics" alt="Old Lady" src={floor.img} />
         <label>Items in the Room</label>
-        <Select options={floor.items} className="dropDown five" name="items-in-room" 
+        <SelectBox options={floor.items} className="dropDown five" name="items-in-room" 
           selectChange={item => handlePickUpValue(item)}/>
       </div>
     );
   }
 }
+Controller.propTypes = {
+  floor: PropTypes.string,
+  floors: PropTypes.array,
+  floorChange: PropTypes.func,
+  addToPizza: PropTypes.func,
+  pickUp: PropTypes.func,
+  pickUpVal: PropTypes.string,
+  drop: PropTypes.func,
+  handlePickUpValue: PropTypes.func,
+  holding: PropTypes.string
+};
 
 export default App;
