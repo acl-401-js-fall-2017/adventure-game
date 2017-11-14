@@ -10,21 +10,24 @@ import keys from './scripts/handleAction';
 
 class App extends Component {
   state = {
-    playerOne: { hp: 8, action: '', name: 'Bob', dog:'' },
-    playerTwo: { hp: 5, action: '', name: 'Jeff', hasProjected: false },
+    playerOne: { hp: 8, action: '', name: 'Bob', dog:'', imgSource: '' },
+    playerTwo: { hp: 8, action: '', name: 'Jeff', hasProjected: false },
     signedIn: false,
     log: []
   }
 
-  updateNames = (one, two, dog) => {
+  updateNames = (one, two, dog, oneImg, twoImg) => {
     this.setState({ signedIn: true });
     let updated = this.state;
     updated.playerOne.name = one;
     updated.playerOne.action = '';
     updated.playerOne.dog = dog;
+    updated.playerOne.imgSource = oneImg;
+
 
     updated.playerTwo.name = '';
     updated.playerTwo.name = two;
+    updated.playerTwo.imgSource = twoImg;
     this.setState({ updated });
   }
 
