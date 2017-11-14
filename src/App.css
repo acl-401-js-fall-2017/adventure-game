@@ -166,3 +166,8 @@ button {
   grid-row: 3;
   display: none;
 }
+
+.pizza {
+  float: right;
+  height: 200px;
+}
