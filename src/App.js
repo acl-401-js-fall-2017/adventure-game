@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import floors from './Floors';
 import moment from 'moment';
+
 import PropTypes from 'prop-types';
-// import images from './images/oldLady.jpg';
+
 
 class App extends Component {
 
@@ -65,6 +66,7 @@ class App extends Component {
 
 
   render() {
+
     const { floor, floors, pickUpValue, itemInHand } =this.state;
     return (
       <div className="App">
