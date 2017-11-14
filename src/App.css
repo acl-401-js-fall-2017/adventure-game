@@ -1,11 +1,9 @@
-
+body{
+  background-color: #DDE5EA;
+}
 .App-header {
   text-align: center;
   background-color: #222;
-  /* background-image: url("images/parkingspot.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;  */
   height: 100%;
   padding: 20px;
   color: white;
