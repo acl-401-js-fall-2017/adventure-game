@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './styles/Battle.css';
+import chalis from '../images/chalis.svg';
 
 class Battle extends Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class Battle extends Component {
           backgroundColor: terrain.color
         }}
       >
-        
+        <img src={chalis} alt="" /> 
       </div>
     );
   }

@@ -5,7 +5,7 @@ import gnome from '../images/gnome.svg';
 class Gnome extends Component {
   render() {
     const { terrainColor } = this.props;
-    const gnomeColor = 'red';
+
     return (
       <div
         className="GnomeFloor"
