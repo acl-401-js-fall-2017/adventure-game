@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 export default class SignUp extends Component{
-  state = { isFocused: false, playerOneName: '', playerTwoName: '' };
+  state = { isFocused: false, playerOneName: 'Bob', playerTwoName: 'Jeff' };
 
 
   ComponentDidMount(){

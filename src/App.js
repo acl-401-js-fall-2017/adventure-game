@@ -6,7 +6,7 @@ import Player from './Player';
 import styled from 'styled-components';
 import GameProgress from './GameProgress';
 import SignUp from './SignUp';
-import handleAction from './scripts/handleAction';
+import keys from './scripts/handleAction';
 
 class App extends Component {
   state = {
@@ -50,31 +50,9 @@ class App extends Component {
   }
 
   handleAction = ({ key }) => {
-    // const result = keys[key];
-    // if(!result) return; 
-    // this.changePlayerAction(result.player, result.action);
-    // strategy pattern 
-    switch(key){
-    case 'q': 
-      this.changePlayerAction('playerOne', 'quick');
-      break;
-    case 'w': 
-      this.changePlayerAction('playerOne', 'heavy');
-      break;
-    case 'e': 
-      this.changePlayerAction('playerOne', 'riposte');
-      break;
-    case 'p': 
-      this.changePlayerAction('playerTwo', 'quick');
-      break;
-    case 'o': 
-      this.changePlayerAction('playerTwo', 'heavy');  
-      break;
-    case 'i': 
-      this.changePlayerAction('playerTwo', 'riposte');
-      break;
-    default : break;
-    }
+    const result = keys[key];
+    if(!result) return; 
+    this.changePlayerAction(result.player, result.action);
   }
 
   bothAlive =() =>{
