@@ -3,7 +3,7 @@ import Grid from './Components/Grid';
 import './App.css';
 
 import cartes from './utils/maps';
-const carte = cartes.test;
+const carte = cartes.firstQuest;
 
 
   
@@ -19,7 +19,8 @@ class App extends Component {
           X: 9,
           Y: 9
         }
-      }
+      },
+      inBattle: false
     };
 
     this.settings = {
@@ -28,17 +29,34 @@ class App extends Component {
         width: 10
       }
     };
+    this.playerTurn = this.playerTurn.bind(this);
     this.move = this.move.bind(this);
     this.watchStep = this.watchStep.bind(this);
+    this.spotEnemy = this.spotEnemy.bind(this);
   }
 
-  move({ key }) {
+  playerTurn({ key }) {
+    const { inBattle } = this.state;
+    if(!inBattle) {
+      this.move(key);
+      if(this.spotEnemy()) this.setState({ inBattle: true });
+    }
+  }
+
+  spotEnemy() {
+    const { gnomeStats, gridArray } = this.state;
+    const enemyFrequency = gridArray[gnomeStats.pos.Y][gnomeStats.pos.X].terrain.fightProbability;
+    const enemySpotted = Math.random() < enemyFrequency;
+    console.log(enemyFrequency);
+    return enemySpotted;
+  }
+
+  move(key) {
     if(key === ' ' || key.includes('Arrow')) {
       const { gnomeStats, gridArray } = this.state;  
 
       this.removeGnomeFromGrid(gnomeStats, gridArray);
       this.setGnomePosition(gnomeStats, key);
-      console.log(gnomeStats);
       this.setGnomeOnGrid(gridArray, gnomeStats);
       this.setState({ gnomeStats: gnomeStats, gridArray: gridArray });
     }
@@ -75,9 +93,6 @@ class App extends Component {
 
     const tempX = changeCoordinate !== 'X'   ?   position.X   :   position.X + (direction === 'increment' ? 1 : -1);
     const tempY = changeCoordinate !== 'Y'   ?   position.Y   :   position.Y + (direction === 'increment' ? 1 : -1);
-
-    console.log(gridArray[9][9].terrain.passable);
-    console.log(tempY, ': ', tempX);
     
     let canMove = null;
     if(
@@ -89,10 +104,8 @@ class App extends Component {
   }
 
   setGnomeOnGrid(gridArray, gnomeStats) {
-    console.log(gnomeStats);
+
     if(!gnomeStats) gnomeStats = this.state.gnomeStats;
-    console.log(gnomeStats);
-    console.log(gridArray);
 
     gridArray[gnomeStats.pos.Y][gnomeStats.pos.X].hasGnome = true;
   }
@@ -113,17 +126,24 @@ class App extends Component {
   }
 
   render() {
-    const { gridArray, gnomeStats } = this.state;
+    const { gridArray, gnomeStats, inBattle } = this.state;
+
+    const mapGrid = (
+      <Grid
+        gridArray={gridArray}
+        gnomeStats={gnomeStats}
+      ></Grid>
+    );
+    const battle = (
+      <div><h1>FIGHT!</h1></div>
+    );
 
     return (
       <div className="App"
-        onKeyDown={this.move}
+        onKeyDown={this.playerTurn}
         tabIndex="0"
       >
-        <Grid
-          gridArray={gridArray}
-          gnomeStats={gnomeStats}
-        ></Grid>
+        {inBattle ? battle : mapGrid}
       </div>
     );
   }
