@@ -11,7 +11,7 @@ import keys from './scripts/handleAction';
 class App extends Component {
   state = {
     playerOne: { hp: 5, action: '', name: 'Bob' },
-    playerTwo: { hp: 5, action: '', name: 'Jeff' },
+    playerTwo: { hp: 5, action: '', name: 'Jeff', hasProjected: false },
     signedIn: false,
     log: []
   }
@@ -43,6 +43,17 @@ class App extends Component {
     this.setState({ playerOne: one, playerTwo: two });
   }
 
+  switchHealth = () => {
+    const bob = this.state.playerOne;
+    const jeff = this.state.playerTwo;
+    let jeffHp = jeff.hp;
+    jeff.hp = bob.hp;
+    jeff.hasProjected = true;
+    bob.hp = jeffHp;
+    this.setState({ playerOne : bob });
+    this.setState({ playerTwo : jeff });
+  }
+
   changePlayerAction(player, action) {
     const playerState = this.state[player];
     playerState.action = action;
@@ -50,8 +61,10 @@ class App extends Component {
   }
 
   handleAction = ({ key }) => {
+    const { playerTwo } = this.state;
     const result = keys[key];
-    if(!result) return; 
+    if(!result) return;
+    if(result.action === 'astralProject' && playerTwo.hasProjected === true) return;
     this.changePlayerAction(result.player, result.action);
   }
 
@@ -68,7 +81,7 @@ class App extends Component {
     document.removeEventListener('keydown', this.handleAction);
     return this.setState({
       playerOne: { hp: 5, action: '', name: 'Bob' },
-      playerTwo: { hp: 5, action: '', name: 'Jeff' },
+      playerTwo: { hp: 5, action: '', name: 'Jeff', hasProjected: false },
       signedIn: false,
       log: []
     });
@@ -96,8 +109,9 @@ class App extends Component {
             updateHealth={this.updateHealth} 
             playerOne={playerOne} 
             playerTwo={playerTwo}
-            log = {log}
-            updateLog = {(updated) => this.setState({ log: updated })} />
+            log={log}
+            updateLog={(updated) => this.setState({ log: updated })}
+            astralProject={() => this.switchHealth()}/>
 
           <Player player={playerTwo} instruction={['P: quick attack',  'O: heavy attack',  'I: riposte']}/>
 

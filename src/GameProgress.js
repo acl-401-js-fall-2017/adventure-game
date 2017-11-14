@@ -14,7 +14,7 @@ scrollToBottom = () => {
   resolveAction= (playersReady) =>{
     if (this.state.isProcessing) return;
     const updatedArray = this.props.log;
-    const { setNextRound, playerOne, playerTwo, updateHealth } = this.props;
+    const { setNextRound, playerOne, playerTwo, updateHealth, astralProject } = this.props;
     if (!playersReady) return;
 
     //Player One: Quick
@@ -37,7 +37,11 @@ scrollToBottom = () => {
       if(playerTwo.action === 'riposte') {
         updateHealth(-2, 'One');
         updatedArray.push(`${playerOne.name} attempts a quick umbrella stab, only to be interrupted by a swift counter riposte from ${playerTwo.name}\'s tire iron. ${playerOne.name} suffers 2 dmg.`);
-      } 
+      }
+      if(playerTwo.action === 'astralProject') {
+        astralProject();
+        updatedArray.push(`${playerTwo.name} projedcts himself`);
+      }  
     }
 
     //Player One Heavy
