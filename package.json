@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "jest": "^21.2.1",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
     "react-scripts": "1.0.17"
@@ -14,5 +15,8 @@
     "test": "react-scripts test --env=jsdom",
     "pretest": "npm run lint",
     "lint": "eslint src"
+  },
+  "devDependencies": {
+    "react-test-renderer": "^16.1.1"
   }
 }
