@@ -28,7 +28,7 @@ scrollToBottom = () => {
       if(playerTwo.action === 'quick') {
         updateHealth(-1, 'One');
         updateHealth(-1, 'Two');
-        updatedArray.push('Both grown men stab each other at the same time, suffering 1 dmg each.');
+        updatedArray.push('Both grown men slap each other at the same time, suffering 1 dmg each.');
       }
       if(playerTwo.action === 'heavy') {
         updateHealth(-2, 'Two');
@@ -40,7 +40,7 @@ scrollToBottom = () => {
       }
       if(playerTwo.action === 'astralProject') {
         astralProject();
-        updatedArray.push(`${playerTwo.name} projedcts himself`);
+        updatedArray.push(`${playerTwo.name}'s spirit leaves his body and possesses ${playerOne.name}. Players switch hp totals. `);
       }  
     }
 
@@ -59,6 +59,10 @@ scrollToBottom = () => {
         updateHealth(-2, 'Two');
         updatedArray.push(`${playerTwo.name} tries an elaborate counter attack, only to get humiliated by ${playerOne.name}\'s crushing overhead umbrella attack. ${playerTwo.name} suffers 2 dmg.`);
       } 
+      if(playerTwo.action === 'astralProject') {
+        astralProject();
+        updatedArray.push(`${playerTwo.name}'s spirit leaves his body and possesses ${playerOne.name}. Players switch hp totals. `);
+      } 
     }
 
     //Player One Riposte
@@ -75,6 +79,11 @@ scrollToBottom = () => {
         updateHealth(1, 'One');
         updateHealth(1, 'Two'); 
         updatedArray.push(`Both ${playerOne.name} and ${playerTwo.name} attempt to counter attack each other\'s attacks. For a moment, they meet each other\'s gaze and contemplate what they\'re doing with their lives. Rejuvinated by their introspection, both men gain +1 health`);
+      }
+      if(playerTwo.action === 'astralProject') {
+        const jeffHp = - (playerTwo.hp - 1);
+        updateHealth(jeffHp, 'Two');
+        updatedArray.push(`${playerTwo.name}'s spirit form attempts to inhabit ${playerOne.name}'s body, but is knocked aside by a swift counter riposte. Without a soul, ${playerTwo.name}'s husk of a body is reduced to 1 hp`);
       } 
     }
     this.props.updateLog(updatedArray);
