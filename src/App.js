@@ -53,7 +53,6 @@ class App extends Component {
     // const result = keys[key];
     // if(!result) return; 
     // this.changePlayerAction(result.player, result.action);
-    
     // strategy pattern 
     switch(key){
     case 'q': 
