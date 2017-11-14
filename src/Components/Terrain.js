@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import chalis from '../images/chalis.svg';
 import './styles/Terrain.css';
+import PropTypes from 'prop-types';
 
 class Terrain extends Component {
   render() {
@@ -25,5 +26,9 @@ class Terrain extends Component {
     );
   }
 }
+
+Terrain.propTypes = {
+  name: PropTypes.string
+};
 
 export default Terrain;

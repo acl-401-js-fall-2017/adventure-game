@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './styles/Battle.css';
+import PropTypes from 'prop-types';
 
 class Battle extends Component {
   constructor(props) {
@@ -112,5 +113,9 @@ class Battle extends Component {
     );
   }
 }
+Battle.propTypes = {
+  gnomeStats: PropTypes.object,
+  terrain: PropTypes.object
+};
 
 export default Battle;
