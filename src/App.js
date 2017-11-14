@@ -123,16 +123,17 @@ SelectBox.PropTypes = {
 class Buttons extends Component {
   render(){
     const { addToPizza, pickUp, pickUpVal, drop, holding } =this.props;
-    return(
-      <div>
-        <label className="label-two">Pick up an item to take home</label><br/>
-        <button className="pick-up two" value={pickUpVal} onClick={({ target }) => pickUp(target.value)}>Pick Up</button>
-        <label className="label-three">Get rid of this item</label><br/>
-        <button className="drop three" onClick= {() => drop()}>Drop</button>
-        <label className="label-four">Add to your pantry</label><br/>
-        <button className="pizza-add four" value={holding} onClick={({ target }) => addToPizza(target.value)}>Add to Pizza</button>
-      </div>
-    );
+    return [
+      <label key="0" className="label-two">Pick up an item to take home</label>,
+      <br key="1"/>,
+      <button key="2" className="pick-up two" value={pickUpVal} onClick={({ target }) => pickUp(target.value)}>Pick Up</button>,
+      <label key="3" className="label-three">Get rid of this item</label>,
+      <br key=""/>,
+      <button key="4" className="drop three" onClick= {() => drop()}>Drop</button>,
+      <label key="5" className="label-four">Add to your pantry</label>,
+      <br key="6"/>,
+      <button key="7" className="pizza-add four" value={holding} onClick={({ target }) => addToPizza(target.value)}>Add to Pizza</button>,
+    ];
   }
 }
 Buttons.propTypes = {
