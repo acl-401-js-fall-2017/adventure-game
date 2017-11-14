@@ -20,7 +20,7 @@ class App extends Component {
   componentWillMount() {
     const savedGame = localStorage.getItem('currentGame');
     savedGame ? this.setState(JSON.parse(savedGame)) :
-      this.setState({ timer: { minutes: parseInt(moment().format('mm'), 10), seconds: parseInt(moment().format('ss'), 10)} });
+      this.setState({ timer: { minutes: parseInt(moment().format('mm'), 10), seconds: parseInt(moment().format('ss'), 10) } });
   }
 
   componentDidUpdate() {
@@ -63,7 +63,6 @@ class App extends Component {
 
 
   render() {
-<<<<<<< HEAD
     const makePizzaButton = <button className="make-pizza six" onClick={() => this.handleMakePizza()}>make pizza</button>;
     return (
       <div className="App">
@@ -89,19 +88,6 @@ class App extends Component {
           <button className="drop three" onClick= {() => this.handleDrop()}>Drop</button>
           <label className = "label-four">Add to your pantry</label>
           <button className="pizza-add four" value={this.state.itemInHand} onClick={({ target }) => {this.handleAddtoPizza(target.value);}}>Add to Pizza</button>
-=======
-
-    const makePizzaButton = <button name="make-pizza" onClick={() => this.handleMakePizza()}>make pizza</button>;
-    const { floor, floors } =this.state;
-    return (
-      <div className="App">
-        <Floor floorScript ={floor.message}/>
-        <div className="wrapper">
-          <Elevator floors={floors}floorChange ={floorNumber => this.handleFloorChange(floorNumber)}/>
-          { floor.key === '4th Floor' && makePizzaButton }
-          <Controller pickUpVal={this.state.pickUpValue} pickUp={item => this.handlePickUp(item)} 
-            addToPizza={item => this.handleAddtoPizza(item)} drop={()=> this.handleDrop()}/>
->>>>>>> origin/01_michele
           <img id="pics"alt="Old Lady" src={this.state.floor.img}/>
           <label>Items in the Room</label><br/>
           <select className="dropDown five" name="items-in-room" onChange={({ target }) => {
@@ -116,45 +102,4 @@ class App extends Component {
   }
 }
 
-class Floor extends Component {
-  render(){
-    const { floorScript } = this.props;
-    return (
-      <header className="App-header">
-        <h1 className="flash">Shane is lounging at home</h1>
-        <p className="msg">{floorScript}</p>
-      </header>
-    );
-  }
-}
-
-class Elevator extends Component {
-  render(){
-    const { floorChange, floors } = this.props;
-    const elevatorOptions = floors.map((floor, index) => {
-      const option = floor.key === '4th Floor' ? 
-        <option key={index} value={index} default>Home</option> :
-        <option key ={index} value={index}>{floor.key}</option>;
-      return option;
-    });
-    return(
-      <select className="dropDown one" name="elevator" onChange={({ target }) => floorChange(target.value)}>
-        { elevatorOptions }
-      </select>
-    );
-  }
-}
-
-class Controller extends Component {
-  render(){
-    const { addToPizza, pickUp, pickUpVal, drop, holding } =this.props;
-    return(
-      <div>
-        <button className="pick-up two" value={pickUpVal} onClick={({ target }) => pickUp(target.value)}>Pick Up</button>
-        <button className="drop three" onClick= {() => drop()}>Drop</button>
-        <button className="pizza-add four" value={holding} onClick={({ target }) => addToPizza(target.value)}>Add to Pizza</button>
-      </div>
-    );
-  }
-}
 export default App;
