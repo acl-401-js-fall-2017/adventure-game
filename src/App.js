@@ -64,13 +64,12 @@ class App extends Component {
 
 
   render() {
+
     const makePizzaButton = <button name="make-pizza" onClick={() => this.handleMakePizza()}>make pizza</button>;
+    const { floor } =this.state;
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="flash">Shane is lounging at home</h1>
-          <p className="msg">{ this.state.floor.message }</p>
-        </header>
+        <Floor floorScript ={ floor.message }/>
         <div className="wrapper">
           <select className="dropDown one" name="elevator" onChange={({ target }) => this.handleFloorChange(target.value)}>
             <option value="0">Ground floor</option>
@@ -97,6 +96,17 @@ class App extends Component {
         </div>
       </div>
     );
+  }
+}
+
+class Floor extends Component {
+  render(){
+    const { floorScript } = this.props;
+    return (
+  <header className="App-header">
+    <h1 className="flash">Shane is lounging at home</h1>
+    <p className="msg">{ floorScript }</p>
+  </header>)
   }
 }
 
