@@ -20,7 +20,26 @@ class App extends Component {
   }
 
   handleExit = stage => {
+    const { player } = this.state;
+    
+    stage.door.open = true;
+    player.inventory.splice(index, 1);
+
     this.setState({ stage });
+  }
+
+  handleDoor = door => {
+    const { player, stage } = this.state;
+    const index = player.inventory.indexOf({ name: 'key' });
+    
+    if(index > -1) {
+      door.available = true;
+    }
+
+    this.setState({
+      stage, player
+    });
+    
   }
 
   handlePickup = item => {
@@ -36,16 +55,25 @@ class App extends Component {
   }
 
   handleRiddle = riddle => {
-    const { stage, player } = this.state;
+    const { stage } = this.state;
     if (!stage.riddle.solved) {
-      alert(riddle.question);
+      const query = prompt(riddle.question);
+      if (riddle.answer.includes(query)) {
+        alert('Correct, looks like that was no sweat for you. Man’s not hot! New items may be available for pickup.');
+        stage.items.available = true;
+
+        this.setState({ stage });
+      }
     }
   }
 
+  handleEncounter = encounter => {
+    const { stage } = this.state;
+  }
   handleOutput() {
     const { stage, stage: { riddle }, player, handleRiddle } = this.state;    
-    if (stage.intro) {
-      return stage.intro;
+    if (!stage.intro.read) {
+      return stage.intro.text;
     } else if (riddle) { 
       return handleRiddle(riddle);
     } 
@@ -65,9 +93,10 @@ class App extends Component {
         <Stage
           player={player}
           stage={stage}
-          onExit={this.handleExit}
-          onRiddle={this.handlePickup}
+          onDoor={this.handleDoor}
           onOutput={this.handleOutput}
+          onPickup={this.handlePickup}
+          onExit={this.handleExit}
         />
       </div>
     );
