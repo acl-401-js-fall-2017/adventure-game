@@ -29,6 +29,7 @@ class App extends Component {
       }
     };
     this.move = this.move.bind(this);
+    this.watchStep = this.watchStep.bind(this);
   }
 
   move({ key }) {
@@ -37,7 +38,8 @@ class App extends Component {
 
       this.removeGnomeFromGrid(gnomeStats, gridArray);
       this.setGnomePosition(gnomeStats, key);
-      this.setGnomeOnGrid(gridArray);
+      console.log(gnomeStats);
+      this.setGnomeOnGrid(gridArray, gnomeStats);
       this.setState({ gnomeStats: gnomeStats, gridArray: gridArray });
     }
   }
@@ -52,28 +54,46 @@ class App extends Component {
 
     switch(key) {
     case 'ArrowUp':
-      waryYStep('decrement', gnomeStats.pos);
+      gnomeStats.pos = waryYStep('decrement', gnomeStats.pos);
       break;
     case 'ArrowDown':
-      waryYStep('increment', gnomeStats.pos);
+      gnomeStats.pos = waryYStep('increment', gnomeStats.pos);
       break;
     case 'ArrowLeft':
-      waryXStep('decrement', gnomeStats.pos);
+      gnomeStats.pos = waryXStep('decrement', gnomeStats.pos);
       break;
     case 'ArrowRight':
-      waryXStep('increment', gnomeStats.pos);
+      gnomeStats.pos = waryXStep('increment', gnomeStats.pos);
       break;
     default:
       console.log('Whack!!!');
     }
   }
   
-  watchStep = coord => (direction, position) => {
+  watchStep = changeCoordinate => (direction, position) => {
     const { gridArray } = this.state;
+
+    const tempX = changeCoordinate !== 'X'   ?   position.X   :   position.X + (direction === 'increment' ? 1 : -1);
+    const tempY = changeCoordinate !== 'Y'   ?   position.Y   :   position.Y + (direction === 'increment' ? 1 : -1);
+
+    console.log(gridArray[9][9].terrain.passable);
+    console.log(tempY, ': ', tempX);
+    
+    let canMove = null;
+    if(
+      tempX < 0 || tempX > 9 ||
+      tempY < 0 || tempY > 9
+    ) canMove = false;
+    else canMove = gridArray[tempY][tempX].terrain.passable;
+    return canMove ? { X: tempX, Y: tempY } : position;
   }
 
-  setGnomeOnGrid(gridArray) {
-    const { gnomeStats } = this.state;
+  setGnomeOnGrid(gridArray, gnomeStats) {
+    console.log(gnomeStats);
+    if(!gnomeStats) gnomeStats = this.state.gnomeStats;
+    console.log(gnomeStats);
+    console.log(gridArray);
+
     gridArray[gnomeStats.pos.Y][gnomeStats.pos.X].hasGnome = true;
   }
 
