@@ -49,8 +49,8 @@ class App extends Component {
         </header>
         <Candyshop handleInventory = {this.handleInventory} inventory = {this.state.inventory} />
         <Gate removeInventory={this.removeInventory} inventory={this.state.inventory}/>
-        <Chocolate removeInventory={this.removeInventory} inventory={this.state.inventory} />
-        <Inventing removeInventory={this.removeInventory} inventory={this.state.inventory} />
+        <Chocolate handleInventory={this.handleInventory} inventory={this.state.inventory} />
+        <Inventing handleInventory={this.handleInventory} inventory={this.state.inventory} />
         <Staff removeInventory={this.removeInventory} inventory={this.state.inventory} />
         <img src={letter} alt="poster"/>
       </div>
