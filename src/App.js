@@ -14,76 +14,57 @@ class App extends Component {
       floors,
       floor: floors[3],
       pickUpValue: floors[3].items[0],
-      pizzaItems: []
+      pizzaIngredients: []
     };
   }
 
   componentWillMount() {
-    let currentGame = localStorage.getItem('currentGame');
-    if (currentGame) {
-      console.log('current game', currentGame);
-      this.setState(JSON.parse(currentGame));
-    } else {
-      let time = moment().format('mm ss');
-      this.setState({ timer: time });
-      console.log('are we in willmount');
-
-    }
+    const savedGame = localStorage.getItem('currentGame')
+    savedGame ? this.setState(JSON.parse(savedGame)) :
+    this.setState({ timer: { minutes: parseInt(moment().format('mm'), 10), seconds: parseInt(moment().format('ss'), 10)} });
   }
 
   componentDidUpdate() {
     localStorage.setItem('currentGame', JSON.stringify(this.state));
-    console.log('are we in didUpdate');
   }
 
-  handlePickUpValue = value => {
-    console.log('current pick up value', value);
-    this.setState({ pickUpValue: value });
+  handlePickUpValue = item => {
+    this.setState({ pickUpValue: item });
   };
 
-  handlePickUp = value => {
-    if (this.state.itemInHand) return alert ('You can only hold one item');
-    this.setState({ itemInHand: value });
+  handlePickUp = item => {
+    if (this.state.itemInHand) alert ('You can only hold one item');
+    this.setState({ itemInHand: item });
   }
 
   handleDrop = () => {
     this.setState({ itemInHand: null });
   }
 
-  handleFloorChange = value => {
-    if (value === 1) {
-      console.log('are we in floor change', value);
-      this.setState({
-        pizzaItems: [],
-        pickUpValue: floors[value].items[0],
-        floor: floors[value]
-      });
-    } else { 
-      this.setState({ 
-        pickUpValue: floors[value].items[0],
-        floor: floors[value]
-      });
-    }
+  handleFloorChange = floorNumber => {
+    const floorData = { pizzaIngredients: [], pickUpValue: floors[floorNumber].items[0], floor: floors[floorNumber] }
+    floorNumber !== 1 && delete floorData.pizzaIngredients;
+    this.setState(floorData);
   }
 
-  handleAddtoPizza = value => {
-    let pizzaItems = this.state.pizzaItems;
-    pizzaItems.push(value);
-    console.log('I am the pizza ', pizzaItems);
-    this.setState({ pizzaItems, itemInHand: null });
+  handleAddtoPizza = ingredient => {
+    if (!this.state.itemInHand) return;
+    const pizzaIngredients = this.state.pizzaIngredients;
+    pizzaIngredients.push(ingredient);
+    this.setState({ pizzaIngredients, itemInHand: null });
   }
 
   handleMakePizza = () => {
-    let finishTime = moment().format('mm ss');
-    let totalTime = finishTime - this.state.timer;
-    alert('You won the game in ', totalTime);
+    
+    const minuteDuration = parseInt(moment().format('mm'), 10) - this.state.timer.minutes;
+    const secondDuration = parseInt(moment().format('ss'), 10) - this.state.timer.seconds;
+    alert(`You won the game in ${minuteDuration} minutes and ${secondDuration} seconds`);
     localStorage.clear();
-
   }
 
 
   render() {
-    const makePizzaButton = <button name="make-pizza" onClick={() => this.handleMakePizza}>make pizza</button>;
+    const makePizzaButton = <button name="make-pizza" onClick={() => this.handleMakePizza()}>make pizza</button>;
     return (
       <div className="App">
         <header className="App-header">
@@ -100,7 +81,7 @@ class App extends Component {
             <option value="5">Floor 5</option>
             <option value="6">Floor 6</option>
           </select>
-          { this.state.floor.key === 'floor4' && makePizzaButton }
+          { this.state.floor.key === 'floor3' && makePizzaButton }
           <button className="pick-up two" value={this.state.pickUpValue} onClick={({ target }) => this.handlePickUp(target.value)}>Pick Up</button>
           <button className="drop three" onClick= {() => this.handleDrop()}>Drop</button>
           <button className="pizza-add four" value={this.state.itemInHand} onClick={({ target }) => {this.handleAddtoPizza(target.value);}}>Add to Pizza</button>
