@@ -6,16 +6,20 @@ import Player from './Player';
 import styled from 'styled-components';
 import GameProgress from './GameProgress';
 import SignUp from './SignUp';
+import handleAction from './scripts/handleAction';
 
 class App extends Component {
   state = {
     playerOne: { hp: 5, action: '', name: 'Bob' },
     playerTwo: { hp: 5, action: '', name: 'Jeff' },
+    signedIn: false,
     log: []
   }
 
+  // handleAction = handleAction.bind(this); 
+
   updateNames = (one, two) => {
-    console.log('we are here');
+    this.setState({ signedIn: true });
     let updated = this.state;
     updated.playerOne.name = one;
     updated.playerOne.action = '';
@@ -46,6 +50,11 @@ class App extends Component {
   }
 
   handleAction = ({ key }) => {
+    // const result = keys[key];
+    // if(!result) return; 
+    // this.changePlayerAction(result.player, result.action);
+    
+    // strategy pattern 
     switch(key){
     case 'q': 
       this.changePlayerAction('playerOne', 'quick');
@@ -83,22 +92,24 @@ class App extends Component {
     return this.setState({
       playerOne: { hp: 5, action: '', name: 'Bob' },
       playerTwo: { hp: 5, action: '', name: 'Jeff' },
+      signedIn: false,
       log: []
     });
   }
 
   render() {
-    const { playerOne , playerTwo, log } = this.state;
+    const { playerOne , playerTwo, log, signedIn } = this.state;
     return (
       <div className="App" >
         <header className="App-header">
           <h1 className="App-title">Parking Massacre</h1>
         </header>
-        <SignUp updateNames={this.updateNames} startListener={this.startListener} />
-        <Death shouldDisplay={!this.bothAlive()} playerOne={playerOne} playerTwo={playerTwo}
+        <SignUp shouldDisplay={!signedIn} updateNames={this.updateNames} startListener={this.startListener} />
+
+        <Death shouldDisplay={!this.bothAlive() && signedIn} playerOne={playerOne} playerTwo={playerTwo}
           handleReset={() => this.reset()} />
 
-        <GameDiv shouldDisplay={this.bothAlive()}>
+        <GameDiv shouldDisplay={this.bothAlive() && signedIn}>
         
           <Player player={playerOne} instruction={['Q: quick attack',  'W: heavy attack',  'E: riposte']}/>
 

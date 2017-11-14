@@ -18,6 +18,12 @@ scrollToBottom = () => {
     if (!playersReady) return;
 
     //Player One: Quick
+    // take the red pill:
+    // const result = resolutions[playerOne.action][playerTwo.action];
+    //   updateHealth(result.damageOne, 'One');
+    //   updateHealth(result.damageTwo, 'two');
+    //   updatedArray.push(result.text);
+
     if (playerOne.action === 'quick'){
       if(playerTwo.action === 'quick') {
         updateHealth(-1, 'One');

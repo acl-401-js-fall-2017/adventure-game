@@ -11,7 +11,7 @@ export default class SignUp extends Component{
   render(){
     const { playerOneName, playerTwoName, isFocused } = this.state;
     return(
-      <SignUpWraper>
+      <SignUpWrapper shouldDisplay ={this.props.shouldDisplay}>
         <div>
           <span>In the left Corner:</span>
           <input 
@@ -33,7 +33,7 @@ export default class SignUp extends Component{
             onChange ={({ target })=> this.setState({ playerTwoName: target.value })}
           />
         </div>
-      </SignUpWraper>
+      </SignUpWrapper>
     );
   }
 
@@ -41,9 +41,10 @@ export default class SignUp extends Component{
   
   
 }
-const SignUpWraper = styled.div`
+const SignUpWrapper = styled.div`
+
 margin: 10%;
-display: flex;
+display:${props => props.shouldDisplay ? 'flex' : 'none'};
 justify-content: space-between; 
 `;
 
