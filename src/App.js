@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import logo from './pics/goldenTx.jpg';
 import Candyshop from './components/Candyshop';
 import Gate from './components/Gate';
+import Chocolate from './components/Chocolate';
+import Inventing from './components/Inventing';
+import Staff from './components/Staff';
+import letter from './pics/letter.jpg';
+
 import Rooms from './components/rooms';
 
 import './App.css';
@@ -44,6 +49,10 @@ class App extends Component {
         </header>
         <Candyshop handleInventory = {this.handleInventory} inventory = {this.state.inventory} />
         <Gate removeInventory={this.removeInventory} inventory={this.state.inventory}/>
+        <Chocolate removeInventory={this.removeInventory} inventory={this.state.inventory} />
+        <Inventing removeInventory={this.removeInventory} inventory={this.state.inventory} />
+        <Staff removeInventory={this.removeInventory} inventory={this.state.inventory} />
+        <img src={letter} alt="poster"/>
       </div>
     );
   }
