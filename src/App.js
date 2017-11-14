@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './pics/goldenTx.jpg';
 import Candyshop from './components/Candyshop';
 import Gate from './components/Gate';
-import Rooms from './rooms';
+import Rooms from './components/rooms';
 
 import './App.css';
 
