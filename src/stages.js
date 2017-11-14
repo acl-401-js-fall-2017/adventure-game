@@ -2,8 +2,14 @@ const freezer = {
   name: 'Walk-in Freezer',
   intro: 'Suddenly conscious and taking in your surroundings, a frosty haze permeates your view of a large, dim walk-in freezer. You notice a bright light at the far side of the freezer, but first a sign catches your eye.',
   items: [
-    'joints',
-    'cafeKey'
+    {
+      name: 'joints',
+      available: false
+    },
+    {
+      name: 'cafeKey',
+      available: false
+    }
   ],
   riddle: {
     name: 'sign',
