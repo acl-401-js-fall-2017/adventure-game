@@ -46,6 +46,12 @@ export default class SignUp extends Component{
         </div>
         <div style ={{ display:'flex', flexDirection: 'column' }}>
           <span>In the Right Corner:</span>
+          <div>
+            <img src={require('./pics/jeff1.png')} style={{ width: '20%' }}/>
+            <img src={require('./pics/jeff2.jpg')} style={{ width: '20%' }}/>
+            <img src={require('./pics/jeff3.png')} style={{ width: '20%' }}/>
+
+          </div>
           <input 
             value={playerTwoName}
             onChange ={({ target })=> this.setState({ playerTwoName: target.value })}
