@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import './App.css';
 import Stage from './Stage';
 import Player from './Player';
 import stages from './stages';
-import './App.css';
 
 class App extends Component {
+  
   constructor () {
     super();
     this.state = {
@@ -13,20 +14,61 @@ class App extends Component {
       player: {
         name: 'Big Shaq',
         pockets: [],
-        health: 25,
-        dialog: [
-          'Skrrat, skidi-kat-kat. The name’s Big Shaq and man’s not hot.',
-          'Hold up let me light this tree right quick. puff puff puff. How do I get out of here anyway?',
-          'Whatever donut, your nose  long like a garden hose anyway.'
-        ]
-      },
-
+        health: 25
+      }
     };
   }
+
+  handleExit = stage => {
+    this.setState({ stage });
+  }
+
+  handlePickup = item => {
+    const { stage, player } = this.state;
+    const index = stage.items.indexOf(item);
+    if(index > -1) stage.items.splice(index, 1);
+
+    player.pockets.push(item);
+
+    this.setState({
+      stage, player
+    });
+  }
+
+  handleRiddle = riddle => {
+    const { stage, player } = this.state;
+    if (!stage.riddle.solved) {
+      alert(riddle.question);
+    }
+  }
+
+  handleOutput() {
+    const { stage, stage: { riddle }, player, handleRiddle } = this.state;    
+    if (stage.intro) {
+      return stage.intro;
+    } else if (riddle) { 
+      return handleRiddle(riddle);
+    } 
+  }
+
+
   render() {
+    const { player, stage } = this.state;
+    
     return (
       <div className="App">
-        
+        <div className="Player-info">
+          <Player player={player}
+            onDrop={this.handleDrop}
+          />
+        </div>
+        <Stage
+          player={player}
+          stage={stage}
+          onExit={this.handleExit}
+          onRiddle={this.handlePickup}
+          onOutput={this.handleOutput}
+        />
       </div>
     );
   }
