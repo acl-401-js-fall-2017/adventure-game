@@ -52,12 +52,7 @@
   box-shadow: 3px 3px red, -1em 0 .4em pink;
 }
 
-/* img {
-  height: 200px;
-} */
-
 .dropDown {
-  margin: 30px;
   background: transparent;
   border: none;
   font-size: 14px;
@@ -72,7 +67,6 @@
 }
 
 button {
-  margin: 30px;
   background: transparent;
   border: none;
   font-size: 14px;
@@ -101,26 +95,73 @@ button {
 }
 
 .one {
+  margin-top: 30px;
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.label-one {
+  text-align: left;
   grid-column: 2;
   grid-row: 1;
 }
 
 .two {
+  margin-top: 30px;
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.label-two {
+  text-align: left;
   grid-column: 3;
   grid-row: 1;
 }
 
 .three {
+  margin-top: 30px;
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.label-three {
+  text-align: left;
   grid-column: 2;
   grid-row: 2;
 }
 
 .four {
+  margin-top: 30px;
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.label-four {
+  text-align: left;
   grid-column: 3;
   grid-row: 2;
 }
 
 .five {
+  margin-top: 30px;
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.label-five {
+  text-align: left;
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.six {
+  grid-column: 3;
+  grid-row: 3;
+}
+
+label {
+  text-align: left;
+  /* margin-bottom: 10px; */
   grid-column: 2;
   grid-row: 3;
 }

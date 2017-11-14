@@ -21,7 +21,7 @@ class App extends Component {
   componentWillMount() {
     const savedGame = localStorage.getItem('currentGame')
     savedGame ? this.setState(JSON.parse(savedGame)) :
-    this.setState({ timer: { minutes: parseInt(moment().format('mm'), 10), seconds: parseInt(moment().format('ss'), 10)} });
+      this.setState({ timer: { minutes: parseInt(moment().format('mm'), 10), seconds: parseInt(moment().format('ss'), 10)} });
   }
 
   componentDidUpdate() {
@@ -64,14 +64,15 @@ class App extends Component {
 
 
   render() {
-    const makePizzaButton = <button name="make-pizza" onClick={() => this.handleMakePizza()}>make pizza</button>;
+    const makePizzaButton = <button className="make-pizza six" onClick={() => this.handleMakePizza()}>make pizza</button>;
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="flash">Shane is lounging at home</h1>
+          <h1 className="fl ash">Shane is lounging at home</h1>
           <p className="msg">{ this.state.floor.message }</p>
         </header>
         <div className="wrapper">
+          <label className = "label-one">The Elevator</label>
           <select className="dropDown one" name="elevator" onChange={({ target }) => this.handleFloorChange(target.value)}>
             <option value="0">Ground floor</option>
             <option value="1">Floor 1</option>
@@ -82,18 +83,20 @@ class App extends Component {
             <option value="6">Floor 6</option>
           </select>
           { this.state.floor.key === 'floor3' && makePizzaButton }
+          <label className = "label-two">Pick up an item to take home</label>
           <button className="pick-up two" value={this.state.pickUpValue} onClick={({ target }) => this.handlePickUp(target.value)}>Pick Up</button>
+          <label className = "label-three">Get rid of this item</label>
           <button className="drop three" onClick= {() => this.handleDrop()}>Drop</button>
+          <label className = "label-four">Add to your pantry</label>
           <button className="pizza-add four" value={this.state.itemInHand} onClick={({ target }) => {this.handleAddtoPizza(target.value);}}>Add to Pizza</button>
           <img id="pics"alt="Old Lady" src={this.state.floor.img}/>
-          <label>Items in the Room</label>
+          <label>Items in the Room</label><br/>
           <select className="dropDown five" name="items-in-room" onChange={({ target }) => {
             this.handlePickUpValue(target.value);}}>
             { this.state.floor.items.map((item, index) => {
               return <option key={index} value={item}>{item}</option>;
             }) }
           </select>
-          
         </div>
       </div>
     );
