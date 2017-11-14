@@ -1,25 +1,31 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-
+const harold = require('./pics/harold.jpg');
+const angryMan = require('./pics/angry-worker.jpg');
 export default class SignUp extends Component{
   state = { isFocused: false, playerOneName: 'Bob', playerOneDog: 'Lewis', playerTwoName: 'Jeff', playerOneImg:'', playerTwoImg: '' };
 
 
-  ComponentDidMount(){
-    console.log('are we here',this.props);
+  addImg = (e) => {
+    console.log(e);
+    this.setState({ playerOneImg: e.target.value });
   }
   render(){
-    const { playerOneName, playerTwoName, isFocused, playerOneDog } = this.state;
+    const { playerOneName, playerTwoName, isFocused, playerOneDog, playerOneImg } = this.state;
     return(
       <SignUpWrapper shouldDisplay ={this.props.shouldDisplay}>
         <div>
           <div style={{ display: 'flex', flexDirection: 'column' }} >
             <span>In the left Corner:</span>
             <div>
-              <img src={require('./pics/harold.jpg')} style={{ width: '20%' }}/>
-              <img src={require('./pics/angry-worker.jpg')} style={{ width: '20%' }}/>
-              <img src={require('./pics/creapy.jpg')} style={{ width: '20%' }}/>
-
+              <select onChange ={this.addImg}>
+                <option>Choose your avatar</option>
+                <option value ={harold}> Harold</option>
+                <option value ={angryMan}>AngryMan</option>
+              </select>
+              {/* <img src={require('./pics/harold.jpg')} style={{ width: '20%', height: '100px' }} onCLick ={this.addImage}/>
+              <img src={require('./pics/angry-worker.jpg')} style={{ width: '20%', height: '100px' }}/>
+              <img src={require('./pics/creapy.jpg')} style={{ width: '20%', height: '100px' }}/> */}
             </div>
             <input 
               value={playerOneName}
@@ -38,7 +44,7 @@ export default class SignUp extends Component{
           <p style={{ textAlign:'center' }}>Two men find a parking spot, only one will live to use it.</p>
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <StyledP onClick={() =>{
-              this.props.updateNames(playerOneName, playerTwoName, playerOneDog);
+              this.props.updateNames(playerOneName, playerTwoName, playerOneDog, playerOneImg);
               this.props.startListener();
             }}> Let the Fight Begin!
             </StyledP>
