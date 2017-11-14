@@ -1,51 +1,63 @@
-const wiFreezer = {
-  key: 'wiFreezer',
+const freezer = {
+  key: 'freezer',
   name: 'Walk-in Freezer',
-  description: '',
-  items: [],
-  door: 'acCafe',
+  intro: 'Suddenly conscious and taking in your surroundings, a frosty haze permeates your view of a large, dim walk-in freezer. You notice a bright light at the far side of the freezer, but first a sign catches your eye.',
+  riddle: {
+    name: 'sign',
+    question: 'You’re running a race and pass the person in 2nd place. What place are you in now?',
+    answer: [
+      '2',
+      '2nd',
+      'second'
+    ],
+    items: [
+      'joints',
+      'cafeKey'
+    ]
+  },
+  door: 'Air-conditioned cafe',
   encounter: {
     name: 'Jenkins',
     dialogue: [
       'Welcome to the Walk-in Freezer. My name is Jenkins, and I’m the caretaker here. Who are you?',
-      'We are in a freezer, but I suppose its a good thing you have your parka, for now…',
-      'To escape this nightmare you must descend through all four stages of heat, solving a puzzle on each floor, until you reach hell and defeat the devil.  It can get rather hot down there, and some have died. I would wish you luck, but as you said, ‘man’s not hot’.',
+      'We are in a freezer, but I suppose it’s a good thing you have your parka, for now…',
+      'To escape this nightmare you must descend through all four stages of heat, solving a puzzle on each floor, until you reach the blazing depths of hell and defeat the devil.  I would wish you luck,but as you said, ‘man’s not hot’.',
     ]
   }
 };
 
-const acCafe = {
-  key: 'acCafe',
+const cafe = {
+  key: 'cafe',
   name: 'Air-conditioned cafe',
-  description: '',
+  sign: '',
   items: [],
-  door: 'picnicPark'
+  door: 'Picnic in the Park'
 };
 
-const picnicPark = {
-  key: 'picnicPark',
+const picnic = {
+  key: 'picnic',
   name: 'Picnic in the Park',
-  description: '',
+  sign: '',
   items: [],
-  door: 'ghana'
+  door: 'Ghana'
 };
 
 const ghana = {
   key: 'ghana',
   name: 'Ghana',
-  description: '',
+  sign: '',
   items: [],
-  door: 'hell'
+  door: 'Hell'
 };
 
 const hell = {
   key: 'hell',
   name: 'Hell',
-  description: '',
+  sign: '',
   items: [],
   encounter: {}
 };
 
-export const stages = [wiFreezer, acCafe, picnicPark, ghana, hell];
+export const stages = [freezer, cafe, picnic, ghana, hell];
 
 export default stages;
