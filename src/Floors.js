@@ -1,7 +1,7 @@
 
 
 const floor0 = {
-  key: 'floor0',
+  key: 'Ground Floor',
   message: 'You are on the Ground Floor and meet up with Helga, the apartment chatterer. You try to explain your quest for pizza ingredients but you cannot get a word in. After hearing all about her ailing body parts, you realize that you have been standing there so long, you are dizzy from hunger. You lose time on your quest.',
   items: ['pepperoni', 'cheese'],
   img: '/images/oldLady.jpg'
@@ -22,7 +22,7 @@ const floor2 = {
 };
 
 const floor3 = {
-  key: 'floor3',
+  key: '3rd Floor',
   message: 'You are at home',
   items: []
 };
