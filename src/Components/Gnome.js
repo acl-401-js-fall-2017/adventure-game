@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './styles/Gnome.css';
+import gnome from '../images/gnome.svg';
 
 class Gnome extends Component {
   render() {
@@ -14,11 +15,8 @@ class Gnome extends Component {
       >
         <div
           className="Gnome"
-          style={{
-            height: '100%',
-            backgroundColor: gnomeColor     
-          }}
-        ></div>
+          style={{ height: '100%' }}
+        ><img src={gnome} alt="" /></div>
       </div>
     );
   }
