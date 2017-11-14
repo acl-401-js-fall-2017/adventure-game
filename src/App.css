@@ -2,9 +2,17 @@
 .App-header {
   text-align: center;
   background-color: #222;
-  height: 150px;
+  /* background-image: url("images/parkingspot.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;  */
+  height: 100%;
   padding: 20px;
   color: white;
+}
+
+.Header-Image {
+  height: 200px;
 }
 
 .App-title {
