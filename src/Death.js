@@ -2,26 +2,34 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
  
 export default class Death extends Component{
-
-  determineOutcome(bobHp, jeffHp){
-    if (bobHp < 1 && jeffHp < 1) {
-      return 'they both died';
+  
+  state ={ outcome: '' };
+  
+  determineOutcome(){
+    const { playerOne, playerTwo } = this.props;
+    if (playerOne.hp < 1 && playerTwo.hp < 1) {
+      this.setState({ outcome: 'they both died' });
     }
 
-    else if (bobHp < 1) {
-      return 'Jeff won!!!';
+    else if (playerOne.hp < 1) {
+      this.setState({ outcome: `${playerTwo.name} won!!!` });
     }
 
-    else if (jeffHp < 1) {
-      return 'Bob won!!!!';
+    else if (playerTwo.hp < 1) {
+      this.setState({ outcome: `${playerOne.name} won!!!` });
     }
   }
 
+  componentWillReceiveProps(nextProps){
+    if (nextProps === this.props) return;
+    if (!nextProps.playerOne || !nextProps.playerTwo) return;
+    this.determineOutcome();
+  }
   render(){
     return( 
       <WinScreen shouldDisplay ={this.props.shouldDisplay}>
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <span>{this.determineOutcome(this.props.hp[0], this.props.hp[1])}</span>
+          <span>{this.state.outcome}</span>
           <StyledP onClick={() => this.props.handleReset()}> Play Again?</StyledP>
         </div>
       </WinScreen>

@@ -18,6 +18,9 @@ class App extends Component {
     console.log('we are here');
     let updated = this.state;
     updated.playerOne.name = one;
+    updated.playerOne.action = '';
+
+    updated.playerTwo.name = '';
     updated.playerTwo.name = two;
     this.setState({ updated });
   }
@@ -71,11 +74,12 @@ class App extends Component {
     return(playerOne.hp > 0 && playerTwo.hp > 0);
   }
 
-  componentDidMount(){
+  startListener = ()=>{
     document.addEventListener('keydown', this.handleAction); 
   }
 
   reset(){
+    document.removeEventListener('keydown', this.handleAction);
     return this.setState({
       playerOne: { hp: 5, action: '', name: 'Bob' },
       playerTwo: { hp: 5, action: '', name: 'Jeff' },
@@ -90,24 +94,24 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Parking Massacre</h1>
         </header>
-        <SignUp updateNames = {this.updateNames} />
-        <Death shouldDisplay = {!this.bothAlive()} hp={[playerOne.hp, playerTwo.hp]}
-          handleReset = {() => this.reset()} />
+        <SignUp updateNames={this.updateNames} startListener={this.startListener} />
+        <Death shouldDisplay={!this.bothAlive()} playerOne={playerOne} playerTwo={playerTwo}
+          handleReset={() => this.reset()} />
 
-        <GameDiv shouldDisplay ={this.bothAlive()}>
+        <GameDiv shouldDisplay={this.bothAlive()}>
         
-          <Player player={playerOne} name='playerOne' instruction={['Q: quick attack',  'W: heavy attack',  'E: riposte']}/>
+          <Player player={playerOne} instruction={['Q: quick attack',  'W: heavy attack',  'E: riposte']}/>
 
           <GameProgress 
-            setNextRound = {this.setNextRound} 
-            playersReady = {(playerOne.action !== '' && playerTwo.action !== '')} 
-            updateHealth ={this.updateHealth} 
-            playerOne = {playerOne} 
-            playerTwo = {playerTwo}
+            setNextRound={this.setNextRound} 
+            playersReady={(playerOne.action !== '' && playerTwo.action !== '')} 
+            updateHealth={this.updateHealth} 
+            playerOne={playerOne} 
+            playerTwo={playerTwo}
             log = {log}
             updateLog = {(updated) => this.setState({ log: updated })} />
 
-          <Player player={playerTwo} name='playerTwo' instruction={['P: quick attack',  'O: heavy attack',  'I: riposte']}/>
+          <Player player={playerTwo} instruction={['P: quick attack',  'O: heavy attack',  'I: riposte']}/>
 
         </GameDiv>
       </div>

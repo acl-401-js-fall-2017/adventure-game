@@ -5,12 +5,6 @@ export default class SignUp extends Component{
   state = { isFocused: false, playerOneName: '', playerTwoName: '' };
 
 
-  onEnter = ({ key }) => {
-    if (key === 'enter') {
-      this(this.state.search);
-    }
-  }
-
   ComponentDidMount(){
     console.log('are we here',this.props);
   }
@@ -27,7 +21,10 @@ export default class SignUp extends Component{
         </div>
         <div>
           <p>Two men find a parking spot, only one will live to use it.</p>
-          <StyledP onClick={() => this.props.updateNames(playerOneName, playerTwoName)}> Let the Fight Begin!</StyledP>
+          <StyledP onClick={() =>{
+            this.props.updateNames(playerOneName, playerTwoName);
+            this.props.startListener();
+          }}> Let the Fight Begin!</StyledP>
         </div>
         <div>
           <span>In the Right Corner:</span>

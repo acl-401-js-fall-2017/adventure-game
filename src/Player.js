@@ -12,7 +12,7 @@ export default class Player extends Component{
           <span>Current Health:{player.hp}</span>
           <span> Actions: </span>
           { instruction.map((v, i) =><span key={i}>{v}</span>)}
-          <span>{(player.action)? `${player.name} is ready`: `${player.name} is making a choice...`}</span>
+          <span>{(player.action !== '')? `${player.name} is ready`: `${player.name} is making a choice...`}</span>
         </InfoDiv>
       </div>
     );
