@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 export default class SignUp extends Component{
-  state = { isFocused: false, playerOneName: 'Bob', playerOneDog: 'Lewis', playerTwoName: 'Jeff' };
+  state = { isFocused: false, playerOneName: 'Bob', playerOneDog: 'Lewis', playerTwoName: 'Jeff', playerOneImg:'', playerTwoImg: '' };
 
 
   ComponentDidMount(){
@@ -15,6 +15,12 @@ export default class SignUp extends Component{
         <div>
           <div style={{ display: 'flex', flexDirection: 'column' }} >
             <span>In the left Corner:</span>
+            <div>
+              <img src={require('./pics/harold.jpg')} style={{ width: '20%' }}/>
+              <img src={require('./pics/angry-worker.jpg')} style={{ width: '20%' }}/>
+              <img src={require('./pics/creapy.jpg')} style={{ width: '20%' }}/>
+
+            </div>
             <input 
               value={playerOneName}
               onChange ={({ target }) => this.setState({ playerOneName: target.value })}
