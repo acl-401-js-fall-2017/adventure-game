@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './styles/Gnome.css';
 import gnome from '../images/gnome.svg';
+import PropTypes from 'prop-types';
 
 class Gnome extends Component {
   render() {
@@ -21,5 +22,9 @@ class Gnome extends Component {
     );
   }
 }
+
+Gnome.propTypes = {
+  terrainColor: PropTypes.string
+};
 
 export default Gnome;

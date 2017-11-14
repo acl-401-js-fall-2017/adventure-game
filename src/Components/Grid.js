@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Terrain from './Terrain';
 import Gnome from './Gnome';
 import './styles/Grid.css';
+import PropTypes from 'prop-types';
 
 class Grid extends Component {
 
@@ -38,5 +39,9 @@ class Grid extends Component {
     );
   }
 }
+
+Grid.propTypes = {
+  gridArray: PropTypes.array
+};
 
 export default Grid;

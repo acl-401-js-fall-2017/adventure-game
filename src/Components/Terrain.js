@@ -3,6 +3,7 @@ import chalis from '../images/chalis.svg';
 import keyImg from '../images/key.png';
 import keyHoleImg from '../images/key-hole.png';
 import './styles/Terrain.css';
+import PropTypes from 'prop-types';
 
 class Terrain extends Component {
   render() {
@@ -40,5 +41,9 @@ class Terrain extends Component {
     );
   }
 }
+
+Terrain.propTypes = {
+  name: PropTypes.string
+};
 
 export default Terrain;
