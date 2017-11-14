@@ -11,9 +11,10 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      Rooms,
       message: '',
       inventory: [],
-      rooms: []
+      room: Rooms[0]
     };
   }
 

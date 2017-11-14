@@ -20,7 +20,6 @@ export default class Gate extends Component {
         removeInventory();
       }
     });
-    
   }
 
   render() {
