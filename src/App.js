@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import floors from './Floors';
+import moment from 'moment';
+// import images from './images/oldLady.jpg';
 
 class App extends Component {
 
@@ -10,10 +12,29 @@ class App extends Component {
       itemInHand: null,
       timer: 0,
       floors,
-      floor: floors[1],
-      pickUpValue: floors[1].items[0],
-      pizzaItems: []
+      floor: floors[3],
+      pickUpValue: floors[3].items[0],
+      pizzaItems: [],
+      messages: ''
     };
+  }
+
+  componentWillMount() {
+    let currentGame = localStorage.getItem('currentGame');
+    if (currentGame) {
+      console.log('current game', currentGame);
+      this.setState(JSON.parse(currentGame));
+    } else {
+      let time = moment().format('mm ss');
+      this.setState({ timer: time });
+      console.log('are we in willmount');
+
+    }
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem('currentGame', JSON.stringify(this.state));
+    console.log('are we in didUpdate');
   }
 
   handlePickUpValue = value => {
@@ -31,7 +52,7 @@ class App extends Component {
   }
 
   handleFloorChange = value => {
-    if (value == 1) {
+    if (value === 1) {
       console.log('are we in floor change', value);
       this.setState({
         pizzaItems: [],
@@ -53,24 +74,33 @@ class App extends Component {
     this.setState({ pizzaItems, itemInHand: null });
   }
 
+  handleMakePizza = () => {
+    let finishTime = moment().format('mm ss');
+    let totalTime = finishTime - this.state.timer;
+    alert('You won the game in ', totalTime);
+    localStorage.clear();
+
+  }
+
 
   render() {
-    const makePizzaButton = <button name="make-pizza">make pizza</button>;
+    const makePizzaButton = <button name="make-pizza" onClick={() => this.handleMakePizza}>make pizza</button>;
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Pizza</h1>
           <p>{ this.state.floor.message }</p>
+          <img alt="Old Lady" src={this.state.floor.img}/>
         </header>
         <div>
-          <select name="elevator" onChange={({ target }) => this.handleFloorChange(target.value)}>
-            <option value="0">Floor 1</option>
-            <option value="1">Floor 2</option>
-            <option value="2">Floor 3</option>
-            <option value="3">Floor 4</option>
-            <option value="4">Floor 5</option>
-            <option value="5">Floor 6</option>
-            <option value="6">Floor 7</option>
+          <select className="elevator" name="elevator" onChange={({ target }) => this.handleFloorChange(target.value)}>
+            <option value="0">Ground floor</option>
+            <option value="1">Floor 1</option>
+            <option value="2">Floor 2</option>
+            <option value="3" selected>Home</option>
+            <option value="4">Floor 4</option>
+            <option value="5">Floor 5</option>
+            <option value="6">Floor 6</option>
           </select>
           { this.state.floor.key === 'floor4' && makePizzaButton }
           <button name="pick-up" value={this.state.pickUpValue} onClick={({ target }) => this.handlePickUp(target.value)}>Pick Up</button>

@@ -1,3 +1,13 @@
+// import images from './images/';
+
+// let image = ['oldLady.jpg'];
+
+const floor0 = {
+  key: 'floor0',
+  message: 'You are on the Ground Floor and meet up with Helga, the apartment chatterer. You try to explain your quest for pizza ingredients but you cannot get a word in. After hearing all about her ailing body parts, you realize that you have been standing there so long, you are dizzy from hunger.',
+  items: ['pepperoni', 'cheese'],
+  // img: image[0]
+};
 
 const floor1 = {
   key: 'floor1',
@@ -13,8 +23,8 @@ const floor2 = {
 
 const floor3 = {
   key: 'floor3',
-  message: 'You are on floor 3',
-  items: ['sauce', 'couch']
+  message: 'You are at home',
+  items: []
 };
 
 const floor4 = {
@@ -35,12 +45,7 @@ const floor6 = {
   items: ['sauce', 'cheese']
 };
 
-const floor7 = {
-  key: 'floor7',
-  message: 'You are on floor 7',
-  items: ['pepperoni', 'cheese']
-};
 
-const floors = [floor1, floor2, floor3, floor4, floor5, floor6, floor7];
+const floors = [floor0, floor1, floor2, floor3, floor4, floor5, floor6];
 
 export default floors;
