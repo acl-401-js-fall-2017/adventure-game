@@ -106,7 +106,6 @@ exports[`Game shows a candyshop 1`] = `
         onClick={[Function]}
         shape="poly"
       />
-      ;
     </map>
   </p>
   <p

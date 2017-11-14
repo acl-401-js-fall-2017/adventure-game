@@ -24,7 +24,6 @@ export default class Candyshop extends Component {
   }
 
   render() {
-    
     return (
       <section>
         <p className="App-pic">
