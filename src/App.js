@@ -14,8 +14,7 @@ class App extends Component {
       floors,
       floor: floors[3],
       pickUpValue: floors[3].items[0],
-      pizzaItems: [],
-      messages: ''
+      pizzaItems: []
     };
   }
 
@@ -88,16 +87,16 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Pizza</h1>
-          <p>{ this.state.floor.message }</p>
-          <img alt="Old Lady" src={this.state.floor.img}/>
+          <h1 className="fla sh">Shane is lounging at home</h1>
+          <p className="msg">{ this.state.floor.message }</p>
+          <img id="pics"alt="Old Lady" src={this.state.floor.img}/>
         </header>
         <div>
-          <select className="elevator" name="elevator" onChange={({ target }) => this.handleFloorChange(target.value)}>
+          <select className="dropDown" name="elevator" onChange={({ target }) => this.handleFloorChange(target.value)}>
             <option value="0">Ground floor</option>
             <option value="1">Floor 1</option>
             <option value="2">Floor 2</option>
-            <option value="3" selected>Home</option>
+            <option value="3" defaultValue>Home</option>
             <option value="4">Floor 4</option>
             <option value="5">Floor 5</option>
             <option value="6">Floor 6</option>
@@ -105,12 +104,12 @@ class App extends Component {
           { this.state.floor.key === 'floor4' && makePizzaButton }
           <button name="pick-up" value={this.state.pickUpValue} onClick={({ target }) => this.handlePickUp(target.value)}>Pick Up</button>
           <button name="drop" onClick= {() => this.handleDrop()}>Drop</button>
-          <button name="pizza-add" value={this.state.itemInHand} onClick={({ target }) => {this.handleAddtoPizza(target.value)}}>Add to Pizza</button>
+          <button name="pizza-add" value={this.state.itemInHand} onClick={({ target }) => {this.handleAddtoPizza(target.value);}}>Add to Pizza</button>
           <label>Items in the Room</label>
-          <select name="items-in-room" onChange={({ target }) => {
+          <select className="dropDown" name="items-in-room" onChange={({ target }) => {
             this.handlePickUpValue(target.value);}}>
-            { this.state.floor.items.map((item) => {
-              return <option value={item}>{item}</option>;
+            { this.state.floor.items.map((item, index) => {
+              return <option key={index} value={item}>{item}</option>;
             }) }
           </select>
           

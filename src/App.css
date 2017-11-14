@@ -12,10 +12,21 @@
   height: 300px;
   padding: 20px;
   color: white;
+
 }
 
-.App-title {
-  font-size: 1.5em;
+.flash {
+  animation-name: flash;
+   animation-duration: 0.2s;
+   animation-timing-function: linear;
+   animation-iteration-count: infinite;
+   animation-direction: alternate;
+   animation-play-state: running;
+}
+
+@keyframes flash {
+   from {color: red;}
+   to {color: black;}
 }
 
 .App-intro {
@@ -27,11 +38,40 @@
   to { transform: rotate(360deg); }
 }
 
+
+
+.msg {
+  font: helvetica;
+  padding: 15px;
+  margin: auto;
+  /* margin-right: auto; */
+  font-size: 18px;
+  width: 60%;
+  text-align: center;
+  letter-spacing: 3px;
+  box-shadow: 3px 3px red, -1em 0 .4em pink;
+}
+
 img {
   height: 200px;
 }
 
-.elevator {
+.dropDown {
+  margin: 30px;
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  height: 29px;
+  padding: 5px; 
+  width: 180px;
+  background-color: #3b8ec2; 
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+
+}
+
+button {
   margin: 30px;
   background: transparent;
   border: none;
