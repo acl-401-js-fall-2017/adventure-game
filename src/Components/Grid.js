@@ -18,6 +18,8 @@ class Grid extends Component {
             key={i}
             i={i}
             terrain={gridElem.terrain}
+            hasKey={gridElem.hasKey}
+            isLocked={gridElem.isLocked}
           ></Terrain>
         );
         const gnome = (

@@ -99,7 +99,10 @@ class Battle extends Component {
       strength: 4  + Math.floor((Math.random() - Math.random()) * 3),
       speed: 12 + (Math.random() - Math.random()) * 5
     };
-    if(terrain.type === 'chalice') newOgre.strength += 3;
+    if(terrain.type === 'chalice') {
+      newOgre.strength += 10;
+      newOgre.health += 10;
+    }
     this.setState({ ogreStats: newOgre });
   }
 
@@ -130,12 +133,26 @@ class Battle extends Component {
 
           }}
         >
-          <p>
-            gnome health: {gnomeStats.health}
-          </p>
-          <p>
-            ogre health: {ogreStats.health}
-          </p>
+          <article className='gnomeStats'>
+            <div
+              style={{
+                float: 'left',
+                height: '100%',
+                width: gnomeStats.health + '%',
+                backgroundColor: `hsl(${gnomeStats.health * 2.1}, 100%, 50%)`
+              }}
+            ></div>
+          </article>
+          <article className='ogreStats'>
+            <div
+              style={{
+                float: 'right',
+                height: '100%',
+                width: (ogreStats.health * 3.33) + '%',
+                backgroundColor: `hsl(${ogreStats.health * 3.33 * 2.1}, 100%, 50%)`
+              }}
+            ></div>
+          </article>
         </div>
         <div 
           className='battleground'
@@ -157,6 +174,10 @@ class Battle extends Component {
               marginRight: ogreAttacking ? '1em' : '0' 
             }}
           />
+        </div>
+        <div className='messageBox'>
+          <h1>FIGHT!</h1>
+          <h7>Attack (space) : Flee(arrow key)</h7>
         </div>
       </div>
     );

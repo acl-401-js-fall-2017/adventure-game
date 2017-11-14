@@ -56,7 +56,6 @@ class App extends Component {
     const { gnomeStats, gridArray } = this.state;
     const enemyFrequency = gridArray[gnomeStats.pos.Y][gnomeStats.pos.X].terrain.fightProbability;
     const enemySpotted = Math.random() < enemyFrequency;
-    console.log(enemyFrequency);
     return enemySpotted;
   }
 
@@ -106,7 +105,6 @@ class App extends Component {
       gnomeStats.pos = waryXStep('increment', gnomeStats.pos);
       break;
     default:
-      console.log('Whack!!!');
     }
   }
   
@@ -121,14 +119,15 @@ class App extends Component {
       tempX < 0 || tempX > 9 ||
       tempY < 0 || tempY > 9
     ) canMove = false;
-    else if(gridArray[tempY][tempX].terrain.hasKey) {
-      const keyedUpGnome = Object.assign({}, this.state.gnomeStats);
+    else if(gridArray[tempY][tempX].hasKey) {
+      let keyedUpGnome = this.state.gnomeStats;
+      let keylessGrid = gridArray;
+      gridArray[tempY][tempX].hasKey = false;
       keyedUpGnome.hasKey = true;
-      this.setState({ gnomeStats: keyedUpGnome });
-      console.log('got key');
+      this.setState({ gnomeStats: keyedUpGnome, gridArray: keylessGrid });
       canMove = true;
     }
-    else if(gridArray[tempY][tempX].terrain.isLocked) canMove = this.tryLock(gridArray, tempY, tempX);
+    else if(gridArray[tempY][tempX].isLocked) canMove = this.tryLock(gridArray, tempY, tempX);
     else canMove = gridArray[tempY][tempX].terrain.passable;
     return canMove ? { X: tempX, Y: tempY } : position;
   }
@@ -137,7 +136,7 @@ class App extends Component {
     const { gnomeStats } = this.state;
     if(gnomeStats.hasKey) {
       const unlockedGrid = Object.assign({}, gridArray);
-      unlockedGrid[x][y].terrain.isLocked = false;
+      unlockedGrid[x][y].isLocked = false;
       this.setState({ gridArray: unlockedGrid });
       return true;
     }
@@ -163,9 +162,8 @@ class App extends Component {
         };
       });
     });
-    gridSetUp[4][6].isBlocked = true;
+    gridSetUp[4][6].isLocked = true;
     gridSetUp[9][3].hasKey = true;
-
     this.setGnomeOnGrid(gridSetUp);
     this.setState({ gridArray: gridSetUp });
   }
