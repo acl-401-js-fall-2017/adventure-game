@@ -26,9 +26,11 @@ exports[`Game shows a app 1`] = `
     handleInventory={[Function]}
     inventory={Array []}
   />
-  <Gate
-    inventory={Array []}
-    removeInventory={[Function]}
-  />
+  <button
+    id="nextButton"
+    onClick={[Function]}
+  >
+    Next room 
+  </button>
 </div>
 `;
