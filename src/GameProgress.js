@@ -82,6 +82,7 @@ scrollToBottom = () => {
       }
       if(playerTwo.action === 'astralProject') {
         const jeffHp = - (playerTwo.hp - 1);
+        playerTwo.hasProjected = true;
         updateHealth(jeffHp, 'Two');
         updatedArray.push(`${playerTwo.name}'s spirit form attempts to inhabit ${playerOne.name}'s body, but is knocked aside by a swift counter riposte. Without a soul, ${playerTwo.name}'s husk of a body is reduced to 1 hp`);
       } 
