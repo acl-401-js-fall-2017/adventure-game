@@ -1,4 +1,3 @@
-
 const shop = {
   room: 'shop',
   description: 'Wonka Candy Shop',
@@ -34,14 +33,6 @@ const staff = {
   nextRoom: 'shop'
 };
 
-const deathLetter = {
-  room: 'death',
-  description: 'You have died',
-  nextRoom: 'shop'
-};
-
-const rooms = [shop, gate, chocolate, testing, staff, deathLetter];
-
-
+const rooms = [ shop, gate, chocolate, testing, staff ];
 
 export default rooms;
