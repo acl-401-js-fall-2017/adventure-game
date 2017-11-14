@@ -9,14 +9,16 @@ const floor0 = {
 
 const floor1 = {
   key: 'floor1',
-  message: 'You are on floor 1',
-  items: ['cheese', 'candy']
+  message: 'You inadvertently knock on the door of your landlord when you are late with the rent. You apologize profusely but the landlord has no mercy. He takes all of the pizza ingredients that you have accumulated so far from your pantry.',
+  items: ['cheese', 'candy'],
+  img: '/images/burns1.png'
 };
 
 const floor2 = {
   key: 'floor2',
-  message: 'You are on floor 2',
-  items: ['crust', 'couch']
+  message: 'Steve has stuff he is willing to let you have - not all of it is useable.He really likes things in square-form.',
+  items: ['crust', 'couch'],
+  img: '/images/minecraft.jpeg'
 };
 
 const floor3 = {
@@ -27,20 +29,23 @@ const floor3 = {
 
 const floor4 = {
   key: 'floor4',
-  message: 'You are on floor 4',
-  items: ['sauce', 'toolkit', 'parrot', 'tv']
+  message: 'If you want something, this hoarder is going to have it. No guarantee that the food will not be long past its expiration date. Oh well. You are too hungry to care.',
+  items: ['sauce', 'toolkit', 'parrot', 'tv'],
+  img: '/images/hoarder.jpeg'
 };
 
 const floor5 = {
   key: 'floor5',
-  message: 'You are on floor 5',
-  items: ['sauce', 'couch']
+  message: 'You had no idea spiderman lived in your building! ',
+  items: ['sauce', 'couch'],
+  img: '/images/spiderman.jpeg'
 };
 
 const floor6 = {
   key: 'floor6',
-  message: 'You are on floor 6',
-  items: ['sauce', 'cheese']
+  message: 'This guy is scary but he loves to cook.',
+  items: ['sauce', 'cheese'],
+  img: '/images/bigman.jpeg'
 };
 
 

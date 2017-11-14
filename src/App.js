@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import floors from './Floors';
 import moment from 'moment';
-// import images from './images/oldLady.jpg';
 
 class App extends Component {
 
@@ -19,7 +18,7 @@ class App extends Component {
   }
 
   componentWillMount() {
-    const savedGame = localStorage.getItem('currentGame')
+    const savedGame = localStorage.getItem('currentGame');
     savedGame ? this.setState(JSON.parse(savedGame)) :
       this.setState({ timer: { minutes: parseInt(moment().format('mm'), 10), seconds: parseInt(moment().format('ss'), 10)} });
   }
@@ -42,7 +41,7 @@ class App extends Component {
   }
 
   handleFloorChange = floorNumber => {
-    const floorData = { pizzaIngredients: [], pickUpValue: floors[floorNumber].items[0], floor: floors[floorNumber] }
+    const floorData = { pizzaIngredients: [], pickUpValue: floors[floorNumber].items[0], floor: floors[floorNumber] };
     floorNumber !== 1 && delete floorData.pizzaIngredients;
     this.setState(floorData);
   }
@@ -68,7 +67,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="fl ash">Shane is lounging at home</h1>
+          <h1 className="fla sh">Shane is lounging at home</h1>
           <p className="msg">{ this.state.floor.message }</p>
         </header>
         <div className="wrapper">
