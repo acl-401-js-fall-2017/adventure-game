@@ -15,7 +15,7 @@ class Gnome extends Component {
       >
         <div
           className="Gnome"
-          style={{ height: '100%' }}
+          style={{ height: '90%' }}
         ><img src={gnome} alt="" /></div>
       </div>
     );
