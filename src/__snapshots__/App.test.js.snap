@@ -1,0 +1,813 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a snapshot 1`] = `
+<div
+  className="Grid"
+>
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  >
+    <img
+      alt=""
+      src="chalis.svg"
+    />
+  </div>
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "gray",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "gray",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "gray",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "green",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "green",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "green",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "gray",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "gray",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "green",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "green",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "green",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "green",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "green",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "blue",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "blue",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "green",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "green",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "green",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "blue",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "blue",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "blue",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "green",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "green",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "green",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "brown",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "green",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "green",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "green",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "green",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "green",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "green",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "blue",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "green",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "green",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "green",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "blue",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "blue",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "blue",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "blue",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "blue",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "blue",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "green",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "gray",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "blue",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "blue",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "blue",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "gray",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "gray",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "gray",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+  <div
+    className="Terrain"
+    style={
+      Object {
+        "backgroundColor": "lightgreen",
+      }
+    }
+  />
+</div>
+`;
