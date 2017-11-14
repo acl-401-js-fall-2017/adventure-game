@@ -2,30 +2,38 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 const harold = require('./pics/harold.jpg');
 const angryMan = require('./pics/angry-worker.jpg');
+const tired = require('./pics/tiredworker.jpg');
+const jeff1 = require('./pics/jeff1.png');
+const jeff2 = require('./pics/jeff2.jpg');
+const jeff3 = require('./pics/jeff3.png');
+
+
 export default class SignUp extends Component{
   state = { isFocused: false, playerOneName: 'Bob', playerOneDog: 'Lewis', playerTwoName: 'Jeff', playerOneImg:'', playerTwoImg: '' };
 
 
-  addImg = (e) => {
-    console.log(e);
+  addImgOne = (e) => {
     this.setState({ playerOneImg: e.target.value });
   }
+  addImgTwo = (e) => {
+    this.setState({ playerTwoImg: e.target.value });
+  }
+
   render(){
-    const { playerOneName, playerTwoName, isFocused, playerOneDog, playerOneImg } = this.state;
+    const { playerOneName, playerTwoName, isFocused, playerOneDog, playerOneImg, playerTwoImg } = this.state;
     return(
       <SignUpWrapper shouldDisplay ={this.props.shouldDisplay}>
         <div>
           <div style={{ display: 'flex', flexDirection: 'column' }} >
             <span>In the left Corner:</span>
+            <img  style={{ width: '40%' }} src={playerOneImg}/>
             <div>
-              <select onChange ={this.addImg}>
+              <select onChange ={this.addImgOne}>
                 <option>Choose your avatar</option>
                 <option value ={harold}> Harold</option>
-                <option value ={angryMan}>AngryMan</option>
+                <option value ={angryMan}>Angry Man</option>
+                <option value ={tired}>Project Week Bob</option>
               </select>
-              {/* <img src={require('./pics/harold.jpg')} style={{ width: '20%', height: '100px' }} onCLick ={this.addImage}/>
-              <img src={require('./pics/angry-worker.jpg')} style={{ width: '20%', height: '100px' }}/>
-              <img src={require('./pics/creapy.jpg')} style={{ width: '20%', height: '100px' }}/> */}
             </div>
             <input 
               value={playerOneName}
@@ -44,7 +52,7 @@ export default class SignUp extends Component{
           <p style={{ textAlign:'center' }}>Two men find a parking spot, only one will live to use it.</p>
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <StyledP onClick={() =>{
-              this.props.updateNames(playerOneName, playerTwoName, playerOneDog, playerOneImg);
+              this.props.updateNames(playerOneName, playerTwoName, playerOneDog, playerOneImg, playerTwoImg);
               this.props.startListener();
             }}> Let the Fight Begin!
             </StyledP>
@@ -52,11 +60,14 @@ export default class SignUp extends Component{
         </div>
         <div style ={{ display:'flex', flexDirection: 'column' }}>
           <span>In the Right Corner:</span>
+          <img  style={{ width: '40%' }} src={playerTwoImg}/>
           <div>
-            <img src={require('./pics/jeff1.png')} style={{ width: '20%' }}/>
-            <img src={require('./pics/jeff2.jpg')} style={{ width: '20%' }}/>
-            <img src={require('./pics/jeff3.png')} style={{ width: '20%' }}/>
-
+            <select onChange ={this.addImgTwo}>
+              <option>Choose your avatar</option>
+              <option value ={jeff1}> The Boss </option>
+              <option value ={jeff2}> Jeff </option>
+              <option value ={jeff3}> Chad </option>
+            </select>
           </div>
           <input 
             value={playerTwoName}

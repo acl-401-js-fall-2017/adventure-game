@@ -11,7 +11,7 @@ import keys from './scripts/handleAction';
 class App extends Component {
   state = {
     playerOne: { hp: 8, action: '', name: 'Bob', dog:'', img: '' },
-    playerTwo: { hp: 8, action: '', name: 'Jeff', hasProjected: false },
+    playerTwo: { hp: 8, action: '', name: 'Jeff', hasProjected: false, img: '' },
     signedIn: false,
     log: []
   }
@@ -27,7 +27,7 @@ class App extends Component {
 
     updated.playerTwo.name = '';
     updated.playerTwo.name = two;
-    updated.playerTwo.imgSource = twoImg;
+    updated.playerTwo.img = twoImg;
     this.setState({ updated });
   }
 
