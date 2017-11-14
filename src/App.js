@@ -5,9 +5,6 @@ import Gate from './components/Gate';
 import Chocolate from './components/Chocolate';
 import Inventing from './components/Inventing';
 import Staff from './components/Staff';
-import letter from './pics/letter.jpg';
-
-import rooms from './data/rooms';
 
 import './App.css';
 
@@ -81,7 +78,6 @@ class App extends Component {
         {this.state.room !== 4 && (
           <button id="nextButton" onClick={this.changeRoom} >Next room </button>
         )}
-        {/* <img src={letter} alt="poster"/> */}
       </div>
     );
   }
