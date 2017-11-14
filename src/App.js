@@ -15,13 +15,11 @@ class App extends Component {
     this.state = {
       inventory: [],
       room: 0
-      // rooms: []
     };
   }
 
   handleInventory = item => {
     const inventory = this.state.room ===3 ? [] : [ ...this.state.inventory ];
-    console.log(inventory);
     inventory.push(item);
     this.setState({
       inventory
