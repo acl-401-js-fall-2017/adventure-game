@@ -24,14 +24,15 @@ class Player extends Component {
               return <li key={i}>{i}</li>;
             })}
           </p>
-          <p>position: {player.position}</p>
         </div>
         <div>
-          <label>available items:</label>
+          <label style={{ display: display ? 'inline' : 'none' }}>available items:</label>
           {player.position < 1 ? 'There is not any item' :
             tiles[index-1].items.map(i => {
               return <button 
-                style={{ display: display ? 'inline' : 'none' }}
+                style={{ 
+                  display: display ? 'inline' : 'none'
+                }}
                 onClick={pickItem} key={i} value={i}>{i}
               </button>;
             })

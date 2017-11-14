@@ -42,6 +42,8 @@ class App extends Component {
       this.setState(
         { 
           index: tiles.length,
+          player,
+          x: tiles.length*10,
           message: 'You Won',
           display: false
         });
@@ -66,9 +68,7 @@ class App extends Component {
         { 
           index: tiles.length,
           message: 'Game Over',
-          player: {
-            position: tiles.length,
-          },
+          player,
           display: false
         });
       return;
