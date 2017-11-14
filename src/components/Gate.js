@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import gatePic from '../wonkaGate.jpg';
+import gatePic from '../pics/wonkaGate.jpg';
 
 
 

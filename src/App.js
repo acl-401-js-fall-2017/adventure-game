@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './goldenTx.jpg';
+import logo from './pics/goldenTx.jpg';
 import Candyshop from './components/Candyshop';
 import Gate from './components/Gate';
 import Rooms from './rooms';

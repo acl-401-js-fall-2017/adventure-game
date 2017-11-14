@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import shopPic from '../wonkaStore.jpg';
+import shopPic from '../pics/wonkaStore.jpg';
 
 
 
