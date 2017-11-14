@@ -88,8 +88,9 @@ scrollToBottom = () => {
       <InfoDiv innerRef={node => { node && (node.scrollTop = node.scrollHeight);}}>
         {/* <span>player one chose to {playerOne.action}</span>
         <span>player Two chose to {playerTwo.action}</span> */}
+        <span style={{ marginTop: '500px' }}></span>
         {this.props.log.map((outcome, i) =>{
-          return <li id={i} key={i}>{outcome}</li>;
+          return <li className="log" id={i} key={i}>{outcome}</li>;
         })}
       </InfoDiv>
     );
@@ -98,7 +99,7 @@ scrollToBottom = () => {
 
 const InfoDiv = styled.div`
 overflow: scroll;
-height: 80px;
+height: 300px;
 display: flex;
 flex-direction: column;
 width: 100%;
