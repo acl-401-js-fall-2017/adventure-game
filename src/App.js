@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Grid from './Components/Grid';
+import Battle from './Components/Battle';
 import './App.css';
 
 import cartes from './utils/maps';
@@ -33,6 +34,7 @@ class App extends Component {
     this.move = this.move.bind(this);
     this.watchStep = this.watchStep.bind(this);
     this.spotEnemy = this.spotEnemy.bind(this);
+    this.exitBattle = this.exitBattle.bind(this);
   }
 
   playerTurn({ key }) {
@@ -49,6 +51,10 @@ class App extends Component {
     const enemySpotted = Math.random() < enemyFrequency;
     console.log(enemyFrequency);
     return enemySpotted;
+  }
+
+  exitBattle() {
+    this.setState({ inBattle: false });
   }
 
   move(key) {
@@ -135,7 +141,11 @@ class App extends Component {
       ></Grid>
     );
     const battle = (
-      <div><h1>FIGHT!</h1></div>
+      <Battle
+        gnomeStats={gnomeStats}
+        terrain={gridArray[gnomeStats.pos.Y][gnomeStats.pos.X].terrain}
+        exitBattle={this.exitBattle}
+      ></Battle>
     );
 
     return (
