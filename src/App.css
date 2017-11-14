@@ -1,6 +1,11 @@
 body{
   background-color: #DDE5EA;
 }
+
+.button:hover{
+  background-color: DarkGrey;
+  cursor: pointer;
+}
 .App-header {
   text-align: center;
   background-color: #222;
@@ -21,7 +26,3 @@ body{
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}

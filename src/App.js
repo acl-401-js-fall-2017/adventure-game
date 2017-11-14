@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
 import './App.css';
 import Death from './Death';
 import Player from './Player';
@@ -23,7 +22,6 @@ class App extends Component {
     updated.playerOne.action = '';
     updated.playerOne.dog = dog;
     updated.playerOne.img = oneImg;
-
 
     updated.playerTwo.name = '';
     updated.playerTwo.name = two;
@@ -52,8 +50,7 @@ class App extends Component {
     jeff.hp = bob.hp;
     jeff.hasProjected = true;
     bob.hp = jeffHp;
-    this.setState({ playerOne : bob });
-    this.setState({ playerTwo : jeff });
+    this.setState({ playerOne : bob, playerTwo : jeff });
   }
 
   changePlayerAction(player, action) {
@@ -82,8 +79,8 @@ class App extends Component {
   reset(){
     document.removeEventListener('keydown', this.handleAction);
     return this.setState({
-      playerOne: { hp: 5, action: '', name: 'Bob' },
-      playerTwo: { hp: 5, action: '', name: 'Jeff', hasProjected: false },
+      playerOne: { hp: 8, action: '', name: 'Bob' },
+      playerTwo: { hp: 8, action: '', name: 'Jeff', hasProjected: false },
       signedIn: false,
       log: []
     });
@@ -99,7 +96,8 @@ class App extends Component {
         <SignUp shouldDisplay={!signedIn} updateNames={this.updateNames} startListener={this.startListener} />
 
         <Death shouldDisplay={!this.bothAlive() && signedIn} playerOne={playerOne} playerTwo={playerTwo}
-          handleReset={() => this.reset()} />
+          handleReset={() => this.reset()} 
+        />
 
         <GameDiv shouldDisplay={this.bothAlive() && signedIn}>
         
@@ -113,7 +111,8 @@ class App extends Component {
             playerTwo={playerTwo}
             log={log}
             updateLog={(updated) => this.setState({ log: updated })}
-            astralProject={() => this.switchHealth()}/>
+            astralProject={() => this.switchHealth()}
+          />
 
           <Player player={playerTwo} instruction={['P: quick attack',  'O: heavy attack',  'I: riposte', 'U: Astral Projection']}/>
 

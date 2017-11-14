@@ -7,14 +7,16 @@ export default class Player extends Component{
     const { player, instruction } = this.props;
     return(
       <div style ={{ display: 'flex', justifyContent:'center', width:'50%' }}>
+
         <InfoDiv>
           <span>{player.name}</span>
-          <img  style={{ width: '100%' }} src={player.img}/>
+          <img  style={{ width: '100%' }} alt={'avatar'} src={player.img}/>
           <span>Current Health:{player.hp}</span>
           <span> Actions: </span>
           { instruction.map((v, i) =><span key={i}>{v}</span>)}
           <span>{(player.action !== '')? `${player.name} is ready`: `${player.name} is making a choice...`}</span>
         </InfoDiv>
+
       </div>
     );
   }

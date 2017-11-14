@@ -3,20 +3,24 @@ import styled from 'styled-components';
  
 export default class Death extends Component{
   
-  state ={ outcome: '' };
+  state = { outcome: '', winnerImg: '' };
   
   determineOutcome(){
     const { playerOne, playerTwo } = this.props;
+    let img = playerOne.img;
     if (playerOne.hp < 1 && playerTwo.hp < 1) {
-      this.setState({ outcome: 'they both died' });
+      img = '';
+      this.setState({ outcome: 'they both died', winnerImg: img });
     }
 
     else if (playerOne.hp < 1) {
-      this.setState({ outcome: `${playerTwo.name} won!!!` });
+      img = playerTwo.img;
+      this.setState({ outcome: `${playerTwo.name} won!!!`, winnerImg: img });
     }
 
     else if (playerTwo.hp < 1) {
-      this.setState({ outcome: `${playerOne.name} won!!!` });
+      img = playerOne.img;
+      this.setState({ outcome: `${playerOne.name} won!!!`, winnerImg: img  });
     }
   }
 
@@ -25,12 +29,13 @@ export default class Death extends Component{
     if (!nextProps.playerOne || !nextProps.playerTwo) return;
     this.determineOutcome();
   }
-  render(){
-    return( 
-      <WinScreen shouldDisplay ={this.props.shouldDisplay}>
+
+  render() {
+    return ( 
+      <WinScreen shouldDisplay={this.props.shouldDisplay}>
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           <span>{this.state.outcome}</span>
-          <StyledP onClick={() => this.props.handleReset()}> Play Again?</StyledP>
+          <StyledP className="button" onClick={() => this.props.handleReset()}>Play Again?</StyledP>
         </div>
       </WinScreen>
     );

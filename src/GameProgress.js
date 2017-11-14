@@ -17,6 +17,7 @@ scrollToBottom = () => {
     const { setNextRound, playerOne, playerTwo, updateHealth, astralProject } = this.props;
     if (!playersReady) return;
 
+    //playerOne Dog
     if (playerOne.action === 'dog'){
       if(playerTwo.action === 'quick') {
         updateHealth(-1, 'One');
@@ -32,6 +33,7 @@ scrollToBottom = () => {
         updatedArray.push(`Unaware of ${playerTwo.name}\'s trap, ${playerOne.name} directed ${playerOne.dog} to attack, only to be countered by ${playerTwo.name}'s riposte. Seeing his pet beaten so brutally causes ${playerOne.name} 3 psychological dmg and thousands in future therapy bills.`);
       } 
     }
+    //player One Quick
     if (playerOne.action === 'quick'){
       if(playerTwo.action === 'quick') {
         updateHealth(-1, 'One');
@@ -111,11 +113,8 @@ scrollToBottom = () => {
   }
 
   render() {
-    return(
-      // everytime InfoDiv rerenders inner ref does the function;
+    return (
       <InfoDiv innerRef={node => { node && (node.scrollTop = node.scrollHeight);}}>
-        {/* <span>player one chose to {playerOne.action}</span>
-        <span>player Two chose to {playerTwo.action}</span> */}
         <span style={{ marginTop: '500px' }}></span>
         {this.props.log.map((outcome, i) =>{
           return <li className="log" id={i} key={i}>{outcome}</li>;
@@ -126,6 +125,7 @@ scrollToBottom = () => {
 }
 
 const InfoDiv = styled.div`
+padding: 0 7px;
 overflow: scroll;
 height: 300px;
 display: flex;
