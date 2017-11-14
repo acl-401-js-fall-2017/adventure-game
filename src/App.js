@@ -11,17 +11,17 @@ class App extends Component {
     super();
     this.state = {
       index: 0,
-      message:'click proceed button to move forward',
-      some: '12',
+      message:' Game of Tiles. Do no be afraid of taking risks. It might get get you to finish line faster, on not!! click proceed button to move forward',
       player: {
         position: 0,
         inventory : [],
         energy: 10
-      }
+      },
+      x:0
       
     };
     this.diceRoll = this.diceRoll.bind(this);
-    this.takingRisk = this.takingRisk.bind(this);
+    // this.takingRisk = this.takingRisk.bind(this);
     this.pickItem = this.pickItem.bind(this);
   }
 
@@ -32,29 +32,50 @@ class App extends Component {
   }
 
   diceRoll() {
+    
     const player = { ...this.state.player };
     player.position += this.getRandom(1,3) ;
     const index = player.position;
-    this.setState(
-      {
-        index,
-        message: tiles[index -1].message,
-        player
-      }
-    );
+    if(!tiles[index-1]) {
+      this.setState(
+        { 
+          index: tiles.length,
+          message: 'You Won',
+        });
+      return;
+    }else{
+      this.setState(
+        {
+          index,
+          message: tiles[index -1].message,
+          player,
+          x: index*10,
+        }
+      );
+    }
   }
 
-  takingRisk() {
-    const player = { ...this.state.player };
-    const index = player.position += tiles[player.position -1].bonus;
-    this.setState(
-      {
-        index,
-        message: tiles[index -1].message,
-        player
-      }
-    );
-  }
+  // takingRisk() {
+  //   const player = { ...this.state.player };
+  //   const index = player.position += tiles[player.position -1].bonus;
+  //   if(!tiles[index-1]) {
+  //     this.setState(
+  //       { 
+  //         index: tiles.length,
+  //         message: 'Game Over' 
+  //       });
+  //     return;
+  //   }else{
+  //     this.setState(
+  //       {
+  //         index,
+  //         message: tiles[index -1].message,
+  //         player,
+  //         x : index
+  //       }
+  //     );
+  //   }
+  // }
 
   pickItem(event) {
     event.target.disabled = true;
@@ -67,8 +88,7 @@ class App extends Component {
   
   render() {
     
-    const { index, player } = this.state;
-    // console.log(tiles[index - 1].bonus);
+    const { index, player, message, x } = this.state;
     let bonusPrompt = (<div>
       <button onClick={this.takingRisk}>Yes</button>
       <button onClick={this.diceRoll}>No</button>
@@ -82,15 +102,15 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <div>
+          <h3>{message}</h3>
+        </div>
+        {/* <div>
+          { !tiles[index-1] || tiles[index-1].bonus === 0 ? 'keep moving' : bonusPrompt }
+        </div> */}
+        <div>
           <button onClick={this.diceRoll}>proceed!</button>
         </div>
-        <div>
-          <p>message: {index < 1 ? 'lets roll' : tiles[index- 1].message }</p>
-        </div>
-        <div>
-          { !tiles[index-1]? 'keep moving' : bonusPrompt }
-        </div>
-        <Player player={player} pickItem={this.pickItem}/>
+        <Player player={player} pickItem={this.pickItem} x={x} index={index}/>
       </div>
     );
   }
