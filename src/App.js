@@ -71,11 +71,11 @@ class App extends Component {
     return (
       <div className="App">
         <Floor floorScript ={floor.message}/>
-        <section className="wrapper">
+        <div>
           <Controller floor={floor} floors={floors} floorChange={floorNumber => this.handleFloorChange(floorNumber)}
             pickUpVal={pickUpValue} pickUp={item => this.handlePickUp(item)} addToPizza={item => this.handleAddtoPizza(item)}
             drop={()=> this.handleDrop()} handlePickUpValue={item =>  this.handlePickUpValue(item)} holding={itemInHand}/>
-        </section>
+        </div>
       </div>
     );
   }
@@ -102,7 +102,7 @@ class SelectBox extends Component {
     const Options = options.map((option, index) => {
       const optionElement = option.name === '4th Floor' ? 
         <option key={index} value={index} default>Home</option> :
-        <option key ={index} value={index}>{option.name || option}</option>;
+        <option key ={index} value={index}>{option.key || option}</option>;
       return optionElement;
     });
     return(
@@ -125,8 +125,11 @@ class Buttons extends Component {
     const { addToPizza, pickUp, pickUpVal, drop, holding } =this.props;
     return(
       <div>
+        <label className="label-two">Pick up an item to take home</label><br/>
         <button className="pick-up two" value={pickUpVal} onClick={({ target }) => pickUp(target.value)}>Pick Up</button>
+        <label className="label-three">Get rid of this item</label><br/>
         <button className="drop three" onClick= {() => drop()}>Drop</button>
+        <label className="label-four">Add to your pantry</label><br/>
         <button className="pizza-add four" value={holding} onClick={({ target }) => addToPizza(target.value)}>Add to Pizza</button>
       </div>
     );
@@ -145,7 +148,8 @@ class Controller extends Component{
     const makePizzaButton = <button name="make-pizza" onClick={() => this.handleMakePizza()}>make pizza</button>;
     const { floor, floors, floorChange, pickUpVal, pickUp, addToPizza, drop, handlePickUpValue } = this.props;
     return(
-      <div>
+      <div className="wrapper">
+        <label className="label-one">The Elevator</label>
         <SelectBox options={floors} className="dropDown one" name="elevator"
           selectChange={floorNumber => floorChange(floorNumber)} />
         {floor.key === '4th Floor' && makePizzaButton}
