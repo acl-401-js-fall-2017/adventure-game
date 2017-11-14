@@ -50,7 +50,7 @@ const l = {
 const cartes = {
   terrain: terrain,
 
-  test: [
+  firstQuest: [
     [ l.c, l.g, l.g, l.g, l.g, l.g, l.m, l.m, l.m, l.g],
     // --------------------------------------------------
     [ l.g, l.t, l.t, l.t, l.g, l.g, l.m, l.m, l.g, l.g],
