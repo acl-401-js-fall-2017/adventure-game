@@ -21,15 +21,15 @@ class App extends Component {
   componentWillMount() {
     const savedGame = localStorage.getItem('currentGame');
     savedGame ? this.setState(JSON.parse(savedGame)) :
-      this.setState({ timer: { minutes: parseInt(moment().format('mm'), 10), seconds: parseInt(moment().format('ss'), 10)} });
+      this.setState({ timer: { minutes: parseInt(moment().format('mm'), 10), seconds: parseInt(moment().format('ss'), 10) } });
   }
 
   componentDidUpdate() {
     localStorage.setItem('currentGame', JSON.stringify(this.state));
   }
 
-  handlePickUpValue = item => {
-    this.setState({ pickUpValue: item });
+  handlePickUpValue = index => {
+    this.setState({ pickUpValue: this.state.floor.items[index] });
   };
 
   handlePickUp = item => {
@@ -42,7 +42,7 @@ class App extends Component {
   }
 
   handleFloorChange = floorNumber => {
-    const floorData = { pizzaIngredients: [], pickUpValue: floors[floorNumber].items[0], floor: floors[floorNumber] }
+    const floorData = { pizzaIngredients: [], pickUpValue: floors[floorNumber].items[0], floor: floors[floorNumber] };
     floorNumber !== 1 && delete floorData.pizzaIngredients;
     this.setState(floorData);
   }
@@ -70,21 +70,17 @@ class App extends Component {
     return (
       <div className="App">
         <Floor floorScript ={floor.message}/>
-        <div className="wrapper">
-          <Elevator floors={floors}floorChange ={floorNumber => this.handleFloorChange(floorNumber)}/>
+        <section className="wrapper">
+          <Select options={floors} className="dropDown one" name="elevator" 
+            selectChange ={floorNumber => this.handleFloorChange(floorNumber)}/>
           { floor.key === '4th Floor' && makePizzaButton }
           <Controller pickUpVal={this.state.pickUpValue} pickUp={item => this.handlePickUp(item)} 
             addToPizza={item => this.handleAddtoPizza(item)} drop={()=> this.handleDrop()}/>
           <img id="pics"alt="Old Lady" src={this.state.floor.img}/>
           <label>Items in the Room</label>
-          <select className="dropDown five" name="items-in-room" onChange={({ target }) => {
-            this.handlePickUpValue(target.value);}}>
-            { this.state.floor.items.map((item, index) => {
-              return <option key={index} value={item}>{item}</option>;
-            }) }
-          </select>
-          
-        </div>
+          <Select options={floor.items} className="dropDown five" name="items-in-room" 
+            selectChange={item =>  this.handlePickUpValue(item)}/>
+        </section>
       </div>
     );
   }
@@ -102,22 +98,23 @@ class Floor extends Component {
   }
 }
 
-class Elevator extends Component {
+class Select extends Component {
   render(){
-    const { floorChange, floors } = this.props;
-    const elevatorOptions = floors.map((floor, index) => {
-      const option = floor.key === '4th Floor' ? 
+    const { selectChange, options, className, name } = this.props;
+    const Options = options.map((option, index) => {
+      const optionElement = option.name === '4th Floor' ? 
         <option key={index} value={index} default>Home</option> :
-        <option key ={index} value={index}>{floor.key}</option>;
-      return option;
+        <option key ={index} value={index}>{option.name || option}</option>;
+      return optionElement;
     });
     return(
-      <select className="dropDown one" name="elevator" onChange={({ target }) => floorChange(target.value)}>
-        { elevatorOptions }
+      <select className={className} name={name} onChange={({ target }) => selectChange(target.value)}>
+        { Options }
       </select>
     );
   }
 }
+
 
 class Controller extends Component {
   render(){
