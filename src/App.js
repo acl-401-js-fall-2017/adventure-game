@@ -3,6 +3,9 @@ import Grid from './Components/Grid';
 import Battle from './Components/Battle';
 import './App.css';
 
+import defeatImg from './images/defeated.png';
+import victoryImg from './images/VictoryFlag.jpg';
+
 import cartes from './utils/maps';
 const carte = cartes.firstQuest;
 
@@ -20,7 +23,8 @@ class App extends Component {
         pos: {
           X: 9,
           Y: 9
-        }
+        },
+        hasKey: false
       },
       inBattle: false,
       victory: false,
@@ -38,6 +42,7 @@ class App extends Component {
     this.watchStep = this.watchStep.bind(this);
     this.spotEnemy = this.spotEnemy.bind(this);
     this.exitBattle = this.exitBattle.bind(this);
+    this.tryLock = this.tryLock.bind(this);
   }
 
   playerTurn({ key }) {
@@ -116,8 +121,27 @@ class App extends Component {
       tempX < 0 || tempX > 9 ||
       tempY < 0 || tempY > 9
     ) canMove = false;
+    else if(gridArray[tempY][tempX].terrain.hasKey) {
+      const keyedUpGnome = Object.assign({}, this.state.gnomeStats);
+      keyedUpGnome.hasKey = true;
+      this.setState({ gnomeStats: keyedUpGnome });
+      console.log('got key');
+      canMove = true;
+    }
+    else if(gridArray[tempY][tempX].terrain.isLocked) canMove = this.tryLock(gridArray, tempY, tempX);
     else canMove = gridArray[tempY][tempX].terrain.passable;
     return canMove ? { X: tempX, Y: tempY } : position;
+  }
+
+  tryLock(gridArray, x, y) {
+    const { gnomeStats } = this.state;
+    if(gnomeStats.hasKey) {
+      const unlockedGrid = Object.assign({}, gridArray);
+      unlockedGrid[x][y].terrain.isLocked = false;
+      this.setState({ gridArray: unlockedGrid });
+      return true;
+    }
+    return false;
   }
 
   setGnomeOnGrid(gridArray, gnomeStats) {
@@ -133,10 +157,14 @@ class App extends Component {
       return row.map(elem => {
         return {
           terrain: elem, 
-          hasGnome: false
+          hasGnome: false,
+          hasKey: false,
+          isLocked: false
         };
       });
     });
+    gridSetUp[4][6].isBlocked = true;
+    gridSetUp[9][3].hasKey = true;
 
     this.setGnomeOnGrid(gridSetUp);
     this.setState({ gridArray: gridSetUp });
@@ -159,10 +187,30 @@ class App extends Component {
       ></Battle>
     );
     const victoryPage=(
-      <h1>VICTORY</h1>
+      <img
+        src={victoryImg} 
+        alt='You win!'
+        style={{
+          width: '100%',
+          height: '100%'
+        }}
+      />
     );
     const defeatPage=(
-      <h1>DEFEAT</h1>
+      <div 
+        style={{
+          height: '100%',
+          width: '100%',
+          backgroundColor: 'black',
+          color: 'gray'
+        }}
+      >
+        <img 
+          src={defeatImg} 
+          alt='The ogre ate u'
+        />
+        <h1>GAME OVER</h1>
+      </div>
     );
 
     const inGame = inBattle ? battle : mapGrid;

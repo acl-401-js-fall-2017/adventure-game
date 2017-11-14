@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+
+import gnomeImg from '../images/gnome.svg';
+import ogreImg from '../images/ogre.png';
 import './styles/Battle.css';
 
 class Battle extends Component {
@@ -7,12 +10,15 @@ class Battle extends Component {
     this.state = {
       gnomeStats: props.gnomeStats,
       ogreStats: null,
-      terrain: props.terrain
+      terrain: props.terrain,
+      ogreAttacking: false,
+      gnomeAttacking: false
     };
 
     this.ogreWindUp = this.ogreWindUp.bind(this);
     this.ogreStrike = this.ogreStrike.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.attackRecoil = this.attackRecoil.bind(this);
     this.exitBattle = props.exitBattle;
     this.t = null;
   }
@@ -46,7 +52,8 @@ class Battle extends Component {
     
     clearTimeout(this.t);
     this.t = null;
-    this.setState({ gnomeStats: damagedGnome });
+    this.setState({ gnomeStats: damagedGnome, ogreAttacking: true });
+    this.attackRecoil('ogre');
     this.checkHealth();
   }
   
@@ -55,7 +62,8 @@ class Battle extends Component {
       const damagedOgre = Object.assign({}, this.state.ogreStats);
       damagedOgre.health -= this.damageInflicted(this.state.gnomeStats);
       
-      this.setState({ ogreStats: damagedOgre });
+      this.setState({ ogreStats: damagedOgre, gnomeAttacking: true });
+      this.attackRecoil('gnome');
       this.checkHealth();
     }
     else if(key.includes('Arrow')) this.tryToRun();
@@ -65,6 +73,13 @@ class Battle extends Component {
     const { terrain } = this.state;
     const hitPower = Math.floor(combatant.strength * (1 + (Math.random() - Math.random()) * 0.5));
     return Math.random() < terrain.accuracy ? hitPower : 0;
+  }
+
+  attackRecoil(attacker) {
+    setTimeout(() => {
+      if(attacker === 'gnome') this.setState({ gnomeAttacking: false });
+      else if(attacker === 'ogre') this.setState({ ogreAttacking: false });
+    }, 100);
   }
 
   tryToRun() {
@@ -89,7 +104,7 @@ class Battle extends Component {
   }
 
   render() {
-    const { terrain, ogreStats, gnomeStats } = this.state;
+    const { terrain, ogreStats, gnomeStats, gnomeAttacking, ogreAttacking } = this.state;
     this.ogreWindUp();
 
     return (
@@ -106,8 +121,43 @@ class Battle extends Component {
           }
         }}
       >
-      gnome health: {gnomeStats.health}
-      ogre health: {ogreStats.health}
+        <div
+          className='stats'
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            height: '10%'
+
+          }}
+        >
+          <p>
+            gnome health: {gnomeStats.health}
+          </p>
+          <p>
+            ogre health: {ogreStats.health}
+          </p>
+        </div>
+        <div 
+          className='battleground'
+        >
+          <img 
+            src={gnomeImg} 
+            alt='player'
+            style= {{
+              width: `${ 20 + (gnomeAttacking ? 3 : 0) }%`,
+              marginLeft: gnomeAttacking ? '1em' : '0' 
+            }}
+          />
+          <img 
+            src={ogreImg} 
+            alt='enemy'
+            style= {{
+              width: `${ogreStats.strength - 4 + 20 + (ogreAttacking ? 3 : 0) }%`,
+              maxWidth: '60%',
+              marginRight: ogreAttacking ? '1em' : '0' 
+            }}
+          />
+        </div>
       </div>
     );
   }

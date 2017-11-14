@@ -2,3 +2,13 @@
     height: 40em;
     width: 40em;
 }
+
+.stats {
+    display: flex;
+    justify-content: center;
+    height: 50%
+}
+
+.stats p {
+    margin: 1em;
+}
