@@ -85,8 +85,7 @@ scrollToBottom = () => {
     return(
       // everytime InfoDiv rerenders inner ref does the function;
       <InfoDiv innerRef={node => { node && (node.scrollTop = node.scrollHeight);}}>
-        {/* <span>player one chose to {playerOne.action}</span>
-        <span>player Two chose to {playerTwo.action}</span> */}
+        <span style={{ marginTop: '50px' }}></span>
         {this.state.outcomeArray.map((outcome, i) =>{
           return <li id={i} key={i}>{outcome}</li>;
         })}
