@@ -16,7 +16,8 @@ class App extends Component {
       floors,
       floor: floors[3],
       pickUpValue: floors[3].items[0],
-      pizzaIngredients: []
+      pizzaIngredients: [],
+      timePenalty: 0
     };
   }
 
@@ -44,21 +45,26 @@ class App extends Component {
   }
 
   handleFloorChange = floorNumber => {
-    const floorData = { pizzaIngredients: [], pickUpValue: floors[floorNumber].items[0], floor: floors[floorNumber] };
-    floorNumber !== 1 && delete floorData.pizzaIngredients;
+    const floorData = { 
+      pizzaIngredients: [],
+      pickUpValue: floors[floorNumber].items[0],
+      floor: floors[floorNumber], 
+      timePenalty: this.state.timePenalty + 1 
+    };
+    parseInt(floorNumber, 10) !== 1 && delete floorData.pizzaIngredients;
+    parseInt(floorNumber, 10) !== 0 && delete floorData.timePenalty;
     this.setState(floorData);
   }
 
-  handleAddtoPizza = ingredient => {
+  handleAddtoPizza = () => {
     if (!this.state.itemInHand) return;
     const pizzaIngredients = this.state.pizzaIngredients;
-    pizzaIngredients.push(ingredient);
+    pizzaIngredients.push(this.state.itemInHand);
     this.setState({ pizzaIngredients, itemInHand: null });
   }
 
   handleMakePizza = () => {
-    
-    const minuteDuration = parseInt(moment().format('mm'), 10) - this.state.timer.minutes;
+    const minuteDuration = parseInt(moment().format('mm'), 10) - this.state.timer.minutes + (this.state.timePenalty * 2);
     const secondDuration = parseInt(moment().format('ss'), 10) - this.state.timer.seconds;
     alert(`You won the game in ${minuteDuration} minutes and ${secondDuration} seconds`);
     localStorage.clear();
@@ -67,15 +73,28 @@ class App extends Component {
 
   render() {
 
-    const { floor, floors, pickUpValue, itemInHand } =this.state;
+    const { floor, floors, pickUpValue, itemInHand, pizzaIngredients } =this.state;
     return (
       <div className="App">
-        <Floor floorScript ={floor.message}/>
+        <Floor floorScript ={floor.message} holding={itemInHand} pizzaIngredients={pizzaIngredients}/>
         <div>
           <Controller floor={floor} floors={floors} floorChange={floorNumber => this.handleFloorChange(floorNumber)}
-            pickUpVal={pickUpValue} pickUp={item => this.handlePickUp(item)} addToPizza={item => this.handleAddtoPizza(item)}
-            drop={()=> this.handleDrop()} handlePickUpValue={item =>  this.handlePickUpValue(item)} holding={itemInHand}/>
+            pickUpVal={pickUpValue} pickUp={item => this.handlePickUp(item)} addToPizza={() => this.handleAddtoPizza()}
+            drop={() => this.handleDrop()} handlePickUpValue={item =>  this.handlePickUpValue(item)} holding={itemInHand}/>
         </div>
+      </div>
+    );
+  }
+}
+
+class Gameinfo extends Component{
+  render(){
+    const { holding, pizzaIngredients } = this.props;
+    return(
+      <div>
+        <label> </label>
+        <p>Holding: {holding}</p>
+        <p>Pantry: {pizzaIngredients.join()}</p>
       </div>
     );
   }
@@ -83,12 +102,16 @@ class App extends Component {
 
 class Floor extends Component {
   render(){
-    const { floorScript } = this.props;
+    const { floorScript, holding, pizzaIngredients } = this.props;
     return (
-      <header className="App-header">
-        <h1 className="flash">Shane is lounging at home</h1>
-        <p className="msg">{floorScript}</p>
-      </header>
+      <div>
+        
+        <header className="App-header">
+          <h1 className="flash">Shane is lounging at home</h1>
+          <p className="msg">{floorScript}</p>
+          <Gameinfo holding={holding} pizzaIngredients={pizzaIngredients}/>
+        </header>
+      </div>
     );
   }
 }
@@ -100,9 +123,9 @@ class SelectBox extends Component {
   render(){
     const { selectChange, options, className, name } = this.props;
     const Options = options.map((option, index) => {
-      const optionElement = option.name === '4th Floor' ? 
+      const optionElement = option.name === '3rd Floor' ? 
         <option key={index} value={index} default>Home</option> :
-        <option key ={index} value={index}>{option.key || option}</option>;
+        <option key ={index} value={index}>{option.name || option}</option>;
       return optionElement;
     });
     return(
@@ -118,6 +141,8 @@ SelectBox.PropTypes = {
   className: PropTypes.string,
   string: PropTypes.string
 };
+
+
 
 
 class Buttons extends Component {
