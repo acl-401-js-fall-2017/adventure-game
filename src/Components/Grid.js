@@ -8,7 +8,7 @@ class Grid extends Component {
   render() {
     const { 
       gridArray, 
-      // gnomeStats 
+      // gnomeStats
     } = this.props;
     
     const flattenedGrid = gridArray
