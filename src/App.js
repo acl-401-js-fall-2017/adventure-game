@@ -94,7 +94,7 @@ class App extends Component {
     return (
       <div className="App" >
         <header className="App-header">
-          <h1 className="App-title">Parking Massacre</h1>
+          <img src={require('./pics/parkingspot.jpg')} className="Header-Image" alt="parking spot"/>
         </header>
         <SignUp shouldDisplay={!signedIn} updateNames={this.updateNames} startListener={this.startListener} />
 
