@@ -94,7 +94,7 @@ class Gameinfo extends Component{
       <div>
         <label> </label>
         <p>Holding: {holding}</p>
-        <p>Pantry: {pizzaIngredients.join()}</p>
+        <p>Pizza: {pizzaIngredients.join()}</p>
       </div>
     );
   }
@@ -148,14 +148,11 @@ SelectBox.PropTypes = {
 class Buttons extends Component {
   render(){
     const arrSort = ['cheese', 'crust', 'sauce'];
-    const { floor, addToPizza, pickUp, pickUpVal, drop, holding, pizzaIngredients, makePizza } = this.props;
+    const { floor, addToPizza, pickUp, pickUpVal, drop, pizzaIngredients, makePizza } = this.props;
     const check =  JSON.stringify(pizzaIngredients.sort()) === JSON.stringify(arrSort);
-    console.log('I am the pizza ing sorted', pizzaIngredients.sort());
-    console.log('I am the check array', arrSort);
-    console.log('I am boolean', check);
-    const makePizzaButton = check ? 
-      <button className="make-pizza six" onClick={() => makePizza()}>make pizza</button>:
-      <button className="hide" onClick={() => makePizza()}>make pizza</button>;
+    const pizzaButton = check ? 
+      <button key="7" className="make-pizza six" onClick={() => makePizza()}>bake pizza</button> :
+      <button key="7" className="make-pizza six" onClick={() => addToPizza()}>Add to Pizza</button>;
     return [
       <label key="0" className="label-two">Pick up an item to take home</label>,
       <br key="1"/>,
@@ -163,12 +160,10 @@ class Buttons extends Component {
       <label key="3" className="label-three">Get rid of this item</label>,
       <br key=""/>,
       <button key="4" className="drop three" onClick= {() => drop()}>Drop</button>,
-      <label key="5" className="label-four">Add to your pantry</label>,
-      <br key="6"/>,
-      <button key="7" className="pizza-add four" value={holding} onClick={({ target }) => addToPizza(target.value)}>Add to Pizza</button>,
-      <label key="8" className="label-six">You have enough ingredients</label>,
+      <br key="5"/>,
+      <label key="6" className="label-six">You have enough ingredients</label>,
       <div>
-        {floor.key === '3rd Floor' && makePizzaButton}
+        {floor.key === '3rd Floor' && pizzaButton}
       </div>
     ];
   }
@@ -192,7 +187,7 @@ class Controller extends Component{
           selectChange={floorNumber => floorChange(floorNumber)} />
         <Buttons pickUpVal={pickUpVal} pickUp={item => pickUp(item)} pizzaIngredients={pizzaIngredients}
           addToPizza={item => addToPizza(item)} drop={() => drop()} floor={floor} makePizza={makePizza}/>
-        <img id="pics" alt="{floor.alt}" src={floor.img} />
+        <img id="pics" alt={floor.alt} src={floor.img} />
         <label className="label-five">Items in the Room</label>
         <SelectBox options={floor.items} className="dropDown five" name="items-in-room" 
           selectChange={item => handlePickUpValue(item)}/>
@@ -201,7 +196,7 @@ class Controller extends Component{
   }
 }
 Controller.propTypes = {
-  floor: PropTypes.string,
+  floor: PropTypes.object,
   floors: PropTypes.array,
   floorChange: PropTypes.func,
   addToPizza: PropTypes.func,
