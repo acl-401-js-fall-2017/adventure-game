@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should render SelectBoxu component 1`] = `
+<select
+  className="dropDown one"
+  name="elevator"
+  onChange={[Function]}
+>
+  <option
+    key="0"
+    value={0}
+  >
+    Ground Floor
+  </option>
+  <option
+    key="1"
+    value={1}
+  >
+    1st Floor
+  </option>
+  <option
+    key="2"
+    value={2}
+  >
+    2nd Floor
+  </option>
+  <option
+    default={true}
+    key="3"
+    value={3}
+  >
+    Home
+  </option>
+  <option
+    key="4"
+    value={4}
+  >
+    4th Floor
+  </option>
+  <option
+    key="5"
+    value={5}
+  >
+    5th Floor
+  </option>
+  <option
+    key="6"
+    value={6}
+  >
+    6th Floor
+  </option>
+</select>
+`;
+
+exports[`App should render game info component 1`] = `
+<div>
+  <label>
+     
+  </label>
+  <p>
+    Holding: 
+    sauce
+  </p>
+  <p>
+    Pizza: 
+    cheese,crust
+  </p>
+</div>
+`;

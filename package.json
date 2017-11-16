@@ -11,6 +11,8 @@
     "react-scripts": "1.0.17"
   },
   "scripts": {
+    "lint": "eslint src",
+    "pretest": "npm run lint",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
