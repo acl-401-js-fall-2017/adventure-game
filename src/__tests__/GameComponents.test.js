@@ -1,12 +1,12 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import toJSON from 'enzyme-to-json';
-import GameInfo from '../GameInfo';
-import SelectBox from '../SelectBox';
+import GameInfo from '../components/GameInfo';
+import SelectBox from '../components/SelectBox';
 import floors from '../Floors';
-import Buttons from '../Buttons';
-import Controller from '../Buttons';
-import Floor from '../Floor';
+import Buttons from '../components/Buttons';
+import Controller from '../components/Buttons';
+import Floor from '../components/Floor';
 
 
 describe('App', () => {

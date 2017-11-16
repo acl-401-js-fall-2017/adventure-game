@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import floors from './Floors';
 import moment from 'moment';
-import Floor from './Floor';
-import Controller from './Controller';
+import Floor from './components/Floor';
+import Controller from './components/Controller';
 
 
 class App extends Component {
@@ -67,7 +67,6 @@ class App extends Component {
     const minuteDuration = parseInt(moment().format('mm'), 10) - this.state.timer.minutes + (this.state.timePenalty * 2);
     const secondDuration = parseInt(moment().format('ss'), 10) - this.state.timer.seconds;
     alert(`You won the game in ${minuteDuration} minutes and ${secondDuration} seconds`);
-    localStorage.clear();
   }
 
 

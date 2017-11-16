@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "jest": "^21.2.1",
+    "setupTestFrameworkScriptFile": "./localStorage",
     "moment": "^2.19.2",
     "prop-types": "^15.6.0",
     "react": "^16.1.1",
@@ -23,6 +24,7 @@
     "enzyme-adapter-react-16": "^1.1.0",
     "enzyme-to-json": "^3.2.2",
     "jest-enzyme": "^4.0.1",
+    "jest-localstorage-mock": "^2.1.0",
     "react-test-renderer": "^16.1.1"
   }
 }
