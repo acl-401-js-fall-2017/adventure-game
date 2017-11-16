@@ -1,0 +1,35 @@
+.Battle {
+    height: 40em;
+    width: 40em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    height: 50%
+}
+
+.stats article {
+    margin: 1em;
+    width: 50%;
+    border: 3px solid black
+}
+
+.gnomeStats {
+    display: float;
+    align-content: right;
+}
+
+.messageBox {
+    height: 25%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    background-color: lightgray;
+    border: 5px outset black;
+}
