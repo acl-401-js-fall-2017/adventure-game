@@ -1,0 +1,178 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should render Buttons component 1`] = `
+Array [
+  <label
+    className="label-two"
+    key="0"
+/>,
+  <br
+    key="1"
+/>,
+  <button
+    className="pick-up two"
+    key="2"
+    onClick={[Function]}
+    value="cheese"
+/>,
+  <label
+    className="label-three"
+    key="3"
+/>,
+  <br
+    key=""
+/>,
+  <button
+    className="drop three"
+    key="4"
+    onClick={[Function]}
+/>,
+  <br
+    key="5"
+/>,
+  <label
+    className="label-six"
+    key="6"
+/>,
+  <div />,
+]
+`;
+
+exports[`App should render Controller component 1`] = `
+Array [
+  <label
+    className="label-two"
+    key="0"
+/>,
+  <br
+    key="1"
+/>,
+  <button
+    className="pick-up two"
+    key="2"
+    onClick={[Function]}
+    value="sauce"
+/>,
+  <label
+    className="label-three"
+    key="3"
+/>,
+  <br
+    key=""
+/>,
+  <button
+    className="drop three"
+    key="4"
+    onClick={[Function]}
+/>,
+  <br
+    key="5"
+/>,
+  <label
+    className="label-six"
+    key="6"
+/>,
+  <div />,
+]
+`;
+
+exports[`App should render Floor component 1`] = `
+<div>
+  <header
+    className="App-header"
+  >
+    <h1
+      className="flash"
+    >
+      Shane is starving at home
+    </h1>
+    <p
+      className="msg"
+    >
+      You inadvertently knock on the door of your landlord when you are late with the rent. You apologize profusely but the landlord has no mercy. He takes all of the pizza ingredients that you have accumulated so far from your pantry.
+    </p>
+    <GameInfo
+      holding="sauce"
+      pizzaIngredients={
+        Array [
+          "sauce",
+          "crust",
+        ]
+      }
+    />
+    <img
+      alt="pizza"
+      className="pizza"
+      src="./images/pizza2.png"
+    />
+  </header>
+</div>
+`;
+
+exports[`App should render SelectBox component 1`] = `
+<select
+  className="dropDown one"
+  name="elevator"
+  onChange={[Function]}
+>
+  <option
+    key="0"
+    value={0}
+  >
+    Ground Floor
+  </option>
+  <option
+    key="1"
+    value={1}
+  >
+    1st Floor
+  </option>
+  <option
+    key="2"
+    value={2}
+  >
+    2nd Floor
+  </option>
+  <option
+    default={true}
+    key="3"
+    value={3}
+  >
+    Home
+  </option>
+  <option
+    key="4"
+    value={4}
+  >
+    4th Floor
+  </option>
+  <option
+    key="5"
+    value={5}
+  >
+    5th Floor
+  </option>
+  <option
+    key="6"
+    value={6}
+  >
+    6th Floor
+  </option>
+</select>
+`;
+
+exports[`App should render game info component 1`] = `
+<div>
+  <label>
+     
+  </label>
+  <p>
+    Holding: 
+    sauce
+  </p>
+  <p>
+    Pizza: 
+    cheese,crust
+  </p>
+</div>
+`;
