@@ -5,8 +5,9 @@ import Gate from './components/Gate';
 import Chocolate from './components/Chocolate';
 import Inventing from './components/Inventing';
 import Staff from './components/Staff';
+import './styles/App.css';
+import styles from './styles/App.scss';
 
-import './App.css';
 
 class App extends Component {
   

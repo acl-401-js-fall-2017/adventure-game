@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import shopPic from '../pics/wonkaStore.jpg';
+import styles from '../styles/App.scss';
 
 
 
@@ -26,9 +27,9 @@ export default class Candyshop extends Component {
   render() {
     
     return (
-      <section>
-        <p className="App-pic">
-          <img src={shopPic} useMap="#shopMap" alt="Candy shop"/>
+      <section className="challenge">
+        <p className="picture">
+          <img  src={shopPic} useMap="#shopMap" alt="Candy shop"/>
           <map name="shopMap" id="shopMap">
             <area alt="grid"  data-value="wrong" shape="poly" coords="53,194,52,320,220,324,220,208" onClick={({ target }) => this.handleClick(target.dataset.value)}/>
             <area alt="grid"  data-value="wrong" shape="poly" coords="61,342,57,415,216,416,221,345" onClick={({ target }) => this.handleClick(target.dataset.value)}/>
@@ -45,10 +46,10 @@ export default class Candyshop extends Component {
             <area alt="grid"  data-inv="golden-ticket" data-value="correct" shape="poly" coords="1049,337,1049,447,1150,452,1146,335" onClick={({ target }) => this.handleClick(target.dataset.value, target.dataset.inv)}/>
           </map>
         </p>
-        <p className="App-script"> 
+        <p className="mission" > 
     Pick what candy to buy! Try to get the 'Golden Ticket'. 
         </p>
-        <p> 
+        <p className="message"> 
       Message: {this.state.message}
         </p>
       </section>

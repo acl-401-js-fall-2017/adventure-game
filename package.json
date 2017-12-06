@@ -10,13 +10,16 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build-css": "node-sass-chokidar --include-path ./src/styles src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"
   },
   "devDependencies": {
     "enzyme": "^3.1.1",
     "enzyme-adapter-react-16": "^1.0.4",
     "enzyme-to-json": "^3.2.2",
     "jest-enzyme": "^4.0.1",
+    "node-sass-chokidar": "0.0.3",
     "react-scripts": "1.0.17",
     "react-test-renderer": "^16.1.1"
   }

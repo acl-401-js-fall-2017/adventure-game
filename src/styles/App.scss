@@ -1,0 +1,56 @@
+* {
+  border: 1px solid  red;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 80px;
+  width: auto;
+  border: 2px solid black;
+}
+
+.App-header {
+  background-color: #d2691e;
+  height: 140px;
+  padding: 5px 35px 40px 35px;
+  color: black;
+  > h2 {
+    font-style: italic;
+  }
+}
+
+
+.App-title {
+  font-family: New Century Schoolbook,
+  serif;
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.challenge{
+  .mission {
+    font-family: serif;
+    font-style: italic;
+    font-size: 2em;
+  }
+  .message {
+    font-family: sans-serif;
+    font-weight: bold;
+  }
+}
+
+button {
+  font-weight: bolder;
+  background-color: green;
+  border-radius: 15px;
+  &:hover {
+    background-color: greenyellow;
+  }
+}
+
