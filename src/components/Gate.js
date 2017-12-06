@@ -25,16 +25,16 @@ export default class Gate extends Component {
   render() {
     
     return (
-      <section>
+      <section className="challenge">
         <img src={gatePic} alt="" useMap="#gateMap" />
         <map name="gateMap" id="Map">
           <area data-value="correct" alt="grid" shape="poly" coords="479,147,477,566,636,567,622,156" 
             onClick={({ target }) => this.handleClick(target.dataset.value)} />
         </map>
-        <p className="App-script">
+        <p className="mission">
           Do you have a ticket to give Mr Wonka?
         </p>
-        <p>
+        <p className="message">
           Message: {this.state.message}
         </p>
       </section>

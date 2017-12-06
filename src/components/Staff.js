@@ -25,15 +25,15 @@ export default class Staff extends Component {
   render() {
     
     return (
-      <section>
+      <section className="challenge">
         <img src={staffPic} alt="" useMap="#staffMap" />
         <map name="staffMap" id="Map">
           <area data-inv="gobstopper" alt="grid" shape="poly" coords="326,542,423,500,543,539,450,582" onClick={({ target }) => this.handleClick(target.dataset.value)} />
         </map>
-        <p className="App-script">
+        <p className="mission">
           Place the Everlasting Gobstopper on Mr Wonka's desk.
         </p>
-        <p>
+        <p className="message">
           Message: {this.state.message}
         </p>
       </section>

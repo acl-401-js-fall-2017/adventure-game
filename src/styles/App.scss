@@ -1,7 +1,3 @@
-* {
-  border: 1px solid  red;
-}
-
 .App {
   text-align: center;
 }
@@ -45,12 +41,21 @@
   }
 }
 
-button {
+#nextButton {
   font-weight: bolder;
   background-color: green;
   border-radius: 15px;
   &:hover {
     background-color: greenyellow;
+  }
+}
+
+#prevButton {
+  font-weight: bolder;
+  background-color: rgb(221, 156, 15);
+  border-radius: 15px;
+  &:hover {
+    background-color: rgb(231, 3, 15);
   }
 }
 

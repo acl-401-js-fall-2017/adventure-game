@@ -25,7 +25,7 @@ export default class Chocolate extends Component {
   render() {
     
     return (
-      <section>
+      <section className="challenge">
         <img src={chocPic} alt="" useMap="#chocMap" />
         <map name="chocMap" id="Map">
           <area data-inv="loompa" data-value="correct" alt="grid" shape="poly" coords="54,69,44,360,160,357,134,68" 
@@ -35,10 +35,10 @@ export default class Chocolate extends Component {
           <area data-inv="loompa" data-value="correct" alt="grid" shape="poly" coords="455,103,459,230,597,236,594,110" 
             onClick={({ target }) => this.handleClick(target.dataset.value, target.dataset.inv)} />
         </map>
-        <p className="App-script">
+        <p className = "mission">
           The oompa loompas are coming after the kids, where are they going to come from?
         </p>
-        <p>
+        <p className="message">
           Message: {this.state.message}
         </p>
       </section>

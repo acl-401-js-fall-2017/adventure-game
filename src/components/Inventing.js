@@ -39,7 +39,7 @@ export default class Inventing extends Component {
     }
     
     return (
-      <section>
+      <section className="challenge">
         <img src={inventPic} alt="" useMap="#invMap" />
         <map name="invMap" id="Map">
           <area alt="grid" data-value="correct" data-inv="gobstopper" shape="poly" coords="436,249,436,295,486,295,486,242" onClick={({ target }) => this.handleClick(target.dataset.value, target.dataset.inv)}/>
@@ -49,11 +49,11 @@ export default class Inventing extends Component {
           <area alt="grid" data-value="person" data-inv="kids" shape="poly" coords="795,602,918,295,1085,292,1142,590"   onClick={({ target }) => this.handleClick(target.dataset.value, target.dataset.inv)}/>
         </map>
         {this.state.kids.length < 4 && (
-          <p className="App-script"> 
+          <p className="mission"> 
           Move the { 4 - this.state.kids.length} kids out of the way to get the everlasting gobstopper.
           </p>
         )}
-        <p>
+        <p className="message">
           Message: {message} 
         </p>
       </section>

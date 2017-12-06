@@ -1,6 +1,3 @@
-* {
-  border: 1px solid  red; }
-
 .App {
   text-align: center; }
 
@@ -33,9 +30,16 @@
   font-family: sans-serif;
   font-weight: bold; }
 
-button {
+#nextButton {
   font-weight: bolder;
   background-color: green;
   border-radius: 15px; }
-  button:hover {
+  #nextButton:hover {
     background-color: greenyellow; }
+
+#prevButton {
+  font-weight: bolder;
+  background-color: #dd9c0f;
+  border-radius: 15px; }
+  #prevButton:hover {
+    background-color: #e7030f; }
