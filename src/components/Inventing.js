@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import inventPic from '../pics/testing.png';
-
+import PropTypes from 'prop-types';
 
 
 export default class Inventing extends Component {
@@ -61,3 +61,7 @@ export default class Inventing extends Component {
   }
 
 }
+
+Inventing.PropTypes = {
+  message: PropTypes.string
+};

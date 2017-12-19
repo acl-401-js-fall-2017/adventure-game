@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import shopPic from '../pics/wonkaStore.jpg';
+import PropTypes from 'prop-types';
 
 
 export default class Candyshop extends Component {
+
   constructor() {
     super();
     this.state = {
@@ -10,7 +12,7 @@ export default class Candyshop extends Component {
     };
   }
 
-  handleClick = (value, inv) => {
+  handleClick = (value, inv = '') => {
     const { handleInventory, inventory } = this.props;
     this.setState({
       message: value !== 'correct' ? 'Pick again' : 'You have got the golden ticket'
@@ -41,7 +43,8 @@ export default class Candyshop extends Component {
             <area alt="grid"  data-value="wrong" shape="poly" coords="884,461,883,558,1013,581,1012,468" onClick={this.handleClick}/>
             <area alt="grid"  data-value="wrong" shape="poly" coords="1045,467,1045,583,1148,603,1145,474" onClick={this.handleClick}/>
             <area alt="grid"  data-value="wrong" shape="poly" coords="872,591,871,643,988,641,985,590" onClick={this.handleClick}/>
-            <area alt="grid"  data-inv="golden-ticket" data-value="correct" shape="poly" coords="1049,337,1049,447,1150,452,1146,335" onClick={({ target }) => this.handleClick(target.dataset.value, target.dataset.inv)}/>
+            <area alt="grid"  data-inv="golden-ticket" data-value="correct" shape="poly" coords="1049,337,1049,447,1150,452,1146,335"
+              onClick={({ target }) => this.handleClick(target.dataset.value, target.dataset.inv)}/>
           </map>
         </p>
         <p className="mission" > 
@@ -56,3 +59,6 @@ export default class Candyshop extends Component {
 
 }
 
+Candyshop.PropTypes = {
+  message: PropTypes.string
+};

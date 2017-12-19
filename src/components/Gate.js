@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import gatePic from '../pics/wonkaGate.jpg';
-
+import PropTypes from 'prop-types';
 
 
 export default class Gate extends Component {
@@ -42,3 +42,7 @@ export default class Gate extends Component {
   }
 
 }
+
+Gate.PropTypes = {
+  message: PropTypes.string
+};

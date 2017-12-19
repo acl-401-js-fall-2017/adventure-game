@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import staffPic from '../pics/staff.jpg';
-
+import PropTypes from 'prop-types';
 
 
 export default class Staff extends Component {
@@ -41,3 +41,7 @@ export default class Staff extends Component {
   }
 
 }
+
+Staff.PropTypes = {
+  message: PropTypes.string
+};
