@@ -6,7 +6,6 @@ import Chocolate from './components/Chocolate';
 import Inventing from './components/Inventing';
 import Staff from './components/Staff';
 import './styles/App.css';
-import styles from './styles/App.scss';
 
 
 class App extends Component {

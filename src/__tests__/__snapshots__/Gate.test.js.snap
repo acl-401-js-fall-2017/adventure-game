@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`gate shows a Gate 1`] = `
+<section
+  className="challenge"
+>
+  <img
+    alt=""
+    src="wonkaGate.jpg"
+    useMap="#gateMap"
+  />
+  <map
+    id="Map"
+    name="gateMap"
+  >
+    <area
+      alt="grid"
+      coords="479,147,477,566,636,567,622,156"
+      data-value="correct"
+      onClick={[Function]}
+      shape="poly"
+    />
+  </map>
+  <p
+    className="mission"
+  >
+    Do you have a ticket to give Mr Wonka?
+  </p>
+  <p
+    className="message"
+  >
+    Message: 
+  </p>
+</section>
+`;

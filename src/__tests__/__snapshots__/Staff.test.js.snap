@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`staff shows a Staff 1`] = `
+<section
+  className="challenge"
+>
+  <img
+    alt=""
+    src="staff.jpg"
+    useMap="#staffMap"
+  />
+  <map
+    id="Map"
+    name="staffMap"
+  >
+    <area
+      alt="grid"
+      coords="326,542,423,500,543,539,450,582"
+      data-inv="gobstopper"
+      onClick={[Function]}
+      shape="poly"
+    />
+  </map>
+  <p
+    className="mission"
+  >
+    Place the Everlasting Gobstopper on Mr Wonka's desk.
+  </p>
+  <p
+    className="message"
+  >
+    Message: 
+  </p>
+</section>
+`;

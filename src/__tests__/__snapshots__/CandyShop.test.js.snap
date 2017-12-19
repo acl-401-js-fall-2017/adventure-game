@@ -1,9 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Game shows a candyshop 1`] = `
-<section>
+exports[`CandyShop shows a candyshop 1`] = `
+<section
+  className="challenge"
+>
   <p
-    className="App-pic"
+    className="picture"
   >
     <img
       alt="Candy shop"
@@ -109,11 +111,13 @@ exports[`Game shows a candyshop 1`] = `
     </map>
   </p>
   <p
-    className="App-script"
+    className="mission"
   >
     Pick what candy to buy! Try to get the 'Golden Ticket'.
   </p>
-  <p>
+  <p
+    className="message"
+  >
     Message: 
   </p>
 </section>
