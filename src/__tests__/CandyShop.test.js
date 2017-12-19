@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import toJSON from 'enzyme-to-json';
 
 import Candyshop from '../components/Candyshop';
 
-describe('Game', () => {
+describe('CandyShop', () => {
 
   it('shows a candyshop', () => {
     const wrapper = shallow(<Candyshop handleInventory={() => {}} inventory={[]} />);

@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Chocolate shows a chocolate 1`] = `
+<section
+  className="challenge"
+>
+  <img
+    alt=""
+    src="chocolate.jpg"
+    useMap="#chocMap"
+  />
+  <map
+    id="Map"
+    name="chocMap"
+  >
+    <area
+      alt="grid"
+      coords="54,69,44,360,160,357,134,68"
+      data-inv="loompa"
+      data-value="correct"
+      onClick={[Function]}
+      shape="poly"
+    />
+    <area
+      alt="grid"
+      coords="171,347,172,462,283,467,307,357"
+      shape="poly"
+    />
+    <area
+      alt="grid"
+      coords="701,510,700,593,844,607,872,509"
+      shape="poly"
+    />
+    <area
+      alt="grid"
+      coords="455,103,459,230,597,236,594,110"
+      data-inv="loompa"
+      data-value="correct"
+      onClick={[Function]}
+      shape="poly"
+    />
+  </map>
+  <p
+    className="mission"
+  >
+    The oompa loompas are coming after the kids, where are they going to come from?
+  </p>
+  <p
+    className="message"
+  >
+    Message: 
+  </p>
+</section>
+`;

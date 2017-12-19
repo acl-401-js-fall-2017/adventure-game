@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`inventing shows a Inventing 1`] = `
+<section
+  className="challenge"
+>
+  <img
+    alt=""
+    src="testing.png"
+    useMap="#invMap"
+  />
+  <map
+    id="Map"
+    name="invMap"
+  >
+    <area
+      alt="grid"
+      coords="436,249,436,295,486,295,486,242"
+      data-inv="gobstopper"
+      data-value="correct"
+      onClick={[Function]}
+      shape="poly"
+    />
+    <area
+      alt="grid"
+      coords="6,432,8,635,163,631,222,442"
+      data-inv="kids"
+      data-value="person"
+      onClick={[Function]}
+      shape="poly"
+    />
+    <area
+      alt="grid"
+      coords="246,324,207,613,458,618,383,321"
+      data-inv="kids"
+      data-value="person"
+      onClick={[Function]}
+      shape="poly"
+    />
+    <area
+      alt="grid"
+      coords="467,609,580,304,743,324,784,608"
+      data-inv="kids"
+      data-value="person"
+      onClick={[Function]}
+      shape="poly"
+    />
+    <area
+      alt="grid"
+      coords="795,602,918,295,1085,292,1142,590"
+      data-inv="kids"
+      data-value="person"
+      onClick={[Function]}
+      shape="poly"
+    />
+  </map>
+  <p
+    className="mission"
+  >
+    Move the 
+    4
+     kids out of the way to get the everlasting gobstopper.
+  </p>
+  <p
+    className="message"
+  >
+    Message: 
+    Give Mr Wonka the loompas for the gobstopper
+  </p>
+</section>
+`;
